@@ -1,0 +1,8 @@
+User-reported final STRED compilation: 
+text     data      bss      dec      hex       filename
+21932    108       784      22824    5928       bin/ispu
+
+21,932/1024 = 21.418 KiB text; 66.93% of 32 KiB program RAM.
+(108+784)/1024 = 0.8711 KiB initialized+uninitialized variables; 10.89% of 8 KiB data RAM.
+Not a complete run-time stack/heap high-water mark. 'dec' is sum of ELF sections, not a single RAM bank.
+STM32F401RE FLASH/RAM usage: NOT AVAILABLE (requires actual generated STM32 project build/ELF/MAP).

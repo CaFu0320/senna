@@ -1,0 +1,4 @@
+file,label,samples,duration_s,effective_rate_Hz,dt_min_ms,dt_median_ms,dt_max_ms,pct_steps_over_1p5x_median,quaternion_source
+Horizontal.csv,hmotion,1814,25.4,71.38,10.0,10.0,20.0,40.1,logged in file (on-board fusion)
+Static.csv,static,1756,25.43,69.01,10.0,10.0,20.0,44.9,logged in file (on-board fusion)
+Vertical.csv,vmotion,1842,25.12,73.29,10.0,10.0,20.0,36.4,logged in file (on-board fusion)

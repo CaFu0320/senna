@@ -1,0 +1,7 @@
+C vs JSON prediction checks: 463 mismatches: 0
+[]
+Horizontal max feature abs diff C vs Python 5.684342e-14
+Static max feature abs diff C vs Python 1.5987212e-14
+Vertical max feature abs diff C vs Python 8.526513e-14
+End-to-end C feature+tree vs JSON feature+tree: 463 windows; mismatches: 0 []
+PASS

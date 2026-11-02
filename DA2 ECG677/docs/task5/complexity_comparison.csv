@@ -1,0 +1,10 @@
+metric,RAW+FE (Task 3),QUAT+FE (Task 5)
+Candidate -> selected features,36 -> 36,24 -> 8
+Tree depth,2,2
+Leaves,3,3
+Nodes,5,5
+JSON size [KB],4.837,4.675
+Estimated size in C [bytes],45,45
+Test accuracy [%],100.0,80.49
+Window buffer [bytes],1008,672
+Channels buffered,6,4

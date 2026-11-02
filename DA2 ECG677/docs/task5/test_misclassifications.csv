@@ -1,0 +1,9 @@
+label,source_file,window_start_row,window_end_row,predicted_label,correct,split
+Vertical,Vertical.csv,1940,1981,Horizontal,False,test
+Vertical,Vertical.csv,1961,2002,Horizontal,False,test
+Vertical,Vertical.csv,1982,2023,Horizontal,False,test
+Vertical,Vertical.csv,2003,2044,Horizontal,False,test
+Vertical,Vertical.csv,2024,2065,Horizontal,False,test
+Vertical,Vertical.csv,2045,2086,Horizontal,False,test
+Vertical,Vertical.csv,2066,2107,Horizontal,False,test
+Vertical,Vertical.csv,2087,2128,Horizontal,False,test

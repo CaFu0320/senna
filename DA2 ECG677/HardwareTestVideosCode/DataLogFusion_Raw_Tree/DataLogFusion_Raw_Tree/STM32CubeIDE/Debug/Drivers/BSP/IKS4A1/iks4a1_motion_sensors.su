@@ -1,0 +1,17 @@
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Drivers/BSP/IKS4A1/iks4a1_motion_sensors.c:246:9:IKS4A1_MOTION_SENSOR_Init	64	static
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Drivers/BSP/IKS4A1/iks4a1_motion_sensors.c:1311:9:IKS4A1_MOTION_SENSOR_DeInit	24	static
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Drivers/BSP/IKS4A1/iks4a1_motion_sensors.c:1337:9:IKS4A1_MOTION_SENSOR_GetCapabilities	24	static
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Drivers/BSP/IKS4A1/iks4a1_motion_sensors.c:1363:9:IKS4A1_MOTION_SENSOR_ReadID	24	static
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Drivers/BSP/IKS4A1/iks4a1_motion_sensors.c:1392:9:IKS4A1_MOTION_SENSOR_Enable	24	static
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Drivers/BSP/IKS4A1/iks4a1_motion_sensors.c:1431:9:IKS4A1_MOTION_SENSOR_Disable	24	static
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Drivers/BSP/IKS4A1/iks4a1_motion_sensors.c:1471:9:IKS4A1_MOTION_SENSOR_GetAxes	32	static
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Drivers/BSP/IKS4A1/iks4a1_motion_sensors.c:1511:9:IKS4A1_MOTION_SENSOR_GetAxesRaw	32	static
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Drivers/BSP/IKS4A1/iks4a1_motion_sensors.c:1551:9:IKS4A1_MOTION_SENSOR_GetSensitivity	32	static
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Drivers/BSP/IKS4A1/iks4a1_motion_sensors.c:1592:9:IKS4A1_MOTION_SENSOR_GetOutputDataRate	32	static
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Drivers/BSP/IKS4A1/iks4a1_motion_sensors.c:1632:9:IKS4A1_MOTION_SENSOR_GetFullScale	32	static
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Drivers/BSP/IKS4A1/iks4a1_motion_sensors.c:1673:9:IKS4A1_MOTION_SENSOR_SetOutputDataRate	32	static
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Drivers/BSP/IKS4A1/iks4a1_motion_sensors.c:1713:9:IKS4A1_MOTION_SENSOR_SetFullScale	32	static
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Drivers/BSP/IKS4A1/iks4a1_motion_sensors.c:1927:16:LIS2MDL_0_Probe	88	static
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Drivers/BSP/IKS4A1/iks4a1_motion_sensors.c:3979:16:LSM6DSV16X_0_Probe	88	static
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Drivers/BSP/IKS4A1/iks4a1_motion_sensors.c:4424:16:LIS2DUXS12_0_Probe	88	static
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Drivers/BSP/IKS4A1/iks4a1_motion_sensors.c:4596:16:LSM6DSO16IS_0_Probe	88	static

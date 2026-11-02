@@ -1,0 +1,10 @@
+split,class,precision,recall,f1_score,support,accuracy_overall
+train,Horizontal,1.0,1.0,1.0,2125.0,1.0
+train,Static,1.0,1.0,1.0,2121.0,1.0
+train,Vertical,1.0,1.0,1.0,2122.0,1.0
+validation,Horizontal,1.0,1.0,1.0,456.0,1.0
+validation,Static,1.0,1.0,1.0,454.0,1.0
+validation,Vertical,1.0,1.0,1.0,455.0,1.0
+test,Horizontal,1.0,1.0,1.0,456.0,1.0
+test,Static,1.0,1.0,1.0,455.0,1.0
+test,Vertical,1.0,1.0,1.0,455.0,1.0

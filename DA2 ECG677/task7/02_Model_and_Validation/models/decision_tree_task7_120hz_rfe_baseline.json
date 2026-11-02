@@ -1,0 +1,174 @@
+{
+  "format": "task7_quaternion_feature_decision_tree_120hz_v1",
+  "source": "stable Madgwick ISPU 208 Hz, STM32/AlgoBuilder recording ~120.5 Hz",
+  "quaternion_order_input_csv": "q1=x,q2=y,q3=z,q4=w",
+  "quaternion_order_features": "q0=w,q1=x,q2=y,q3=z",
+  "window_size_samples": 42,
+  "stride_samples": 21,
+  "candidate_features": [
+    "q0__mean",
+    "q0__var",
+    "q0__max",
+    "q0__min",
+    "q0__p2p",
+    "q0__energy",
+    "q1__mean",
+    "q1__var",
+    "q1__max",
+    "q1__min",
+    "q1__p2p",
+    "q1__energy",
+    "q2__mean",
+    "q2__var",
+    "q2__max",
+    "q2__min",
+    "q2__p2p",
+    "q2__energy",
+    "q3__mean",
+    "q3__var",
+    "q3__max",
+    "q3__min",
+    "q3__p2p",
+    "q3__energy"
+  ],
+  "selected_features": [
+    "q0__mean",
+    "q0__min",
+    "q0__energy",
+    "q2__energy",
+    "q3__var",
+    "q3__max",
+    "q3__p2p",
+    "q3__energy"
+  ],
+  "classes": [
+    "Horizontal",
+    "Static",
+    "Vertical"
+  ],
+  "tree_depth": 2,
+  "node_count": 7,
+  "leaf_count": 4,
+  "notes": "Conventional RFE baseline retained for audit, not recommended for deployment due to poorer temporal holdout.",
+  "nodes": [
+    {
+      "node_id": 0,
+      "feature_index": 0,
+      "feature_name": "q0__mean",
+      "threshold": 0.9995714426040649,
+      "left_child": 1,
+      "right_child": 4,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "class_fraction_training": {
+        "Horizontal": 0.3289902280130293,
+        "Static": 0.3355048859934853,
+        "Vertical": 0.3355048859934853
+      },
+      "leaf_purity_training": 0.3355048859934853,
+      "weighted_training_samples": 307.0
+    },
+    {
+      "node_id": 1,
+      "feature_index": 7,
+      "feature_name": "q3__energy",
+      "threshold": 0.004896142985671759,
+      "left_child": 2,
+      "right_child": 3,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "class_fraction_training": {
+        "Horizontal": 0.51010101010101,
+        "Static": 0.0,
+        "Vertical": 0.4898989898989899
+      },
+      "leaf_purity_training": 0.51010101010101,
+      "weighted_training_samples": 198.0
+    },
+    {
+      "node_id": 2,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "class_fraction_training": {
+        "Horizontal": 0.11818181818181818,
+        "Static": 0.0,
+        "Vertical": 0.8818181818181818
+      },
+      "leaf_purity_training": 0.8818181818181818,
+      "weighted_training_samples": 110.0
+    },
+    {
+      "node_id": 3,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "class_fraction_training": {
+        "Horizontal": 1.0,
+        "Static": 0.0,
+        "Vertical": 0.0
+      },
+      "leaf_purity_training": 1.0,
+      "weighted_training_samples": 88.0
+    },
+    {
+      "node_id": 4,
+      "feature_index": 4,
+      "feature_name": "q3__var",
+      "threshold": 4.2270403356210046e-06,
+      "left_child": 5,
+      "right_child": 6,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "class_fraction_training": {
+        "Horizontal": 0.0,
+        "Static": 0.944954128440367,
+        "Vertical": 0.05504587155963303
+      },
+      "leaf_purity_training": 0.944954128440367,
+      "weighted_training_samples": 109.0
+    },
+    {
+      "node_id": 5,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "class_fraction_training": {
+        "Horizontal": 0.0,
+        "Static": 0.9626168224299065,
+        "Vertical": 0.037383177570093455
+      },
+      "leaf_purity_training": 0.9626168224299065,
+      "weighted_training_samples": 107.0
+    },
+    {
+      "node_id": 6,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "class_fraction_training": {
+        "Horizontal": 0.0,
+        "Static": 0.0,
+        "Vertical": 1.0
+      },
+      "leaf_purity_training": 1.0,
+      "weighted_training_samples": 2.0
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+ACC_X,ACC_Y,ACC_Z,GYR_X,GYR_Y,GYR_Z,label,source_file,source_row,predicted_label,correct,split
+63,88,837,32690,-18130,39760,Horizontal,Horizontal.csv,1940,Vertical,False,test
+-44,5,-575,-1050,-60760,13720,Vertical,Vertical.csv,1816,Static,False,test
+188,33,844,102270,31990,5460,Vertical,Vertical.csv,1820,Horizontal,False,test
+-7,22,726,-61320,910,-23940,Vertical,Vertical.csv,1842,Static,False,test
+195,56,1337,115220,83580,12530,Vertical,Vertical.csv,1858,Horizontal,False,test
+199,87,1406,109830,84350,16660,Vertical,Vertical.csv,1859,Horizontal,False,test

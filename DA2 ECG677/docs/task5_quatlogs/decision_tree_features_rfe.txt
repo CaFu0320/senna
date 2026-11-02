@@ -1,0 +1,7 @@
+|--- q0__var <= 0.000047
+|   |--- class: Static
+|--- q0__var >  0.000047
+|   |--- q0__p2p <= 0.126500
+|   |   |--- class: Horizontal
+|   |--- q0__p2p >  0.126500
+|   |   |--- class: Vertical

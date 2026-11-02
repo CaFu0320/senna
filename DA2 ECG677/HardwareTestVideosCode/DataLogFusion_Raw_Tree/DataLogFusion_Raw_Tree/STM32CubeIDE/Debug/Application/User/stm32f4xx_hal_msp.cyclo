@@ -1,0 +1,7 @@
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Projects/NUCLEO-F401RE/Applications/IKS4A1/DataLogFusion_Raw_Tree/Src/stm32f4xx_hal_msp.c:62:6:HAL_MspInit	1
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Projects/NUCLEO-F401RE/Applications/IKS4A1/DataLogFusion_Raw_Tree/Src/stm32f4xx_hal_msp.c:87:6:HAL_CRC_MspInit	2
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Projects/NUCLEO-F401RE/Applications/IKS4A1/DataLogFusion_Raw_Tree/Src/stm32f4xx_hal_msp.c:110:6:HAL_CRC_MspDeInit	2
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Projects/NUCLEO-F401RE/Applications/IKS4A1/DataLogFusion_Raw_Tree/Src/stm32f4xx_hal_msp.c:132:6:HAL_RTC_MspInit	3
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Projects/NUCLEO-F401RE/Applications/IKS4A1/DataLogFusion_Raw_Tree/Src/stm32f4xx_hal_msp.c:166:6:HAL_RTC_MspDeInit	2
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Projects/NUCLEO-F401RE/Applications/IKS4A1/DataLogFusion_Raw_Tree/Src/stm32f4xx_hal_msp.c:188:6:HAL_TIM_Base_MspInit	2
+C:/Users/jabri/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-MEMS1/13.0.0/Projects/NUCLEO-F401RE/Applications/IKS4A1/DataLogFusion_Raw_Tree/Src/stm32f4xx_hal_msp.c:214:6:HAL_TIM_Base_MspDeInit	2

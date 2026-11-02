@@ -1,0 +1,16 @@
+split,class,precision,recall,f1_score,support,accuracy_overall
+train,Horizontal,1.0,1.0,1.0,69.0,1.0
+train,Static,1.0,1.0,1.0,66.0,1.0
+train,Vertical,1.0,1.0,1.0,70.0,1.0
+train,macro avg,1.0,1.0,1.0,205.0,1.0
+train,weighted avg,1.0,1.0,1.0,205.0,1.0
+validation,Horizontal,1.0,1.0,1.0,14.0,1.0
+validation,Static,1.0,1.0,1.0,13.0,1.0
+validation,Vertical,1.0,1.0,1.0,14.0,1.0
+validation,macro avg,1.0,1.0,1.0,41.0,1.0
+validation,weighted avg,1.0,1.0,1.0,41.0,1.0
+test,Horizontal,0.6363636363636364,1.0,0.7777777777777778,14.0,0.8048780487804879
+test,Static,1.0,1.0,1.0,13.0,0.8048780487804879
+test,Vertical,1.0,0.42857142857142855,0.6,14.0,0.8048780487804879
+test,macro avg,0.8787878787878788,0.8095238095238094,0.7925925925925926,41.0,0.8048780487804879
+test,weighted avg,0.8758314855875831,0.8048780487804879,0.7875338753387534,41.0,0.8048780487804879

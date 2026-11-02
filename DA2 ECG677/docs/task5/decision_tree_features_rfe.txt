@@ -1,0 +1,7 @@
+|--- q3__max <= 0.002500
+|   |--- q1__energy <= 0.000047
+|   |   |--- class: Static
+|   |--- q1__energy >  0.000047
+|   |   |--- class: Horizontal
+|--- q3__max >  0.002500
+|   |--- class: Vertical

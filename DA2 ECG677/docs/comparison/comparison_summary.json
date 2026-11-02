@@ -1,0 +1,232 @@
+{
+  "performance": [
+    {
+      "model": "RAW",
+      "input": "1 sample",
+      "features_used_by_tree": 6,
+      "test_items": 942,
+      "acc_train": 1.0,
+      "acc_val": 0.9968119022316685,
+      "acc_test": 0.9936305732484076,
+      "gap_points": 0.6369426751592355,
+      "test_macro_f1": 0.9936697227903292,
+      "test_errors": 6,
+      "depth": 10,
+      "leaves": 48,
+      "nodes": 95,
+      "json_kb": 43.679,
+      "tree_bytes_est": 855,
+      "window_buffer_bytes": 0,
+      "memory_bytes_est": 855,
+      "mcu_tree_us_est": 1.4285714285714286,
+      "decision_every_samples": 1,
+      "first_decision_after_samples": 1
+    },
+    {
+      "model": "RAW+FE",
+      "input": "42-sample window",
+      "features_used_by_tree": 2,
+      "test_items": 41,
+      "acc_train": 1.0,
+      "acc_val": 1.0,
+      "acc_test": 1.0,
+      "gap_points": 0.0,
+      "test_macro_f1": 1.0,
+      "test_errors": 0,
+      "depth": 2,
+      "leaves": 3,
+      "nodes": 5,
+      "json_kb": 4.837,
+      "tree_bytes_est": 45,
+      "window_buffer_bytes": 1008,
+      "memory_bytes_est": 1053,
+      "mcu_tree_us_est": 0.2857142857142857,
+      "decision_every_samples": 21,
+      "first_decision_after_samples": 42
+    },
+    {
+      "model": "QUAT",
+      "input": "1 sample",
+      "features_used_by_tree": 2,
+      "test_items": 942,
+      "acc_train": 1.0,
+      "acc_val": 1.0,
+      "acc_test": 0.7547770700636943,
+      "gap_points": 24.52229299363057,
+      "test_macro_f1": 0.7232211738175777,
+      "test_errors": 231,
+      "depth": 3,
+      "leaves": 4,
+      "nodes": 7,
+      "json_kb": 3.207,
+      "tree_bytes_est": 63,
+      "window_buffer_bytes": 0,
+      "memory_bytes_est": 63,
+      "mcu_tree_us_est": 0.42857142857142855,
+      "decision_every_samples": 1,
+      "first_decision_after_samples": 1
+    },
+    {
+      "model": "QUAT+FE",
+      "input": "42-sample window",
+      "features_used_by_tree": 2,
+      "test_items": 41,
+      "acc_train": 1.0,
+      "acc_val": 1.0,
+      "acc_test": 0.8048780487804879,
+      "gap_points": 19.512195121951216,
+      "test_macro_f1": 0.7925925925925926,
+      "test_errors": 8,
+      "depth": 2,
+      "leaves": 3,
+      "nodes": 5,
+      "json_kb": 4.675,
+      "tree_bytes_est": 45,
+      "window_buffer_bytes": 672,
+      "memory_bytes_est": 717,
+      "mcu_tree_us_est": 0.2857142857142857,
+      "decision_every_samples": 21,
+      "first_decision_after_samples": 42
+    }
+  ],
+  "robustness": [
+    {
+      "model": "RAW",
+      "block_1": 0.9187,
+      "block_2": 0.9984,
+      "block_3": 0.9992,
+      "block_4": 0.9984,
+      "block_5": 0.9952,
+      "mean": 0.982,
+      "worst": 0.9187
+    },
+    {
+      "model": "RAW+FE",
+      "block_1": 1.0,
+      "block_2": 1.0,
+      "block_3": 1.0,
+      "block_4": 1.0,
+      "block_5": 1.0,
+      "mean": 1.0,
+      "worst": 1.0
+    },
+    {
+      "model": "QUAT",
+      "block_1": 0.8931,
+      "block_2": 1.0,
+      "block_3": 1.0,
+      "block_4": 1.0,
+      "block_5": 0.8159,
+      "mean": 0.9418,
+      "worst": 0.8159
+    },
+    {
+      "model": "QUAT+FE",
+      "block_1": 0.5714,
+      "block_2": 1.0,
+      "block_3": 1.0,
+      "block_4": 1.0,
+      "block_5": 1.0,
+      "mean": 0.9143,
+      "worst": 0.5714
+    }
+  ],
+  "per_class": [
+    {
+      "model": "RAW",
+      "class": "Horizontal",
+      "precision": 0.9905362776025236,
+      "recall": 0.9968253968253968,
+      "f1": 0.9936708860759492,
+      "support": 315
+    },
+    {
+      "model": "RAW",
+      "class": "Static",
+      "precision": 0.9935064935064936,
+      "recall": 1.0,
+      "f1": 0.996742671009772,
+      "support": 306
+    },
+    {
+      "model": "RAW",
+      "class": "Vertical",
+      "precision": 0.996845425867508,
+      "recall": 0.9844236760124612,
+      "f1": 0.9905956112852664,
+      "support": 321
+    },
+    {
+      "model": "RAW+FE",
+      "class": "Horizontal",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 14
+    },
+    {
+      "model": "RAW+FE",
+      "class": "Static",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 13
+    },
+    {
+      "model": "RAW+FE",
+      "class": "Vertical",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 14
+    },
+    {
+      "model": "QUAT",
+      "class": "Horizontal",
+      "precision": 0.5769230769230769,
+      "recall": 1.0,
+      "f1": 0.7317073170731707,
+      "support": 315
+    },
+    {
+      "model": "QUAT",
+      "class": "Static",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 306
+    },
+    {
+      "model": "QUAT",
+      "class": "Vertical",
+      "precision": 1.0,
+      "recall": 0.2803738317757009,
+      "f1": 0.437956204379562,
+      "support": 321
+    },
+    {
+      "model": "QUAT+FE",
+      "class": "Horizontal",
+      "precision": 0.6363636363636364,
+      "recall": 1.0,
+      "f1": 0.7777777777777778,
+      "support": 14
+    },
+    {
+      "model": "QUAT+FE",
+      "class": "Static",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 13
+    },
+    {
+      "model": "QUAT+FE",
+      "class": "Vertical",
+      "precision": 1.0,
+      "recall": 0.4285714285714285,
+      "f1": 0.6,
+      "support": 14
+    }
+  ]
+}

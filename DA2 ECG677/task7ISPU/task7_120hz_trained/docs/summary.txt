@@ -1,0 +1,291 @@
+Task 7 120-Hz new recordings, MOTION FEATURE (var+p2p) experiment
+IMPORTANT: single run per activity; test is within the same recordings.
+{
+  "standard_rfe": {
+    "tree_nodes": 7,
+    "tree_depth": 2,
+    "leaves": 4,
+    "train": {
+      "correct": 290,
+      "windows": 307,
+      "accuracy": 0.9446254071661238,
+      "confusion_matrix": [
+        [
+          88,
+          0,
+          13
+        ],
+        [
+          0,
+          103,
+          0
+        ],
+        [
+          0,
+          4,
+          99
+        ]
+      ]
+    },
+    "validation": {
+      "correct": 78,
+      "windows": 78,
+      "accuracy": 1.0,
+      "confusion_matrix": [
+        [
+          26,
+          0,
+          0
+        ],
+        [
+          0,
+          26,
+          0
+        ],
+        [
+          0,
+          0,
+          26
+        ]
+      ]
+    },
+    "test": {
+      "correct": 53,
+      "windows": 78,
+      "accuracy": 0.6794871794871795,
+      "confusion_matrix": [
+        [
+          26,
+          0,
+          0
+        ],
+        [
+          0,
+          26,
+          0
+        ],
+        [
+          25,
+          0,
+          1
+        ]
+      ]
+    }
+  },
+  "motion_8features": {
+    "tree_nodes": 17,
+    "tree_depth": 4,
+    "leaves": 9,
+    "train": {
+      "correct": 288,
+      "windows": 307,
+      "accuracy": 0.9381107491856677,
+      "confusion_matrix": [
+        [
+          93,
+          8,
+          0
+        ],
+        [
+          3,
+          100,
+          0
+        ],
+        [
+          4,
+          4,
+          95
+        ]
+      ]
+    },
+    "validation": {
+      "correct": 75,
+      "windows": 78,
+      "accuracy": 0.9615384615384616,
+      "confusion_matrix": [
+        [
+          24,
+          0,
+          2
+        ],
+        [
+          0,
+          26,
+          0
+        ],
+        [
+          1,
+          0,
+          25
+        ]
+      ]
+    },
+    "test": {
+      "correct": 75,
+      "windows": 78,
+      "accuracy": 0.9615384615384616,
+      "confusion_matrix": [
+        [
+          26,
+          0,
+          0
+        ],
+        [
+          0,
+          26,
+          0
+        ],
+        [
+          3,
+          0,
+          23
+        ]
+      ]
+    }
+  },
+  "candidate_features": [
+    "q0__mean",
+    "q0__var",
+    "q0__max",
+    "q0__min",
+    "q0__p2p",
+    "q0__energy",
+    "q1__mean",
+    "q1__var",
+    "q1__max",
+    "q1__min",
+    "q1__p2p",
+    "q1__energy",
+    "q2__mean",
+    "q2__var",
+    "q2__max",
+    "q2__min",
+    "q2__p2p",
+    "q2__energy",
+    "q3__mean",
+    "q3__var",
+    "q3__max",
+    "q3__min",
+    "q3__p2p",
+    "q3__energy"
+  ],
+  "motion_features_selected": [
+    "q0__var",
+    "q0__p2p",
+    "q1__var",
+    "q1__p2p",
+    "q2__var",
+    "q2__p2p",
+    "q3__var",
+    "q3__p2p"
+  ],
+  "standard_rfe_selected": [
+    "q0__mean",
+    "q0__min",
+    "q0__energy",
+    "q2__energy",
+    "q3__var",
+    "q3__max",
+    "q3__p2p",
+    "q3__energy"
+  ],
+  "model_selection": {
+    "feature_method": "motion-sensitive variance and peak-to-peak from the same 24 QUAT+FE features",
+    "hyperparameter_choice": "validation accuracy, then fewest leaves",
+    "chosen_max_depth": 5,
+    "chosen_min_samples_leaf": 4
+  },
+  "recordings": {
+    "Horizontal": {
+      "samples_120hz": 3655,
+      "duration_seconds": 30.320908,
+      "rate_hz": 120.51090290567815,
+      "old_and_new_segments_n_duration": [
+        [
+          3031,
+          30.296338
+        ],
+        [
+          3655,
+          30.320908
+        ]
+      ],
+      "window_count": 173,
+      "excluded_windows_norm_outliers": [
+        16,
+        17
+      ],
+      "norm_median": 0.9999629993154746,
+      "norm_min": 0.993797263027022,
+      "norm_max": 1.1042708001210573
+    },
+    "Static": {
+      "samples_120hz": 3653,
+      "duration_seconds": 30.311561,
+      "rate_hz": 120.48208272744515,
+      "old_and_new_segments_n_duration": [
+        [
+          3029,
+          30.279933
+        ],
+        [
+          3653,
+          30.311561
+        ]
+      ],
+      "window_count": 172,
+      "excluded_windows_norm_outliers": [],
+      "norm_median": 1.0002289737855028,
+      "norm_min": 1.000221475474307,
+      "norm_max": 1.0002334727452384
+    },
+    "Vertical": {
+      "samples_120hz": 3659,
+      "duration_seconds": 30.3614,
+      "rate_hz": 120.48192771084338,
+      "old_and_new_segments_n_duration": [
+        [
+          3031,
+          30.294322
+        ],
+        [
+          3659,
+          30.3614
+        ]
+      ],
+      "window_count": 173,
+      "excluded_windows_norm_outliers": [],
+      "norm_median": 1.000017999838003,
+      "norm_min": 0.9956108677590858,
+      "norm_max": 1.0040562733233631
+    }
+  },
+  "split_design": "Per-recording chronological 60% train / 15% validation / 15% test, with two 5% time gaps and no windows spanning gaps; same-session, not independent trials"
+}
+
+Tree:
+|--- q3__p2p <= 0.003000000
+|   |--- q2__p2p <= 0.001500000
+|   |   |--- q1__p2p <= 0.001500000
+|   |   |   |--- class: 1
+|   |   |--- q1__p2p >  0.001500000
+|   |   |   |--- class: 1
+|   |--- q2__p2p >  0.001500000
+|   |   |--- q1__p2p <= 0.001500000
+|   |   |   |--- q2__p2p <= 0.002500000
+|   |   |   |   |--- class: 1
+|   |   |   |--- q2__p2p >  0.002500000
+|   |   |   |   |--- class: 0
+|   |   |--- q1__p2p >  0.001500000
+|   |   |   |--- class: 1
+|--- q3__p2p >  0.003000000
+|   |--- q3__p2p <= 0.033999983
+|   |   |--- q2__var <= 0.000281281
+|   |   |   |--- class: 0
+|   |   |--- q2__var >  0.000281281
+|   |   |   |--- class: 2
+|   |--- q3__p2p >  0.033999983
+|   |   |--- q0__var <= 0.000006396
+|   |   |   |--- class: 0
+|   |   |--- q0__var >  0.000006396
+|   |   |   |--- class: 0

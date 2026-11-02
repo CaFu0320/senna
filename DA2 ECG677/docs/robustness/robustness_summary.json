@@ -1,0 +1,289 @@
+{
+  "main_dataset": {
+    "quat_samples_chronological": {
+      "train": 1.0,
+      "validation": 1.0,
+      "test": 0.7548,
+      "n_test": 942
+    },
+    "windows_chronological": {
+      "all 24 features": {
+        "train": 1.0,
+        "validation": 1.0,
+        "test": 0.8049,
+        "n_test": 41
+      },
+      "motion only (var, p2p)": {
+        "train": 1.0,
+        "validation": 1.0,
+        "test": 1.0,
+        "n_test": 41
+      },
+      "level only (mean, max, min, energy)": {
+        "train": 1.0,
+        "validation": 1.0,
+        "test": 0.878,
+        "n_test": 41
+      }
+    },
+    "quat_samples_block_cv": {
+      "folds": [
+        {
+          "fold": 0,
+          "accuracy": 0.8931,
+          "errors": {
+            "Horizontal": 134,
+            "Static": 0,
+            "Vertical": 0
+          }
+        },
+        {
+          "fold": 1,
+          "accuracy": 1.0,
+          "errors": {
+            "Horizontal": 0,
+            "Static": 0,
+            "Vertical": 0
+          }
+        },
+        {
+          "fold": 2,
+          "accuracy": 1.0,
+          "errors": {
+            "Horizontal": 0,
+            "Static": 0,
+            "Vertical": 0
+          }
+        },
+        {
+          "fold": 3,
+          "accuracy": 1.0,
+          "errors": {
+            "Horizontal": 0,
+            "Static": 0,
+            "Vertical": 0
+          }
+        },
+        {
+          "fold": 4,
+          "accuracy": 0.8159,
+          "errors": {
+            "Horizontal": 0,
+            "Static": 0,
+            "Vertical": 231
+          }
+        }
+      ],
+      "mean": 0.9418,
+      "min": 0.8159
+    },
+    "windows_block_cv": {
+      "all 24 features": {
+        "folds": [
+          0.5357,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "mean": 0.9071,
+        "min": 0.5357
+      },
+      "motion only (var, p2p)": {
+        "folds": [
+          0.8036,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "mean": 0.9607,
+        "min": 0.8036
+      },
+      "level only (mean, max, min, energy)": {
+        "folds": [
+          0.6786,
+          1.0,
+          1.0,
+          1.0,
+          0.9107
+        ],
+        "mean": 0.9179,
+        "min": 0.6786
+      }
+    },
+    "class_means": {
+      "Horizontal": {
+        "q0": 0.008,
+        "q1": 0.06,
+        "q2": 0.988,
+        "q3": -0.124
+      },
+      "Static": {
+        "q0": 0.006,
+        "q1": 0.0,
+        "q2": 0.997,
+        "q3": -0.078
+      },
+      "Vertical": {
+        "q0": 0.08,
+        "q1": 0.13,
+        "q2": 0.987,
+        "q3": 0.027
+      }
+    }
+  },
+  "quaternion_logs": {
+    "quat_samples_chronological": {
+      "train": 1.0,
+      "validation": 1.0,
+      "test": 1.0,
+      "n_test": 1366
+    },
+    "windows_chronological": {
+      "all 24 features": {
+        "train": 1.0,
+        "validation": 1.0,
+        "test": 1.0,
+        "n_test": 60
+      },
+      "motion only (var, p2p)": {
+        "train": 1.0,
+        "validation": 1.0,
+        "test": 0.9833,
+        "n_test": 60
+      },
+      "level only (mean, max, min, energy)": {
+        "train": 1.0,
+        "validation": 1.0,
+        "test": 1.0,
+        "n_test": 60
+      }
+    },
+    "quat_samples_block_cv": {
+      "folds": [
+        {
+          "fold": 0,
+          "accuracy": 0.8329,
+          "errors": {
+            "Horizontal": 0,
+            "Static": 0,
+            "Vertical": 304
+          }
+        },
+        {
+          "fold": 1,
+          "accuracy": 1.0,
+          "errors": {
+            "Horizontal": 0,
+            "Static": 0,
+            "Vertical": 0
+          }
+        },
+        {
+          "fold": 2,
+          "accuracy": 1.0,
+          "errors": {
+            "Horizontal": 0,
+            "Static": 0,
+            "Vertical": 0
+          }
+        },
+        {
+          "fold": 3,
+          "accuracy": 1.0,
+          "errors": {
+            "Horizontal": 0,
+            "Static": 0,
+            "Vertical": 0
+          }
+        },
+        {
+          "fold": 4,
+          "accuracy": 1.0,
+          "errors": {
+            "Horizontal": 0,
+            "Static": 0,
+            "Vertical": 0
+          }
+        }
+      ],
+      "mean": 0.9666,
+      "min": 0.8329
+    },
+    "windows_block_cv": {
+      "all 24 features": {
+        "folds": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "motion only (var, p2p)": {
+        "folds": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "level only (mean, max, min, energy)": {
+        "folds": [
+          0.8272,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "mean": 0.9654,
+        "min": 0.8272
+      }
+    },
+    "class_means": {
+      "Horizontal": {
+        "q0": -0.064,
+        "q1": -0.096,
+        "q2": 0.828,
+        "q3": 0.542
+      },
+      "Static": {
+        "q0": 0.002,
+        "q1": -0.003,
+        "q2": 0.295,
+        "q3": 0.955
+      },
+      "Vertical": {
+        "q0": -0.079,
+        "q1": -0.074,
+        "q2": 0.55,
+        "q3": 0.82
+      }
+    }
+  },
+  "transfer": {
+    "main_to_logs": {
+      "samples_accuracy": 0.3439,
+      "predicted_classes": {
+        "Vertical": 8982,
+        "Horizontal": 117
+      },
+      "windows_all 24 features": 0.3333,
+      "windows_motion only (var, p2p)": 0.9837
+    },
+    "logs_to_main": {
+      "samples_accuracy": 0.3348,
+      "predicted_classes": {
+        "Horizontal": 6273
+      },
+      "windows_all 24 features": 0.661,
+      "windows_motion only (var, p2p)": 0.661
+    }
+  }
+}

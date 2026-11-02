@@ -1,0 +1,16 @@
+# LSM6DSO16IS, +/-8g / +/-2000dps, native rate 208 Hz
+acc_odr 208
+acc_fs 8
+acc_mode high_performance
+gyr_odr 208
+gyr_fs 2000
+gyr_mode high_performance
+bdu enable
+ispu_rate 208
+ispu_int1 disable
+ispu_int2 enable
+ispu_sleep_int2 disable
+ispu_latch disable
+algo 0 enable
+algo_int1 0 disable
+algo_int2 0 enable

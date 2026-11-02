@@ -1,0 +1,16 @@
+split,class,precision,recall,f1_score,support,accuracy_overall
+train,Horizontal,1.0,1.0,1.0,69.0,1.0
+train,Static,1.0,1.0,1.0,66.0,1.0
+train,Vertical,1.0,1.0,1.0,70.0,1.0
+train,macro avg,1.0,1.0,1.0,205.0,1.0
+train,weighted avg,1.0,1.0,1.0,205.0,1.0
+validation,Horizontal,1.0,1.0,1.0,14.0,1.0
+validation,Static,1.0,1.0,1.0,13.0,1.0
+validation,Vertical,1.0,1.0,1.0,14.0,1.0
+validation,macro avg,1.0,1.0,1.0,41.0,1.0
+validation,weighted avg,1.0,1.0,1.0,41.0,1.0
+test,Horizontal,1.0,1.0,1.0,14.0,1.0
+test,Static,1.0,1.0,1.0,13.0,1.0
+test,Vertical,1.0,1.0,1.0,14.0,1.0
+test,macro avg,1.0,1.0,1.0,41.0,1.0
+test,weighted avg,1.0,1.0,1.0,41.0,1.0

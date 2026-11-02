@@ -1,0 +1,16 @@
+metric,RAW (Task 2),RAW+FE (Task 3)
+Input to the tree,1 sample,42-sample window
+Features,6,36
+Tree depth,10,2
+Leaves,48,3
+Nodes,95,5
+JSON size [KB],43.679,4.837
+Estimated size in C [bytes],855,45
+Train accuracy [%],100.0,100.0
+Validation accuracy [%],99.68,100.0
+Test accuracy [%],99.36,100.0
+Generalisation gap [points],0.64,0.0
+Window buffer [bytes],0,1008
+Work before the tree,none,36 statistics per window
+Decision rate,every sample,every 21 samples
+Delay to first decision,1 sample,42 samples

@@ -1,0 +1,2 @@
+train_accuracy,validation_accuracy,test_accuracy,generalization_gap_train_minus_test,tree_depth,leaf_count,node_count
+1.0,1.0,0.7547770700636943,0.24522292993630568,3,4,7

@@ -1,0 +1,7 @@
+|--- ACC_X__p2p <= 1128.000000
+|   |--- ACC_X__energy <= 1706.880989
+|   |   |--- class: Static
+|   |--- ACC_X__energy >  1706.880989
+|   |   |--- class: Vertical
+|--- ACC_X__p2p >  1128.000000
+|   |--- class: Horizontal

@@ -1,0 +1,10 @@
+|--- q3 <= -0.00
+|   |--- q2 <= 1.00
+|   |   |--- class: Horizontal
+|   |--- q2 >  1.00
+|   |   |--- q3 <= -0.07
+|   |   |   |--- class: Static
+|   |   |--- q3 >  -0.07
+|   |   |   |--- class: Horizontal
+|--- q3 >  -0.00
+|   |--- class: Vertical

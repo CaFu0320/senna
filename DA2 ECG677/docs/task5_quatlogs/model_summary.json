@@ -1,0 +1,116 @@
+{
+  "task": "Task 5 - QUAT+FE",
+  "channels": [
+    "q0",
+    "q1",
+    "q2",
+    "q3"
+  ],
+  "classes": [
+    "Horizontal",
+    "Static",
+    "Vertical"
+  ],
+  "statistics": [
+    "mean",
+    "var",
+    "max",
+    "min",
+    "p2p",
+    "energy"
+  ],
+  "candidate_features": 24,
+  "selected_feature_count": 8,
+  "selected_features": [
+    "q0__var",
+    "q0__p2p",
+    "q3__var",
+    "q3__p2p",
+    "q3__mean",
+    "q3__energy",
+    "q3__min",
+    "q2__max"
+  ],
+  "window_size_samples": 42,
+  "stride_samples": 21,
+  "overlap_percent": 50.0,
+  "split_mode": "chronological",
+  "train_windows": 300,
+  "validation_windows": 60,
+  "test_windows": 60,
+  "criterion": "gini",
+  "max_depth_setting": null,
+  "min_samples_leaf": 1,
+  "min_samples_split": 2,
+  "random_state": 42,
+  "train_accuracy": 1.0,
+  "validation_accuracy": 1.0,
+  "test_accuracy": 0.9833333333333333,
+  "generalization_gap_train_minus_test": 0.01666666666666672,
+  "tree_depth": 2,
+  "leaf_count": 3,
+  "node_count": 5,
+  "json_size_kb": 4.642,
+  "c_source_and_header_combined_bytes": 3285,
+  "embedded_tree_size_bytes_est": 45,
+  "window_buffer_bytes": 672,
+  "features_used_by_tree": [
+    "q0__var",
+    "q0__p2p"
+  ],
+  "importance": {
+    "q0__var": 0.5000000000000001,
+    "q0__p2p": 0.49999999999999994,
+    "q3__var": 0.0,
+    "q3__p2p": 0.0,
+    "q3__mean": 0.0,
+    "q3__energy": 0.0,
+    "q3__min": 0.0,
+    "q2__max": 0.0
+  },
+  "importance_by_component": {
+    "q0": 1.0,
+    "q1": 0.0,
+    "q2": 0.0,
+    "q3": 0.0
+  },
+  "importance_by_statistic": {
+    "mean": 0.0,
+    "var": 0.5000000000000001,
+    "max": 0.0,
+    "min": 0.0,
+    "p2p": 0.49999999999999994,
+    "energy": 0.0
+  },
+  "selected_per_component": {
+    "q0": 2,
+    "q1": 0,
+    "q2": 1,
+    "q3": 5
+  },
+  "selected_per_statistic": {
+    "mean": 1,
+    "var": 2,
+    "max": 1,
+    "min": 1,
+    "p2p": 2,
+    "energy": 1
+  },
+  "tree_diagnostic": {
+    "features_with_zero_importance": 22,
+    "first_eliminated": [
+      "q0__mean",
+      "q0__var",
+      "q0__max",
+      "q0__min",
+      "q0__p2p",
+      "q1__mean"
+    ],
+    "elimination_follows_column_order": false
+  },
+  "json_walk_us": 0.3871281124480012,
+  "sklearn_single_call_us": 63.090096666655874,
+  "feature_extraction_host_us_per_window": 34.218853333338004,
+  "mcu_tree_worst_case_us_est": 0.2857142857142857,
+  "latency_note": "Host timings show relative cost only; MCU figure is an estimate (12 cycles per level, 84 MHz)."
+}

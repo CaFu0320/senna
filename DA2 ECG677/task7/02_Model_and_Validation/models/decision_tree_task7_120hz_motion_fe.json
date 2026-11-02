@@ -1,0 +1,344 @@
+{
+  "format": "task7_quaternion_feature_decision_tree_120hz_v1",
+  "source": "stable Madgwick ISPU 208 Hz, STM32/AlgoBuilder recording ~120.5 Hz",
+  "quaternion_order_input_csv": "q1=x,q2=y,q3=z,q4=w",
+  "quaternion_order_features": "q0=w,q1=x,q2=y,q3=z",
+  "window_size_samples": 42,
+  "stride_samples": 21,
+  "candidate_features": [
+    "q0__mean",
+    "q0__var",
+    "q0__max",
+    "q0__min",
+    "q0__p2p",
+    "q0__energy",
+    "q1__mean",
+    "q1__var",
+    "q1__max",
+    "q1__min",
+    "q1__p2p",
+    "q1__energy",
+    "q2__mean",
+    "q2__var",
+    "q2__max",
+    "q2__min",
+    "q2__p2p",
+    "q2__energy",
+    "q3__mean",
+    "q3__var",
+    "q3__max",
+    "q3__min",
+    "q3__p2p",
+    "q3__energy"
+  ],
+  "selected_features": [
+    "q0__var",
+    "q0__p2p",
+    "q1__var",
+    "q1__p2p",
+    "q2__var",
+    "q2__p2p",
+    "q3__var",
+    "q3__p2p"
+  ],
+  "classes": [
+    "Horizontal",
+    "Static",
+    "Vertical"
+  ],
+  "tree_depth": 4,
+  "node_count": 17,
+  "leaf_count": 9,
+  "notes": "Motion-only feature selection from 24 candidates; experiment evaluated on held-out time portions of SAME recordings. Not independent testing. Do not interpret leaf purity as calibrated confidence.",
+  "nodes": [
+    {
+      "node_id": 0,
+      "feature_index": 7,
+      "feature_name": "q3__p2p",
+      "threshold": 0.0029999995604157448,
+      "left_child": 1,
+      "right_child": 10,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "class_fraction_training": {
+        "Horizontal": 0.3289902280130293,
+        "Static": 0.3355048859934853,
+        "Vertical": 0.3355048859934853
+      },
+      "leaf_purity_training": 0.3355048859934853,
+      "weighted_training_samples": 307.0
+    },
+    {
+      "node_id": 1,
+      "feature_index": 5,
+      "feature_name": "q2__p2p",
+      "threshold": 0.001500000013038516,
+      "left_child": 2,
+      "right_child": 5,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "class_fraction_training": {
+        "Horizontal": 0.09322033898305085,
+        "Static": 0.8728813559322034,
+        "Vertical": 0.03389830508474576
+      },
+      "leaf_purity_training": 0.8728813559322034,
+      "weighted_training_samples": 118.0
+    },
+    {
+      "node_id": 2,
+      "feature_index": 3,
+      "feature_name": "q1__p2p",
+      "threshold": 0.001500000071246177,
+      "left_child": 3,
+      "right_child": 4,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "class_fraction_training": {
+        "Horizontal": 0.029850746268656716,
+        "Static": 0.9552238805970149,
+        "Vertical": 0.014925373134328358
+      },
+      "leaf_purity_training": 0.9552238805970149,
+      "weighted_training_samples": 67.0
+    },
+    {
+      "node_id": 3,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "class_fraction_training": {
+        "Horizontal": 0.06666666666666667,
+        "Static": 0.9333333333333333,
+        "Vertical": 0.0
+      },
+      "leaf_purity_training": 0.9333333333333333,
+      "weighted_training_samples": 30.0
+    },
+    {
+      "node_id": 4,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "class_fraction_training": {
+        "Horizontal": 0.0,
+        "Static": 0.972972972972973,
+        "Vertical": 0.02702702702702703
+      },
+      "leaf_purity_training": 0.972972972972973,
+      "weighted_training_samples": 37.0
+    },
+    {
+      "node_id": 5,
+      "feature_index": 3,
+      "feature_name": "q1__p2p",
+      "threshold": 0.001500000071246177,
+      "left_child": 6,
+      "right_child": 9,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "class_fraction_training": {
+        "Horizontal": 0.17647058823529413,
+        "Static": 0.7647058823529411,
+        "Vertical": 0.058823529411764705
+      },
+      "leaf_purity_training": 0.7647058823529411,
+      "weighted_training_samples": 51.0
+    },
+    {
+      "node_id": 6,
+      "feature_index": 5,
+      "feature_name": "q2__p2p",
+      "threshold": 0.0024999999441206455,
+      "left_child": 7,
+      "right_child": 8,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "class_fraction_training": {
+        "Horizontal": 0.25,
+        "Static": 0.6875,
+        "Vertical": 0.0625
+      },
+      "leaf_purity_training": 0.6875,
+      "weighted_training_samples": 32.0
+    },
+    {
+      "node_id": 7,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "class_fraction_training": {
+        "Horizontal": 0.19230769230769232,
+        "Static": 0.7307692307692307,
+        "Vertical": 0.07692307692307693
+      },
+      "leaf_purity_training": 0.7307692307692307,
+      "weighted_training_samples": 26.0
+    },
+    {
+      "node_id": 8,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "class_fraction_training": {
+        "Horizontal": 0.5,
+        "Static": 0.5,
+        "Vertical": 0.0
+      },
+      "leaf_purity_training": 0.5,
+      "weighted_training_samples": 6.0
+    },
+    {
+      "node_id": 9,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "class_fraction_training": {
+        "Horizontal": 0.05263157894736842,
+        "Static": 0.8947368421052632,
+        "Vertical": 0.05263157894736842
+      },
+      "leaf_purity_training": 0.8947368421052632,
+      "weighted_training_samples": 19.0
+    },
+    {
+      "node_id": 10,
+      "feature_index": 7,
+      "feature_name": "q3__p2p",
+      "threshold": 0.033999983221292496,
+      "left_child": 11,
+      "right_child": 14,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "class_fraction_training": {
+        "Horizontal": 0.47619047619047616,
+        "Static": 0.0,
+        "Vertical": 0.5238095238095238
+      },
+      "leaf_purity_training": 0.5238095238095238,
+      "weighted_training_samples": 189.0
+    },
+    {
+      "node_id": 11,
+      "feature_index": 4,
+      "feature_name": "q2__var",
+      "threshold": 0.0002812811726471409,
+      "left_child": 12,
+      "right_child": 13,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "class_fraction_training": {
+        "Horizontal": 0.020202020202020204,
+        "Static": 0.0,
+        "Vertical": 0.9797979797979798
+      },
+      "leaf_purity_training": 0.9797979797979798,
+      "weighted_training_samples": 99.0
+    },
+    {
+      "node_id": 12,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "class_fraction_training": {
+        "Horizontal": 0.5,
+        "Static": 0.0,
+        "Vertical": 0.5
+      },
+      "leaf_purity_training": 0.5,
+      "weighted_training_samples": 4.0
+    },
+    {
+      "node_id": 13,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "class_fraction_training": {
+        "Horizontal": 0.0,
+        "Static": 0.0,
+        "Vertical": 1.0
+      },
+      "leaf_purity_training": 1.0,
+      "weighted_training_samples": 95.0
+    },
+    {
+      "node_id": 14,
+      "feature_index": 0,
+      "feature_name": "q0__var",
+      "threshold": 6.395994205377065e-06,
+      "left_child": 15,
+      "right_child": 16,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "class_fraction_training": {
+        "Horizontal": 0.9777777777777777,
+        "Static": 0.0,
+        "Vertical": 0.022222222222222223
+      },
+      "leaf_purity_training": 0.9777777777777777,
+      "weighted_training_samples": 90.0
+    },
+    {
+      "node_id": 15,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "class_fraction_training": {
+        "Horizontal": 0.5,
+        "Static": 0.0,
+        "Vertical": 0.5
+      },
+      "leaf_purity_training": 0.5,
+      "weighted_training_samples": 4.0
+    },
+    {
+      "node_id": 16,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "class_fraction_training": {
+        "Horizontal": 1.0,
+        "Static": 0.0,
+        "Vertical": 0.0
+      },
+      "leaf_purity_training": 1.0,
+      "weighted_training_samples": 86.0
+    }
+  ]
+}
