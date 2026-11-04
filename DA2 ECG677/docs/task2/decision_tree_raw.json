@@ -1,0 +1,3158 @@
+{
+  "format": "imu_decision_tree_v1",
+  "description": "Decision tree trained directly on six raw IMU axes; no engineered features or scaling.",
+  "features": [
+    "ACC_X",
+    "ACC_Y",
+    "ACC_Z",
+    "GYR_X",
+    "GYR_Y",
+    "GYR_Z"
+  ],
+  "feature_units_note": "The input values used by firmware must use the same units and axis conventions as the training CSV files.",
+  "classes": [
+    "Curl",
+    "LateralRaise",
+    "LeftPunch"
+  ],
+  "node_count": 165,
+  "tree_depth": 15,
+  "leaf_count": 83,
+  "nodes": [
+    {
+      "node_id": 0,
+      "feature_index": 2,
+      "feature_name": "ACC_Z",
+      "threshold": 474.5,
+      "left_child": 1,
+      "right_child": 146,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.31928582917806014,
+        "LateralRaise": 0.3207334727360463,
+        "LeftPunch": 0.3599806980858935
+      },
+      "samples": 6217,
+      "weighted_samples": 6217.0,
+      "impurity": 0.6656004957583472
+    },
+    {
+      "node_id": 1,
+      "feature_index": 0,
+      "feature_name": "ACC_X",
+      "threshold": -498.5,
+      "left_child": 2,
+      "right_child": 9,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.12409995764506565,
+        "LateralRaise": 0.42227869546802205,
+        "LeftPunch": 0.4536213468869123
+      },
+      "samples": 4722,
+      "weighted_samples": 4722.0,
+      "impurity": 0.600507577514822
+    },
+    {
+      "node_id": 2,
+      "feature_index": 1,
+      "feature_name": "ACC_Y",
+      "threshold": -760.0,
+      "left_child": 3,
+      "right_child": 6,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.003257328990228013,
+        "LateralRaise": 0.008143322475570033,
+        "LeftPunch": 0.988599348534202
+      },
+      "samples": 1228,
+      "weighted_samples": 1228.0,
+      "impurity": 0.022594404184659744
+    },
+    {
+      "node_id": 3,
+      "feature_index": 4,
+      "feature_name": "GYR_Y",
+      "threshold": 15085.0,
+      "left_child": 4,
+      "right_child": 5,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.7692307692307693,
+        "LeftPunch": 0.23076923076923078
+      },
+      "samples": 13,
+      "weighted_samples": 13.0,
+      "impurity": 0.3550295857988166
+    },
+    {
+      "node_id": 4,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 10,
+      "weighted_samples": 10.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 5,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 3,
+      "weighted_samples": 3.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 6,
+      "feature_index": 3,
+      "feature_name": "GYR_X",
+      "threshold": 97825.0,
+      "left_child": 7,
+      "right_child": 8,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0032921810699588477,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.9967078189300411
+      },
+      "samples": 1215,
+      "weighted_samples": 1215.0,
+      "impurity": 0.006562685227522902
+    },
+    {
+      "node_id": 7,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 1211,
+      "weighted_samples": 1211.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 8,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 4,
+      "weighted_samples": 4.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 9,
+      "feature_index": 1,
+      "feature_name": "ACC_Y",
+      "threshold": 85.5,
+      "left_child": 10,
+      "right_child": 115,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.16657126502575845,
+        "LateralRaise": 0.5678305666857469,
+        "LeftPunch": 0.2655981682884946
+      },
+      "samples": 3494,
+      "weighted_samples": 3494.0,
+      "impurity": 0.5792800742068585
+    },
+    {
+      "node_id": 10,
+      "feature_index": 2,
+      "feature_name": "ACC_Z",
+      "threshold": -627.5,
+      "left_child": 11,
+      "right_child": 82,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.009645194626248708,
+        "LateralRaise": 0.6782638649672752,
+        "LeftPunch": 0.31209094040647606
+      },
+      "samples": 2903,
+      "weighted_samples": 2903.0,
+      "impurity": 0.442464344616477
+    },
+    {
+      "node_id": 11,
+      "feature_index": 1,
+      "feature_name": "ACC_Y",
+      "threshold": -968.0,
+      "left_child": 12,
+      "right_child": 51,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.024,
+        "LateralRaise": 0.2782222222222222,
+        "LeftPunch": 0.6977777777777778
+      },
+      "samples": 1125,
+      "weighted_samples": 1125.0,
+      "impurity": 0.4351225679012346
+    },
+    {
+      "node_id": 12,
+      "feature_index": 5,
+      "feature_name": "GYR_Z",
+      "threshold": -47600.0,
+      "left_child": 13,
+      "right_child": 16,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.8637873754152824,
+        "LeftPunch": 0.1362126245847176
+      },
+      "samples": 301,
+      "weighted_samples": 301.0,
+      "impurity": 0.23531749097692078
+    },
+    {
+      "node_id": 13,
+      "feature_index": 2,
+      "feature_name": "ACC_Z",
+      "threshold": -892.5,
+      "left_child": 14,
+      "right_child": 15,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.13333333333333333,
+        "LeftPunch": 0.8666666666666667
+      },
+      "samples": 15,
+      "weighted_samples": 15.0,
+      "impurity": 0.23111111111111116
+    },
+    {
+      "node_id": 14,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 13,
+      "weighted_samples": 13.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 15,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 2,
+      "weighted_samples": 2.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 16,
+      "feature_index": 5,
+      "feature_name": "GYR_Z",
+      "threshold": 47005.0,
+      "left_child": 17,
+      "right_child": 50,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.9020979020979021,
+        "LeftPunch": 0.0979020979020979
+      },
+      "samples": 286,
+      "weighted_samples": 286.0,
+      "impurity": 0.17663455425693186
+    },
+    {
+      "node_id": 17,
+      "feature_index": 2,
+      "feature_name": "ACC_Z",
+      "threshold": -1159.5,
+      "left_child": 18,
+      "right_child": 31,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.9347826086956522,
+        "LeftPunch": 0.06521739130434782
+      },
+      "samples": 276,
+      "weighted_samples": 276.0,
+      "impurity": 0.12192816635160686
+    },
+    {
+      "node_id": 18,
+      "feature_index": 5,
+      "feature_name": "GYR_Z",
+      "threshold": 14630.0,
+      "left_child": 19,
+      "right_child": 30,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.7346938775510204,
+        "LeftPunch": 0.2653061224489796
+      },
+      "samples": 49,
+      "weighted_samples": 49.0,
+      "impurity": 0.3898375676801332
+    },
+    {
+      "node_id": 19,
+      "feature_index": 1,
+      "feature_name": "ACC_Y",
+      "threshold": -1059.0,
+      "left_child": 20,
+      "right_child": 29,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.8372093023255814,
+        "LeftPunch": 0.16279069767441862
+      },
+      "samples": 43,
+      "weighted_samples": 43.0,
+      "impurity": 0.2725797728501893
+    },
+    {
+      "node_id": 20,
+      "feature_index": 1,
+      "feature_name": "ACC_Y",
+      "threshold": -1168.0,
+      "left_child": 21,
+      "right_child": 22,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.9,
+        "LeftPunch": 0.1
+      },
+      "samples": 40,
+      "weighted_samples": 40.0,
+      "impurity": 0.18000000000000005
+    },
+    {
+      "node_id": 21,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 25,
+      "weighted_samples": 25.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 22,
+      "feature_index": 2,
+      "feature_name": "ACC_Z",
+      "threshold": -1253.5,
+      "left_child": 23,
+      "right_child": 26,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.7333333333333333,
+        "LeftPunch": 0.26666666666666666
+      },
+      "samples": 15,
+      "weighted_samples": 15.0,
+      "impurity": 0.3911111111111111
+    },
+    {
+      "node_id": 23,
+      "feature_index": 1,
+      "feature_name": "ACC_Y",
+      "threshold": -1165.0,
+      "left_child": 24,
+      "right_child": 25,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.9,
+        "LeftPunch": 0.1
+      },
+      "samples": 10,
+      "weighted_samples": 10.0,
+      "impurity": 0.18000000000000005
+    },
+    {
+      "node_id": 24,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 25,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 9,
+      "weighted_samples": 9.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 26,
+      "feature_index": 1,
+      "feature_name": "ACC_Y",
+      "threshold": -1089.5,
+      "left_child": 27,
+      "right_child": 28,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.4,
+        "LeftPunch": 0.6
+      },
+      "samples": 5,
+      "weighted_samples": 5.0,
+      "impurity": 0.48
+    },
+    {
+      "node_id": 27,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 3,
+      "weighted_samples": 3.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 28,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 2,
+      "weighted_samples": 2.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 29,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 3,
+      "weighted_samples": 3.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 30,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 6,
+      "weighted_samples": 6.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 31,
+      "feature_index": 0,
+      "feature_name": "ACC_X",
+      "threshold": -476.0,
+      "left_child": 32,
+      "right_child": 33,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.9779735682819384,
+        "LeftPunch": 0.022026431718061675
+      },
+      "samples": 227,
+      "weighted_samples": 227.0,
+      "impurity": 0.043082536047662434
+    },
+    {
+      "node_id": 32,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 33,
+      "feature_index": 5,
+      "feature_name": "GYR_Z",
+      "threshold": -42875.0,
+      "left_child": 34,
+      "right_child": 37,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.9823008849557522,
+        "LeftPunch": 0.017699115044247787
+      },
+      "samples": 226,
+      "weighted_samples": 226.0,
+      "impurity": 0.03477171274179658
+    },
+    {
+      "node_id": 34,
+      "feature_index": 3,
+      "feature_name": "GYR_X",
+      "threshold": 28315.0,
+      "left_child": 35,
+      "right_child": 36,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.5,
+        "LeftPunch": 0.5
+      },
+      "samples": 2,
+      "weighted_samples": 2.0,
+      "impurity": 0.5
+    },
+    {
+      "node_id": 35,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 36,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 37,
+      "feature_index": 2,
+      "feature_name": "ACC_Z",
+      "threshold": -1015.5,
+      "left_child": 38,
+      "right_child": 49,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.9866071428571429,
+        "LeftPunch": 0.013392857142857142
+      },
+      "samples": 224,
+      "weighted_samples": 224.0,
+      "impurity": 0.026426977040816313
+    },
+    {
+      "node_id": 38,
+      "feature_index": 2,
+      "feature_name": "ACC_Z",
+      "threshold": -1028.5,
+      "left_child": 39,
+      "right_child": 48,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.918918918918919,
+        "LeftPunch": 0.08108108108108109
+      },
+      "samples": 37,
+      "weighted_samples": 37.0,
+      "impurity": 0.1490138787436085
+    },
+    {
+      "node_id": 39,
+      "feature_index": 5,
+      "feature_name": "GYR_Z",
+      "threshold": -23835.0,
+      "left_child": 40,
+      "right_child": 43,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.9444444444444444,
+        "LeftPunch": 0.05555555555555555
+      },
+      "samples": 36,
+      "weighted_samples": 36.0,
+      "impurity": 0.1049382716049383
+    },
+    {
+      "node_id": 40,
+      "feature_index": 4,
+      "feature_name": "GYR_Y",
+      "threshold": 30030.0,
+      "left_child": 41,
+      "right_child": 42,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.6666666666666666,
+        "LeftPunch": 0.3333333333333333
+      },
+      "samples": 3,
+      "weighted_samples": 3.0,
+      "impurity": 0.4444444444444444
+    },
+    {
+      "node_id": 41,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 42,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 2,
+      "weighted_samples": 2.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 43,
+      "feature_index": 4,
+      "feature_name": "GYR_Y",
+      "threshold": -2940.0,
+      "left_child": 44,
+      "right_child": 47,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.9696969696969697,
+        "LeftPunch": 0.030303030303030304
+      },
+      "samples": 33,
+      "weighted_samples": 33.0,
+      "impurity": 0.058769513314967825
+    },
+    {
+      "node_id": 44,
+      "feature_index": 3,
+      "feature_name": "GYR_X",
+      "threshold": -10675.0,
+      "left_child": 45,
+      "right_child": 46,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.8333333333333334,
+        "LeftPunch": 0.16666666666666666
+      },
+      "samples": 6,
+      "weighted_samples": 6.0,
+      "impurity": 0.2777777777777778
+    },
+    {
+      "node_id": 45,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 5,
+      "weighted_samples": 5.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 46,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 47,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 27,
+      "weighted_samples": 27.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 48,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 49,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 187,
+      "weighted_samples": 187.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 50,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 10,
+      "weighted_samples": 10.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 51,
+      "feature_index": 3,
+      "feature_name": "GYR_X",
+      "threshold": 66745.0,
+      "left_child": 52,
+      "right_child": 73,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.032766990291262135,
+        "LateralRaise": 0.06432038834951456,
+        "LeftPunch": 0.9029126213592233
+      },
+      "samples": 824,
+      "weighted_samples": 824.0,
+      "impurity": 0.1795380101800358
+    },
+    {
+      "node_id": 52,
+      "feature_index": 1,
+      "feature_name": "ACC_Y",
+      "threshold": -54.5,
+      "left_child": 53,
+      "right_child": 70,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.012064343163538873,
+        "LateralRaise": 0.00938337801608579,
+        "LeftPunch": 0.9785522788203753
+      },
+      "samples": 746,
+      "weighted_samples": 746.0,
+      "impurity": 0.042201841456489975
+    },
+    {
+      "node_id": 53,
+      "feature_index": 3,
+      "feature_name": "GYR_X",
+      "threshold": -79870.0,
+      "left_child": 54,
+      "right_child": 55,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.009776536312849162,
+        "LeftPunch": 0.9902234636871509
+      },
+      "samples": 716,
+      "weighted_samples": 716.0,
+      "impurity": 0.019361911301145396
+    },
+    {
+      "node_id": 54,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 2,
+      "weighted_samples": 2.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 55,
+      "feature_index": 1,
+      "feature_name": "ACC_Y",
+      "threshold": -930.5,
+      "left_child": 56,
+      "right_child": 63,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0070028011204481795,
+        "LeftPunch": 0.9929971988795518
+      },
+      "samples": 714,
+      "weighted_samples": 714.0,
+      "impurity": 0.013907523793831311
+    },
+    {
+      "node_id": 56,
+      "feature_index": 3,
+      "feature_name": "GYR_X",
+      "threshold": 62755.0,
+      "left_child": 57,
+      "right_child": 62,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.13043478260869565,
+        "LeftPunch": 0.8695652173913043
+      },
+      "samples": 23,
+      "weighted_samples": 23.0,
+      "impurity": 0.22684310018903586
+    },
+    {
+      "node_id": 57,
+      "feature_index": 0,
+      "feature_name": "ACC_X",
+      "threshold": 32.0,
+      "left_child": 58,
+      "right_child": 59,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.09090909090909091,
+        "LeftPunch": 0.9090909090909091
+      },
+      "samples": 22,
+      "weighted_samples": 22.0,
+      "impurity": 0.1652892561983471
+    },
+    {
+      "node_id": 58,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 18,
+      "weighted_samples": 18.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 59,
+      "feature_index": 0,
+      "feature_name": "ACC_X",
+      "threshold": 101.5,
+      "left_child": 60,
+      "right_child": 61,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.5,
+        "LeftPunch": 0.5
+      },
+      "samples": 4,
+      "weighted_samples": 4.0,
+      "impurity": 0.5
+    },
+    {
+      "node_id": 60,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 2,
+      "weighted_samples": 2.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 61,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 2,
+      "weighted_samples": 2.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 62,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 63,
+      "feature_index": 3,
+      "feature_name": "GYR_X",
+      "threshold": 41685.0,
+      "left_child": 64,
+      "right_child": 65,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.002894356005788712,
+        "LeftPunch": 0.9971056439942113
+      },
+      "samples": 691,
+      "weighted_samples": 691.0,
+      "impurity": 0.005771957418200913
+    },
+    {
+      "node_id": 64,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 616,
+      "weighted_samples": 616.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 65,
+      "feature_index": 5,
+      "feature_name": "GYR_Z",
+      "threshold": -29155.0,
+      "left_child": 66,
+      "right_child": 67,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.02666666666666667,
+        "LeftPunch": 0.9733333333333334
+      },
+      "samples": 75,
+      "weighted_samples": 75.0,
+      "impurity": 0.05191111111111113
+    },
+    {
+      "node_id": 66,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 69,
+      "weighted_samples": 69.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 67,
+      "feature_index": 4,
+      "feature_name": "GYR_Y",
+      "threshold": -29505.0,
+      "left_child": 68,
+      "right_child": 69,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.3333333333333333,
+        "LeftPunch": 0.6666666666666666
+      },
+      "samples": 6,
+      "weighted_samples": 6.0,
+      "impurity": 0.4444444444444444
+    },
+    {
+      "node_id": 68,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 4,
+      "weighted_samples": 4.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 69,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 2,
+      "weighted_samples": 2.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 70,
+      "feature_index": 2,
+      "feature_name": "ACC_Z",
+      "threshold": -992.5,
+      "left_child": 71,
+      "right_child": 72,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.3,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.7
+      },
+      "samples": 30,
+      "weighted_samples": 30.0,
+      "impurity": 0.42000000000000004
+    },
+    {
+      "node_id": 71,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 9,
+      "weighted_samples": 9.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 72,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 21,
+      "weighted_samples": 21.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 73,
+      "feature_index": 2,
+      "feature_name": "ACC_Z",
+      "threshold": -794.5,
+      "left_child": 74,
+      "right_child": 79,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.23076923076923078,
+        "LateralRaise": 0.5897435897435898,
+        "LeftPunch": 0.1794871794871795
+      },
+      "samples": 78,
+      "weighted_samples": 78.0,
+      "impurity": 0.566732412886259
+    },
+    {
+      "node_id": 74,
+      "feature_index": 2,
+      "feature_name": "ACC_Z",
+      "threshold": -1128.0,
+      "left_child": 75,
+      "right_child": 76,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.6666666666666666,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.3333333333333333
+      },
+      "samples": 27,
+      "weighted_samples": 27.0,
+      "impurity": 0.4444444444444444
+    },
+    {
+      "node_id": 75,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 16,
+      "weighted_samples": 16.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 76,
+      "feature_index": 3,
+      "feature_name": "GYR_X",
+      "threshold": 147105.0,
+      "left_child": 77,
+      "right_child": 78,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.18181818181818182,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.8181818181818182
+      },
+      "samples": 11,
+      "weighted_samples": 11.0,
+      "impurity": 0.2975206611570248
+    },
+    {
+      "node_id": 77,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 9,
+      "weighted_samples": 9.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 78,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 2,
+      "weighted_samples": 2.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 79,
+      "feature_index": 5,
+      "feature_name": "GYR_Z",
+      "threshold": -70910.0,
+      "left_child": 80,
+      "right_child": 81,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.9019607843137255,
+        "LeftPunch": 0.09803921568627451
+      },
+      "samples": 51,
+      "weighted_samples": 51.0,
+      "impurity": 0.17685505574778926
+    },
+    {
+      "node_id": 80,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 5,
+      "weighted_samples": 5.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 81,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 46,
+      "weighted_samples": 46.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 82,
+      "feature_index": 5,
+      "feature_name": "GYR_Z",
+      "threshold": 83090.0,
+      "left_child": 83,
+      "right_child": 112,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0005624296962879641,
+        "LateralRaise": 0.9313835770528683,
+        "LeftPunch": 0.06805399325084364
+      },
+      "samples": 1778,
+      "weighted_samples": 1778.0,
+      "impurity": 0.12789297007165445
+    },
+    {
+      "node_id": 83,
+      "feature_index": 4,
+      "feature_name": "GYR_Y",
+      "threshold": 86170.0,
+      "left_child": 84,
+      "right_child": 111,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0005847953216374269,
+        "LateralRaise": 0.9666666666666667,
+        "LeftPunch": 0.03274853801169591
+      },
+      "samples": 1710,
+      "weighted_samples": 1710.0,
+      "impurity": 0.06448274682808386
+    },
+    {
+      "node_id": 84,
+      "feature_index": 0,
+      "feature_name": "ACC_X",
+      "threshold": 21.0,
+      "left_child": 85,
+      "right_child": 108,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0005966587112171838,
+        "LateralRaise": 0.9862768496420048,
+        "LeftPunch": 0.013126491646778043
+      },
+      "samples": 1676,
+      "weighted_samples": 1676.0,
+      "impurity": 0.02708531507567169
+    },
+    {
+      "node_id": 85,
+      "feature_index": 4,
+      "feature_name": "GYR_Y",
+      "threshold": -105140.0,
+      "left_child": 86,
+      "right_child": 87,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0005995203836930455,
+        "LateralRaise": 0.9904076738609112,
+        "LeftPunch": 0.008992805755395683
+      },
+      "samples": 1668,
+      "weighted_samples": 1668.0,
+      "impurity": 0.019011409577374017
+    },
+    {
+      "node_id": 86,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 5,
+      "weighted_samples": 5.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 87,
+      "feature_index": 5,
+      "feature_name": "GYR_Z",
+      "threshold": -73745.0,
+      "left_child": 88,
+      "right_child": 89,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0006013229104028864,
+        "LateralRaise": 0.9933854479855683,
+        "LeftPunch": 0.006013229104028864
+      },
+      "samples": 1663,
+      "weighted_samples": 1663.0,
+      "impurity": 0.013148831217011714
+    },
+    {
+      "node_id": 88,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 3,
+      "weighted_samples": 3.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 89,
+      "feature_index": 2,
+      "feature_name": "ACC_Z",
+      "threshold": 325.0,
+      "left_child": 90,
+      "right_child": 105,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0006024096385542169,
+        "LateralRaise": 0.9951807228915662,
+        "LeftPunch": 0.004216867469879518
+      },
+      "samples": 1660,
+      "weighted_samples": 1660.0,
+      "impurity": 0.009597183916388419
+    },
+    {
+      "node_id": 90,
+      "feature_index": 4,
+      "feature_name": "GYR_Y",
+      "threshold": 67865.0,
+      "left_child": 91,
+      "right_child": 102,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.9963811821471653,
+        "LeftPunch": 0.0036188178528347406
+      },
+      "samples": 1658,
+      "weighted_samples": 1658.0,
+      "impurity": 0.007211444020365443
+    },
+    {
+      "node_id": 91,
+      "feature_index": 4,
+      "feature_name": "GYR_Y",
+      "threshold": -44380.0,
+      "left_child": 92,
+      "right_child": 97,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.9975624619134674,
+        "LeftPunch": 0.002437538086532602
+      },
+      "samples": 1641,
+      "weighted_samples": 1641.0,
+      "impurity": 0.004863192989218557
+    },
+    {
+      "node_id": 92,
+      "feature_index": 5,
+      "feature_name": "GYR_Z",
+      "threshold": -14070.0,
+      "left_child": 93,
+      "right_child": 96,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.9666666666666667,
+        "LeftPunch": 0.03333333333333333
+      },
+      "samples": 90,
+      "weighted_samples": 90.0,
+      "impurity": 0.06444444444444442
+    },
+    {
+      "node_id": 93,
+      "feature_index": 4,
+      "feature_name": "GYR_Y",
+      "threshold": -50260.0,
+      "left_child": 94,
+      "right_child": 95,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.25,
+        "LeftPunch": 0.75
+      },
+      "samples": 4,
+      "weighted_samples": 4.0,
+      "impurity": 0.375
+    },
+    {
+      "node_id": 94,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 95,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 3,
+      "weighted_samples": 3.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 96,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 86,
+      "weighted_samples": 86.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 97,
+      "feature_index": 2,
+      "feature_name": "ACC_Z",
+      "threshold": -54.5,
+      "left_child": 98,
+      "right_child": 99,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.9993552546744036,
+        "LeftPunch": 0.0006447453255963894
+      },
+      "samples": 1551,
+      "weighted_samples": 1551.0,
+      "impurity": 0.0012886592581230483
+    },
+    {
+      "node_id": 98,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 1454,
+      "weighted_samples": 1454.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 99,
+      "feature_index": 5,
+      "feature_name": "GYR_Z",
+      "threshold": -22960.0,
+      "left_child": 100,
+      "right_child": 101,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.9896907216494846,
+        "LeftPunch": 0.010309278350515464
+      },
+      "samples": 97,
+      "weighted_samples": 97.0,
+      "impurity": 0.02040599426081413
+    },
+    {
+      "node_id": 100,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 101,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 96,
+      "weighted_samples": 96.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 102,
+      "feature_index": 3,
+      "feature_name": "GYR_X",
+      "threshold": 29785.0,
+      "left_child": 103,
+      "right_child": 104,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.8823529411764706,
+        "LeftPunch": 0.11764705882352941
+      },
+      "samples": 17,
+      "weighted_samples": 17.0,
+      "impurity": 0.2076124567474048
+    },
+    {
+      "node_id": 103,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 2,
+      "weighted_samples": 2.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 104,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 15,
+      "weighted_samples": 15.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 105,
+      "feature_index": 3,
+      "feature_name": "GYR_X",
+      "threshold": 104615.0,
+      "left_child": 106,
+      "right_child": 107,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.5,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.5
+      },
+      "samples": 2,
+      "weighted_samples": 2.0,
+      "impurity": 0.5
+    },
+    {
+      "node_id": 106,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 107,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 108,
+      "feature_index": 4,
+      "feature_name": "GYR_Y",
+      "threshold": -59395.0,
+      "left_child": 109,
+      "right_child": 110,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.125,
+        "LeftPunch": 0.875
+      },
+      "samples": 8,
+      "weighted_samples": 8.0,
+      "impurity": 0.21875
+    },
+    {
+      "node_id": 109,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 110,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 7,
+      "weighted_samples": 7.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 111,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 34,
+      "weighted_samples": 34.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 112,
+      "feature_index": 2,
+      "feature_name": "ACC_Z",
+      "threshold": -216.5,
+      "left_child": 113,
+      "right_child": 114,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.04411764705882353,
+        "LeftPunch": 0.9558823529411765
+      },
+      "samples": 68,
+      "weighted_samples": 68.0,
+      "impurity": 0.0843425605536332
+    },
+    {
+      "node_id": 113,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 65,
+      "weighted_samples": 65.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 114,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 3,
+      "weighted_samples": 3.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 115,
+      "feature_index": 4,
+      "feature_name": "GYR_Y",
+      "threshold": 129500.0,
+      "left_child": 116,
+      "right_child": 143,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.937394247038917,
+        "LateralRaise": 0.025380710659898477,
+        "LeftPunch": 0.03722504230118443
+      },
+      "samples": 591,
+      "weighted_samples": 591.0,
+      "impurity": 0.11926214137041524
+    },
+    {
+      "node_id": 116,
+      "feature_index": 0,
+      "feature_name": "ACC_X",
+      "threshold": 43.0,
+      "left_child": 117,
+      "right_child": 138,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.961335676625659,
+        "LateralRaise": 0.026362038664323375,
+        "LeftPunch": 0.012302284710017574
+      },
+      "samples": 569,
+      "weighted_samples": 569.0,
+      "impurity": 0.07498741355506067
+    },
+    {
+      "node_id": 117,
+      "feature_index": 4,
+      "feature_name": "GYR_Y",
+      "threshold": -117145.0,
+      "left_child": 118,
+      "right_child": 119,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.9818181818181818,
+        "LateralRaise": 0.005454545454545455,
+        "LeftPunch": 0.012727272727272728
+      },
+      "samples": 550,
+      "weighted_samples": 550.0,
+      "impurity": 0.03584132231404957
+    },
+    {
+      "node_id": 118,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 4,
+      "weighted_samples": 4.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 119,
+      "feature_index": 1,
+      "feature_name": "ACC_Y",
+      "threshold": 135.5,
+      "left_child": 120,
+      "right_child": 129,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.989010989010989,
+        "LateralRaise": 0.005494505494505495,
+        "LeftPunch": 0.005494505494505495
+      },
+      "samples": 546,
+      "weighted_samples": 546.0,
+      "impurity": 0.0217968844342471
+    },
+    {
+      "node_id": 120,
+      "feature_index": 1,
+      "feature_name": "ACC_Y",
+      "threshold": 131.5,
+      "left_child": 121,
+      "right_child": 128,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.7142857142857143,
+        "LateralRaise": 0.07142857142857142,
+        "LeftPunch": 0.21428571428571427
+      },
+      "samples": 14,
+      "weighted_samples": 14.0,
+      "impurity": 0.4387755102040817
+    },
+    {
+      "node_id": 121,
+      "feature_index": 5,
+      "feature_name": "GYR_Z",
+      "threshold": 13090.0,
+      "left_child": 122,
+      "right_child": 127,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.8333333333333334,
+        "LateralRaise": 0.08333333333333333,
+        "LeftPunch": 0.08333333333333333
+      },
+      "samples": 12,
+      "weighted_samples": 12.0,
+      "impurity": 0.29166666666666663
+    },
+    {
+      "node_id": 122,
+      "feature_index": 0,
+      "feature_name": "ACC_X",
+      "threshold": -399.0,
+      "left_child": 123,
+      "right_child": 126,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.9090909090909091,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.09090909090909091
+      },
+      "samples": 11,
+      "weighted_samples": 11.0,
+      "impurity": 0.1652892561983471
+    },
+    {
+      "node_id": 123,
+      "feature_index": 2,
+      "feature_name": "ACC_Z",
+      "threshold": -776.5,
+      "left_child": 124,
+      "right_child": 125,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.5,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.5
+      },
+      "samples": 2,
+      "weighted_samples": 2.0,
+      "impurity": 0.5
+    },
+    {
+      "node_id": 124,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 125,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 126,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 9,
+      "weighted_samples": 9.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 127,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 128,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 2,
+      "weighted_samples": 2.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 129,
+      "feature_index": 0,
+      "feature_name": "ACC_X",
+      "threshold": 23.0,
+      "left_child": 130,
+      "right_child": 135,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.9962406015037594,
+        "LateralRaise": 0.0037593984962406013,
+        "LeftPunch": 0.0
+      },
+      "samples": 532,
+      "weighted_samples": 532.0,
+      "impurity": 0.007490530838374143
+    },
+    {
+      "node_id": 130,
+      "feature_index": 1,
+      "feature_name": "ACC_Y",
+      "threshold": 148.5,
+      "left_child": 131,
+      "right_child": 134,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.9981024667931688,
+        "LateralRaise": 0.0018975332068311196,
+        "LeftPunch": 0.0
+      },
+      "samples": 527,
+      "weighted_samples": 527.0,
+      "impurity": 0.0037878651491202175
+    },
+    {
+      "node_id": 131,
+      "feature_index": 0,
+      "feature_name": "ACC_X",
+      "threshold": -22.0,
+      "left_child": 132,
+      "right_child": 133,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.875,
+        "LateralRaise": 0.125,
+        "LeftPunch": 0.0
+      },
+      "samples": 8,
+      "weighted_samples": 8.0,
+      "impurity": 0.21875
+    },
+    {
+      "node_id": 132,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 7,
+      "weighted_samples": 7.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 133,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 134,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 519,
+      "weighted_samples": 519.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 135,
+      "feature_index": 4,
+      "feature_name": "GYR_Y",
+      "threshold": -39340.0,
+      "left_child": 136,
+      "right_child": 137,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.8,
+        "LateralRaise": 0.2,
+        "LeftPunch": 0.0
+      },
+      "samples": 5,
+      "weighted_samples": 5.0,
+      "impurity": 0.31999999999999995
+    },
+    {
+      "node_id": 136,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 137,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 4,
+      "weighted_samples": 4.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 138,
+      "feature_index": 3,
+      "feature_name": "GYR_X",
+      "threshold": 67970.0,
+      "left_child": 139,
+      "right_child": 142,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.3684210526315789,
+        "LateralRaise": 0.631578947368421,
+        "LeftPunch": 0.0
+      },
+      "samples": 19,
+      "weighted_samples": 19.0,
+      "impurity": 0.46537396121883656
+    },
+    {
+      "node_id": 139,
+      "feature_index": 3,
+      "feature_name": "GYR_X",
+      "threshold": -78120.0,
+      "left_child": 140,
+      "right_child": 141,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.07692307692307693,
+        "LateralRaise": 0.9230769230769231,
+        "LeftPunch": 0.0
+      },
+      "samples": 13,
+      "weighted_samples": 13.0,
+      "impurity": 0.14201183431952658
+    },
+    {
+      "node_id": 140,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 141,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 12,
+      "weighted_samples": 12.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 142,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 6,
+      "weighted_samples": 6.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 143,
+      "feature_index": 3,
+      "feature_name": "GYR_X",
+      "threshold": 103110.0,
+      "left_child": 144,
+      "right_child": 145,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.3181818181818182,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.6818181818181818
+      },
+      "samples": 22,
+      "weighted_samples": 22.0,
+      "impurity": 0.43388429752066116
+    },
+    {
+      "node_id": 144,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 15,
+      "weighted_samples": 15.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 145,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 7,
+      "weighted_samples": 7.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 146,
+      "feature_index": 0,
+      "feature_name": "ACC_X",
+      "threshold": -489.0,
+      "left_child": 147,
+      "right_child": 150,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.9357859531772575,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.06421404682274247
+      },
+      "samples": 1495,
+      "weighted_samples": 1495.0,
+      "impurity": 0.12018120602677818
+    },
+    {
+      "node_id": 147,
+      "feature_index": 2,
+      "feature_name": "ACC_Z",
+      "threshold": 1208.0,
+      "left_child": 148,
+      "right_child": 149,
+      "is_leaf": false,
+      "predicted_class_index": 2,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.010638297872340425,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.9893617021276596
+      },
+      "samples": 94,
+      "weighted_samples": 94.0,
+      "impurity": 0.02105024898143959
+    },
+    {
+      "node_id": 148,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 93,
+      "weighted_samples": 93.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 149,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 150,
+      "feature_index": 4,
+      "feature_name": "GYR_Y",
+      "threshold": -143850.0,
+      "left_child": 151,
+      "right_child": 154,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.9978586723768736,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0021413276231263384
+      },
+      "samples": 1401,
+      "weighted_samples": 1401.0,
+      "impurity": 0.004273484678273598
+    },
+    {
+      "node_id": 151,
+      "feature_index": 1,
+      "feature_name": "ACC_Y",
+      "threshold": 204.5,
+      "left_child": 152,
+      "right_child": 153,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.75,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.25
+      },
+      "samples": 4,
+      "weighted_samples": 4.0,
+      "impurity": 0.375
+    },
+    {
+      "node_id": 152,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 3,
+      "weighted_samples": 3.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 153,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 154,
+      "feature_index": 0,
+      "feature_name": "ACC_X",
+      "threshold": -455.0,
+      "left_child": 155,
+      "right_child": 158,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.9985683607730852,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0014316392269148174
+      },
+      "samples": 1397,
+      "weighted_samples": 1397.0,
+      "impurity": 0.002859179272077572
+    },
+    {
+      "node_id": 155,
+      "feature_index": 0,
+      "feature_name": "ACC_X",
+      "threshold": -460.0,
+      "left_child": 156,
+      "right_child": 157,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.8333333333333334,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.16666666666666666
+      },
+      "samples": 6,
+      "weighted_samples": 6.0,
+      "impurity": 0.2777777777777778
+    },
+    {
+      "node_id": 156,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 5,
+      "weighted_samples": 5.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 157,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 158,
+      "feature_index": 5,
+      "feature_name": "GYR_Z",
+      "threshold": -33565.0,
+      "left_child": 159,
+      "right_child": 164,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.9992810927390366,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0007189072609633358
+      },
+      "samples": 1391,
+      "weighted_samples": 1391.0,
+      "impurity": 0.0014367808666269077
+    },
+    {
+      "node_id": 159,
+      "feature_index": 5,
+      "feature_name": "GYR_Z",
+      "threshold": -33635.0,
+      "left_child": 160,
+      "right_child": 161,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.9911504424778761,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.008849557522123894
+      },
+      "samples": 113,
+      "weighted_samples": 113.0,
+      "impurity": 0.017542485707572997
+    },
+    {
+      "node_id": 160,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 111,
+      "weighted_samples": 111.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 161,
+      "feature_index": 2,
+      "feature_name": "ACC_Z",
+      "threshold": 1066.0,
+      "left_child": 162,
+      "right_child": 163,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.5,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.5
+      },
+      "samples": 2,
+      "weighted_samples": 2.0,
+      "impurity": 0.5
+    },
+    {
+      "node_id": 162,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 163,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 1,
+      "weighted_samples": 1.0,
+      "impurity": 0.0
+    },
+    {
+      "node_id": 164,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 1278,
+      "weighted_samples": 1278.0,
+      "impurity": 0.0
+    }
+  ]
+}

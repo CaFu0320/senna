@@ -1,0 +1,278 @@
+ /* Temporary standalone RAW IMU decision-tree test */
+/*
+  static uint32_t last_raw_imu_test = 0U;
+
+  if ((HAL_GetTick() - last_raw_imu_test) >= 250U)
+  {
+      last_raw_imu_test = HAL_GetTick();
+
+
+      BSP_SENSOR_ACC_GetAxes(&AccValue);
+      BSP_SENSOR_GYR_GetAxes(&GyrValue);
+
+
+      float features[IMU_TREE_FEATURE_COUNT] =
+      {
+          (float)AccValue.x,
+          (float)AccValue.y,
+          (float)AccValue.z,
+          (float)GyrValue.x,
+          (float)GyrValue.y,
+          (float)GyrValue.z
+      };
+
+
+      imu_tree_class_t prediction = imu_tree_predict(features);
+
+
+      UART_SendTreePrediction((int)prediction);
+  }*/
+
+
+
+  /* Temporary standalone IMU FE + RFE decision-tree test */
+/*
+  static uint32_t last_imu_fe_test = 0U;
+  static uint32_t imu_fe_sample_count = 0U;
+
+  static float imu_fe_samples[IMU_FEATURE_TREE_WINDOW_SIZE]
+                             [IMU_FEATURE_TREE_RAW_CHANNELS];
+
+  if ((HAL_GetTick() - last_imu_fe_test) >= 250U)
+  {
+      uint32_t i, j;
+
+      last_imu_fe_test = HAL_GetTick();
+
+
+      BSP_SENSOR_ACC_GetAxes(&AccValue);
+      BSP_SENSOR_GYR_GetAxes(&GyrValue);
+
+
+      imu_fe_samples[imu_fe_sample_count][0] = (float)AccValue.x;
+      imu_fe_samples[imu_fe_sample_count][1] = (float)AccValue.y;
+      imu_fe_samples[imu_fe_sample_count][2] = (float)AccValue.z;
+
+      imu_fe_samples[imu_fe_sample_count][3] = (float)GyrValue.x;
+      imu_fe_samples[imu_fe_sample_count][4] = (float)GyrValue.y;
+      imu_fe_samples[imu_fe_sample_count][5] = (float)GyrValue.z;
+
+      imu_fe_sample_count++;
+
+
+      if (imu_fe_sample_count >= IMU_FEATURE_TREE_WINDOW_SIZE)
+      {
+          imu_feature_tree_class_t prediction;
+
+          prediction =
+              imu_feature_tree_predict_window(imu_fe_samples);
+
+
+          UART_SendTreePrediction((int)prediction);
+
+
+          for (i = 0U; i < IMU_FEATURE_TREE_WINDOW_SIZE - 1U; i++)
+          {
+              for (j = 0U; j < IMU_FEATURE_TREE_RAW_CHANNELS; j++)
+              {
+                  imu_fe_samples[i][j] = imu_fe_samples[i + 1U][j];
+              }
+          }
+
+          imu_fe_sample_count = IMU_FEATURE_TREE_WINDOW_SIZE - 1U;
+      }
+  }*/
+
+
+
+
+
+
+
+  /* Raw quaternion sequence decision tree - 100 Hz */
+/*
+  static uint32_t last_quat_raw_test = 0U;
+  static uint32_t last_quat_raw_print = 0U;
+
+  static uint8_t quat_raw_engine_started = 0U;
+  static uint8_t startup_samples_to_skip = 0U;
+
+  static uint32_t quat_sample_count = 0U;
+  static float quat_samples[42][4];
+
+  if ((HAL_GetTick() - last_quat_raw_test) >= 10U)
+  {
+      MFX_input_t data_in = {0};
+      MFX_output_t data_out = {0};
+
+      uint32_t i;
+      uint32_t j;
+      int prediction;
+
+      last_quat_raw_test = HAL_GetTick();
+
+
+      BSP_SENSOR_ACC_GetAxes(&AccValue);
+      BSP_SENSOR_GYR_GetAxes(&GyrValue);
+      BSP_SENSOR_MAG_GetAxes(&MagValue);
+
+
+      data_in.gyro[0] = (float)GyrValue.x * FROM_MDPS_TO_DPS;
+      data_in.gyro[1] = (float)GyrValue.y * FROM_MDPS_TO_DPS;
+      data_in.gyro[2] = (float)GyrValue.z * FROM_MDPS_TO_DPS;
+
+      data_in.acc[0] = (float)AccValue.x * FROM_MG_TO_G;
+      data_in.acc[1] = (float)AccValue.y * FROM_MG_TO_G;
+      data_in.acc[2] = (float)AccValue.z * FROM_MG_TO_G;
+
+      data_in.mag[0] = (float)MagValue.x * FROM_MGAUSS_TO_UT50;
+      data_in.mag[1] = (float)MagValue.y * FROM_MGAUSS_TO_UT50;
+      data_in.mag[2] = (float)MagValue.z * FROM_MGAUSS_TO_UT50;
+
+
+      if (quat_raw_engine_started == 0U)
+      {
+          MotionFX_manager_start_9X();
+
+          quat_raw_engine_started = 1U;
+          startup_samples_to_skip = 10U;
+      }
+
+
+      MotionFX_manager_run(&data_in, &data_out, 0.01f);
+
+
+      if (startup_samples_to_skip > 0U)
+      {
+          startup_samples_to_skip--;
+      }
+      else
+      {
+
+          quat_samples[quat_sample_count][0] = data_out.quaternion[0];
+          quat_samples[quat_sample_count][1] = data_out.quaternion[1];
+          quat_samples[quat_sample_count][2] = data_out.quaternion[2];
+          quat_samples[quat_sample_count][3] = data_out.quaternion[3];
+
+          quat_sample_count++;
+
+
+          if (quat_sample_count >= 42U)
+          {
+
+              prediction =
+                  (int)quat_raw_tree_predict_window(quat_samples);
+
+
+              if ((HAL_GetTick() - last_quat_raw_print) >= 250U)
+              {
+                  last_quat_raw_print = HAL_GetTick();
+                  UART_SendTreePrediction(prediction);
+              }
+
+
+              for (i = 0U; i < 41U; i++)
+              {
+                  for (j = 0U; j < 4U; j++)
+                  {
+                      quat_samples[i][j] = quat_samples[i + 1U][j];
+                  }
+              }
+
+              quat_sample_count = 41U;
+          }
+      }
+  }*/
+
+
+  /* Relative Quaternion Feature RFE - 100 Hz */
+
+  static uint32_t last_quat_sample = 0U;
+  static uint32_t last_quat_print = 0U;
+
+  static uint8_t quat_feature_engine_started = 0U;
+  static uint32_t quat_feature_sample_count = 0U;
+
+  static float quat_feature_samples
+      [QUAT_REL_TREE_WINDOW_SIZE][QUAT_REL_TREE_CHANNELS];
+
+  uint32_t current_tick = HAL_GetTick();
+
+  if ((current_tick - last_quat_sample) >= 10U)
+  {
+      MFX_input_t data_in = {0};
+      MFX_output_t data_out = {0};
+
+      uint32_t i;
+      uint32_t j;
+      int prediction;
+
+      last_quat_sample = current_tick;
+
+      /* Read IMU sensors */
+      BSP_SENSOR_ACC_GetAxes(&AccValue);
+      BSP_SENSOR_GYR_GetAxes(&GyrValue);
+      BSP_SENSOR_MAG_GetAxes(&MagValue);
+
+      /* Convert sensor readings to MotionFX units */
+      data_in.gyro[0] = (float)GyrValue.x * FROM_MDPS_TO_DPS;
+      data_in.gyro[1] = (float)GyrValue.y * FROM_MDPS_TO_DPS;
+      data_in.gyro[2] = (float)GyrValue.z * FROM_MDPS_TO_DPS;
+
+      data_in.acc[0] = (float)AccValue.x * FROM_MG_TO_G;
+      data_in.acc[1] = (float)AccValue.y * FROM_MG_TO_G;
+      data_in.acc[2] = (float)AccValue.z * FROM_MG_TO_G;
+
+      data_in.mag[0] = (float)MagValue.x * FROM_MGAUSS_TO_UT50;
+      data_in.mag[1] = (float)MagValue.y * FROM_MGAUSS_TO_UT50;
+      data_in.mag[2] = (float)MagValue.z * FROM_MGAUSS_TO_UT50;
+
+      /* Start MotionFX in 9-axis mode once */
+      if (quat_feature_engine_started == 0U)
+      {
+          MotionFX_manager_start_9X();
+          quat_feature_engine_started = 1U;
+      }
+
+      /* Generate quaternion at nominal 100 Hz */
+      MotionFX_manager_run(&data_in, &data_out, 0.01f);
+
+      /* Store absolute quaternion components.
+         Relative conversion is performed inside the RFE classifier. */
+      if (quat_feature_sample_count < QUAT_REL_TREE_WINDOW_SIZE)
+      {
+          for (j = 0U; j < QUAT_REL_TREE_CHANNELS; j++)
+          {
+              quat_feature_samples[quat_feature_sample_count][j] =
+                  data_out.quaternion[j];
+          }
+
+          quat_feature_sample_count++;
+      }
+
+      /* Classify once the window is full */
+      if (quat_feature_sample_count >= QUAT_REL_TREE_WINDOW_SIZE)
+      {
+          prediction = (int)quat_relative_feature_tree_predict_window(
+              quat_feature_samples);
+
+          /* Print prediction every 250 ms */
+          if ((current_tick - last_quat_print) >= 250U)
+          {
+              last_quat_print = current_tick;
+              UART_SendTreePrediction(prediction);
+          }
+
+          /* Shift window forward by one sample */
+          for (i = 0U; i < QUAT_REL_TREE_WINDOW_SIZE - 1U; i++)
+          {
+              for (j = 0U; j < QUAT_REL_TREE_CHANNELS; j++)
+              {
+                  quat_feature_samples[i][j] =
+                      quat_feature_samples[i + 1U][j];
+              }
+          }
+
+          quat_feature_sample_count = QUAT_REL_TREE_WINDOW_SIZE - 1U;
+      }
+  }

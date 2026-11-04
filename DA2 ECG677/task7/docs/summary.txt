@@ -1,0 +1,34 @@
+Task 7: Curl (0), Lateral raise (1), Left punch (2)
+WARNING: single recording per class; chronological holdout from same session, not independent validation.
+Model: nodes=19, leaves=10, depth=4, tuning=4/2
+Splits: {'train': (405, 410, 0.9878048780487805), 'validation': (98, 100, 0.98), 'test': (102, 105, 0.9714285714285714)}
+Test confusion matrix: [[35, 0, 0], [0, 35, 0], [2, 1, 32]]
+Tree:
+|--- relq1__p2p <= 0.06502550
+|   |--- step_sq__p2p <= 0.00014250
+|   |   |--- step_sq__max <= 0.00012400
+|   |   |   |--- class: 1
+|   |   |--- step_sq__max >  0.00012400
+|   |   |   |--- step_sq__max <= 0.00012650
+|   |   |   |   |--- class: 0
+|   |   |   |--- step_sq__max >  0.00012650
+|   |   |   |   |--- class: 1
+|   |--- step_sq__p2p >  0.00014250
+|   |   |--- step_sq__mean <= 0.00004465
+|   |   |   |--- relq2__energy <= 0.00643065
+|   |   |   |   |--- class: 0
+|   |   |   |--- relq2__energy >  0.00643065
+|   |   |   |   |--- class: 1
+|   |   |--- step_sq__mean >  0.00004465
+|   |   |   |--- relq3__max <= 0.05077201
+|   |   |   |   |--- class: 0
+|   |   |   |--- relq3__max >  0.05077201
+|   |   |   |   |--- class: 0
+|--- relq1__p2p >  0.06502550
+|   |--- relq2__p2p <= 0.09569449
+|   |   |--- class: 2
+|   |--- relq2__p2p >  0.09569449
+|   |   |--- relq0__p2p <= 0.01698148
+|   |   |   |--- class: 1
+|   |   |--- relq0__p2p >  0.01698148
+|   |   |   |--- class: 0

@@ -1,0 +1,176 @@
+{
+  "format": "quaternion_raw_decision_tree_v1",
+  "features": [
+    "q0",
+    "q1",
+    "q2",
+    "q3"
+  ],
+  "classes": [
+    "Curl",
+    "LateralRaise",
+    "LeftPunch"
+  ],
+  "tree_depth": 3,
+  "leaf_count": 5,
+  "node_count": 9,
+  "criterion": "gini",
+  "max_depth_setting": null,
+  "min_samples_leaf": 1,
+  "nodes": [
+    {
+      "node_id": 0,
+      "feature_index": 0,
+      "feature_name": "q0",
+      "threshold": 0.29100000113248825,
+      "left_child": 1,
+      "right_child": 8,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.33294117647058824,
+        "LateralRaise": 0.3335294117647059,
+        "LeftPunch": 0.3335294117647059
+      },
+      "samples": 8500
+    },
+    {
+      "node_id": 1,
+      "feature_index": 0,
+      "feature_name": "q0",
+      "threshold": 0.09449999779462814,
+      "left_child": 2,
+      "right_child": 5,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.499558693733451,
+        "LateralRaise": 0.500441306266549,
+        "LeftPunch": 0.0
+      },
+      "samples": 5665
+    },
+    {
+      "node_id": 2,
+      "feature_index": 1,
+      "feature_name": "q1",
+      "threshold": -0.4530000165104866,
+      "left_child": 3,
+      "right_child": 4,
+      "is_leaf": false,
+      "predicted_class_index": 0,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.9974554707379135,
+        "LateralRaise": 0.002544529262086514,
+        "LeftPunch": 0.0
+      },
+      "samples": 2751
+    },
+    {
+      "node_id": 3,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 7
+    },
+    {
+      "node_id": 4,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 2744
+    },
+    {
+      "node_id": 5,
+      "feature_index": 2,
+      "feature_name": "q2",
+      "threshold": 0.5135000050067902,
+      "left_child": 6,
+      "right_child": 7,
+      "is_leaf": false,
+      "predicted_class_index": 1,
+      "predicted_class": null,
+      "class_counts": {
+        "Curl": 0.029512697323266987,
+        "LateralRaise": 0.970487302676733,
+        "LeftPunch": 0.0
+      },
+      "samples": 2914
+    },
+    {
+      "node_id": 6,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 1,
+      "predicted_class": "LateralRaise",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 1.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 2828
+    },
+    {
+      "node_id": 7,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 0,
+      "predicted_class": "Curl",
+      "class_counts": {
+        "Curl": 1.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 0.0
+      },
+      "samples": 86
+    },
+    {
+      "node_id": 8,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "is_leaf": true,
+      "predicted_class_index": 2,
+      "predicted_class": "LeftPunch",
+      "class_counts": {
+        "Curl": 0.0,
+        "LateralRaise": 0.0,
+        "LeftPunch": 1.0
+      },
+      "samples": 2835
+    }
+  ],
+  "note": "One quaternion sample per prediction; q0-q3 order and convention must match the training CSV."
+}

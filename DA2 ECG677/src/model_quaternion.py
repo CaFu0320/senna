@@ -17,7 +17,7 @@ metrics, plots, a complete JSON tree, and matching C/H code for STM32 inference.
 
 Install: python -m pip install numpy pandas scikit-learn matplotlib
 Example (Windows):
- python .\\model_quaternion.py --horizontal Horizontal_Q.csv --static Static_Q.csv --vertical Vertical_Q.csv --output-dir quaternion_raw_results
+ python .\\model_quaternion.py --curl Curl_Q.csv --lateralraise LateralRaise_Q.csv --leftpunch LeftPunch_Q.csv --output-dir quaternion_raw_results
 For multiple independent sessions, pass multiple filenames after each class flag.
 """
 from __future__ import annotations
@@ -31,11 +31,12 @@ import pandas as pd
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, ConfusionMatrixDisplay
 from sklearn.tree import DecisionTreeClassifier, export_text, plot_tree, _tree
 
-FEATURES=['q0','q1','q2','q3']; CLASSES=['Horizontal','Static','Vertical']
+FEATURES=['q0','q1','q2','q3']; CLASSES=['Curl','LateralRaise','LeftPunch']
 def load_recording(path,label):
     if not path.is_file(): raise FileNotFoundError(f'CSV not found: {path}')
     df=pd.read_csv(path,comment='#',skip_blank_lines=True,engine='python').dropna(axis=1,how='all')
     df.columns=[str(c).strip() for c in df.columns]
+    # Keep the first copy when pandas appends a suffix to duplicate quaternion columns.
     found=set(); chosen=[]
     for col in df.columns:
         base=re.sub(r'\.\d+$','',col).strip()
@@ -44,6 +45,8 @@ def load_recording(path,label):
     if missing: raise ValueError(f'{path}: missing {missing}. Headers found: {list(df.columns)}')
     out=pd.DataFrame({base:pd.to_numeric(df[src],errors='coerce') for src,base in chosen})
     out=out.replace([np.inf,-np.inf],np.nan).dropna(subset=FEATURES).reset_index(drop=True)
+    # Discard all-zero vectors, which cannot represent a valid orientation.
+    out = out.loc[(out[FEATURES] ** 2).sum(axis=1) > 0].reset_index(drop=True)
     if len(out)<30: raise ValueError(f'{path} has only {len(out)} usable q0-q3 rows; log is too short or incomplete.')
     out['label']=label; out['source_file']=path.name; out['source_row']=np.arange(len(out))
     print(f'Loaded {len(out):,} samples: {path} -> {label}')
@@ -55,6 +58,7 @@ def cf(v):
     s=format(float(v),'.9g')
     if '.' not in s and 'e' not in s.lower(): s += '.0'
     return s+'f'
+# Record the component order, class indices, and node thresholds used by the trained model.
 def export_json(model,path,args):
     t=model.tree_; classes=[str(c) for c in model.classes_]; nodes=[]
     for i in range(t.node_count):
@@ -76,6 +80,7 @@ def generate_c(json_path,prefix):
     hp=prefix.with_suffix('.h'); cp=prefix.with_suffix('.c'); guard=re.sub(r'\W','_',prefix.name.upper())+'_H'
     enums=',\n'.join(f' QUAT_RAW_CLASS_{cident(c)} = {i}' for i,c in enumerate(classes))+',\n QUAT_RAW_CLASS_UNKNOWN = 255'
     hp.write_text(f'''/* Auto-generated raw quaternion tree; input order q0,q1,q2,q3. */\n#ifndef {guard}\n#define {guard}\n#include <stdint.h>\ntypedef enum {{\n{enums}\n}} quat_raw_tree_class_t;\nquat_raw_tree_class_t quat_raw_tree_predict(const float q[4]);\n#endif\n''',encoding='utf-8')
+    # Encode a leaf with feature index -1. Internal nodes store the threshold and child indices.
     rows=[]
     for n in nodes:
         if n['is_leaf']: fi=-1; th='0.0f'; left=right=-1
@@ -102,6 +107,7 @@ def add_report_outputs(model,splits,accs,out,jp,cp,hp,summary,args):
     fig,ax=plt.subplots(figsize=(7,3.8)); bars=ax.barh(imp.feature,imp.importance,color='steelblue'); ax.bar_label(bars,fmt='%.3f')
     ax.set_xlabel('Gini importance'); ax.set_title('Quaternion component importance'); ax.grid(axis='x',alpha=.3); fig.tight_layout()
     fig.savefig(out/'feature_importance.png',dpi=160); plt.close(fig)
+    # Time a Python walk of the exported tree separately from scikit-learn prediction calls.
     nodes={n['node_id']:n for n in json.loads(jp.read_text())['nodes']}
     X=splits['test'][FEATURES].to_numpy(float); reps=max(1,5000//len(X)); t0=time.perf_counter()
     for _ in range(reps):
@@ -126,7 +132,7 @@ def add_report_outputs(model,splits,accs,out,jp,cp,hp,summary,args):
 
 def main():
     ap=argparse.ArgumentParser(description='Raw q0-q3 decision tree, chronological evaluation, JSON and C export')
-    ap.add_argument('--horizontal',nargs='+',required=True); ap.add_argument('--static',nargs='+',required=True); ap.add_argument('--vertical',nargs='+',required=True)
+    ap.add_argument('--curl',nargs='+',required=True); ap.add_argument('--lateralraise',nargs='+',required=True); ap.add_argument('--leftpunch',nargs='+',required=True)
     ap.add_argument('--output-dir',default='quaternion_raw_results'); ap.add_argument('--train-fraction',type=float,default=.7); ap.add_argument('--validation-fraction',type=float,default=.15)
     ap.add_argument('--max-depth',type=int,default=None); ap.add_argument('--min-samples-leaf',type=int,default=1); ap.add_argument('--criterion',choices=['gini','entropy','log_loss'],default='gini'); ap.add_argument('--random-state',type=int,default=42)
     ap.add_argument('--convert-json',type=Path); ap.add_argument('--c-out-prefix',type=Path)
@@ -135,8 +141,9 @@ def main():
         if args.convert_json:
             cp,hp=generate_c(args.convert_json,args.c_out_prefix or args.convert_json.with_suffix('')); print(f'C: {cp}\nHeader: {hp}'); return 0
         if args.train_fraction<=0 or args.validation_fraction<=0 or args.train_fraction+args.validation_fraction>=1: ap.error('train and validation fractions must be positive and sum to less than 1')
+        # Split each recording in time order before combining partitions across activities.
         splits={'train':[],'validation':[],'test':[]}; nfiles={c:0 for c in CLASSES}
-        for label,files in [('Horizontal',args.horizontal),('Static',args.static),('Vertical',args.vertical)]:
+        for label,files in [('Curl',args.curl),('LateralRaise',args.lateralraise),('LeftPunch',args.leftpunch)]:
             for file in files:
                 df=load_recording(Path(file),label); n=len(df); a=int(n*args.train_fraction); b=int(n*(args.train_fraction+args.validation_fraction))
                 if a<1 or b<=a or b>=n: raise ValueError(f'{file}: too short for chronological split')
@@ -144,6 +151,7 @@ def main():
                 nfiles[label]+=1
         splits={k:pd.concat(v,ignore_index=True) for k,v in splits.items()}
         model=DecisionTreeClassifier(criterion=args.criterion,max_depth=args.max_depth,min_samples_leaf=args.min_samples_leaf,random_state=args.random_state)
+        # Use one quaternion per prediction, preserving the component convention from the training CSV.
         model.fit(splits['train'][FEATURES],splits['train']['label'])
         out=Path(args.output_dir); out.mkdir(parents=True,exist_ok=True); rows=[]; preds=[]; accs={}
         for k,df in splits.items():

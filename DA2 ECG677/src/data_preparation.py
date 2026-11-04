@@ -3,7 +3,7 @@ data_preparation.py
 Design Assignment 2 - Task 1: Data Preparation and Exploratory Analysis (DPEA)
 
 Sensor : LSM6DSV16X on X-NUCLEO-IKS4A1, logged with MEMS Studio (Save to File)
-Config : Accelerometer +/-8 g, Gyroscope +/-2000 dps (confirm the ODR you used and state it in the report)
+Sampling is estimated from logged timestamps. Sensor settings require acquisition metadata.
 
 What this script does
   1. Loads one MEMS Studio CSV per activity (label taken from the file name,
@@ -15,13 +15,12 @@ What this script does
      check (the logged timestamps are irregular), dominant frequency per class,
      time-series plots, class distribution.
   5. Stratified 70 / 15 / 15 train / validation / test split, saved to CSV
-     for Task 2.
+     for exploratory analysis. Model scripts use chronological splits.
 
 Usage
-  Put your recordings in ./data/raw/ named Static.csv, Horizontal.csv, Vertical.csv
-  (the word before the first "_" or "." is the label; LABEL_MAP turns horizontal ->
-  hmotion and vertical -> vmotion).
-  Then run:   python data_preparation.py
+  Put your recordings in ./data/raw/ named Curl.csv, LateralRaise.csv, LeftPunch.csv
+  Keep the separate measured quaternion takes in ./data/quatlogs/.
+  Then run:   python src/data_preparation.py
   Optional:   python data_preparation.py --raw-dir path/to/csvs --out-dir results
 """
 
@@ -42,13 +41,13 @@ from sklearn.model_selection import train_test_split
 # --------------------------------------------------------------------------
 RANDOM_STATE = 42
 TRAIN_FRAC, VAL_FRAC, TEST_FRAC = 0.70, 0.15, 0.15
-TRIM_SECONDS = 2.0        # drop the first/last N s of every file (pressing Start/Stop)
+TRIM_SECONDS = 0.0
 SAMPLE_WINDOW_S = 5.0     # length of the "few seconds of each activity" plots
 MADGWICK_BETA = 0.1       # Madgwick filter gain (only used if no quaternion in the file)
 RESAMPLE_HZ = 100.0       # uniform grid used ONLY for frequency analysis (logs are irregular)
 
 # File-name word -> class name. Matches the class names used on the board firmware.
-LABEL_MAP = {"horizontal": "hmotion", "vertical": "vmotion", "static": "static"}
+LABEL_MAP = {"curl": "Curl", "lateralraise": "LateralRaise", "leftpunch": "LeftPunch"}
 
 ACC_COLS = ["acc_x", "acc_y", "acc_z"]
 GYRO_COLS = ["gyro_x", "gyro_y", "gyro_z"]
@@ -81,6 +80,7 @@ COLUMN_PATTERNS = {
 # --------------------------------------------------------------------------
 # 1. Loading
 # --------------------------------------------------------------------------
+# Find the sensor header after the metadata rows in the MEMS Studio export.
 def _find_header_row(path):
     """MEMS Studio may put info lines above the header; find the real header."""
     with open(path, "r", encoding="utf-8", errors="ignore") as f:
@@ -115,6 +115,7 @@ def _match_columns(columns):
 def _time_to_seconds(t):
     """Convert a timestamp column to seconds starting at 0, whatever its unit."""
     t = pd.to_numeric(t, errors="coerce").astype(float).to_numpy()
+    # Infer the timestamp unit from typical spacing before resetting the time origin.
     dt = np.nanmedian(np.diff(t))
     if dt > 1000:        # microseconds
         t = t / 1e6
@@ -207,6 +208,7 @@ def madgwick_quaternions(t, acc_g, gyro_dps, beta=MADGWICK_BETA):
     out = np.zeros((n, 4))
     q0, q1, q2, q3 = _quat_from_gravity(*acc_g[0])
     gyro = np.radians(gyro_dps)
+    # Use actual sample intervals for integration and a nominal interval at startup or across long gaps.
     dts = np.diff(t, prepend=t[0])
     nominal_dt = np.median(np.diff(t)) if n > 1 else 1 / 60
     for i in range(n):
@@ -235,6 +237,7 @@ def madgwick_quaternions(t, acc_g, gyro_dps, beta=MADGWICK_BETA):
                 qd1 -= beta * s1 / norm_s
                 qd2 -= beta * s2 / norm_s
                 qd3 -= beta * s3 / norm_s
+        # Integrate the corrected rate and renormalize so the quaternion remains a unit rotation.
         q0 += qd0 * dt
         q1 += qd1 * dt
         q2 += qd2 * dt
@@ -291,6 +294,9 @@ def sampling_report(data):
     for fname, g in data.groupby("source_file"):
         dt = np.diff(g["t"].to_numpy())
         rows.append({
+            # Report active sampling separately from effective sampling, which includes pauses.
+            "active_rate_Hz": round(1 / np.mean(dt[(dt > 0) & (dt <= 0.1)]), 2),
+            "gaps_over_100ms": int((dt > 0.1).sum()),
             "file": fname, "label": g["label"].iloc[0], "samples": len(g),
             "duration_s": round(g["t"].iloc[-1], 2),
             "effective_rate_Hz": round(1 / dt.mean(), 2),
@@ -322,9 +328,15 @@ def _uniform_signals(g, cols):
     out = []
     for _, f in g.groupby("source_file"):
         t = f["t"].to_numpy()
-        grid = np.arange(0, t[-1], 1 / RESAMPLE_HZ)
-        comp = [np.interp(grid, t, f[c].to_numpy()) for c in cols]
-        out.append(np.linalg.norm(np.vstack(comp), axis=0))
+        steps = np.diff(t)
+        # Interpolate within contiguous segments to avoid inventing signal across a logging gap.
+        breaks = np.flatnonzero((steps > 0.1) | (steps <= 0)) + 1
+        for idx in np.split(np.arange(len(t)), breaks):
+            if len(idx) < 4:
+                continue
+            grid = np.arange(t[idx[0]], t[idx[-1]], 1 / RESAMPLE_HZ)
+            comp = [np.interp(grid, t[idx], f[c].to_numpy()[idx]) for c in cols]
+            out.append(np.linalg.norm(np.vstack(comp), axis=0))
     return out
 
 
@@ -335,6 +347,7 @@ def _welch_mean(signals, nperseg=256):
         x = x - x.mean()
         n = min(nperseg, len(x))
         f, pxx = welch(x, fs=RESAMPLE_HZ, window="hann", nperseg=n)
+        # Align the segment spectra on one frequency grid before averaging them.
         psds.append(np.interp(np.linspace(0, RESAMPLE_HZ / 2, 129), f, pxx))
     return np.linspace(0, RESAMPLE_HZ / 2, 129), np.mean(psds, axis=0)
 
@@ -476,6 +489,7 @@ def plot_split(split_counts, out_dir):
 # --------------------------------------------------------------------------
 # 5. Stratified split
 # --------------------------------------------------------------------------
+# Preserve class proportions for exploratory exports. The model scripts split recordings chronologically.
 def stratified_split(data):
     train, temp = train_test_split(
         data, test_size=VAL_FRAC + TEST_FRAC,
@@ -505,6 +519,7 @@ def main():
     parser.add_argument("--raw-dir", default="data/raw")
     parser.add_argument("--out-dir", default="results/task1")
     parser.add_argument("--processed-dir", default="data/processed")
+    parser.add_argument("--quat-dir", default="data/quatlogs")
     args = parser.parse_args()
 
     out_dir, proc_dir = Path(args.out_dir), Path(args.processed_dir)
@@ -514,6 +529,35 @@ def main():
     print("Loading recordings ...")
     data, quat_source = load_dataset(args.raw_dir)
 
+    # Quaternion exports are separate takes. Keep their timestamps and split independently.
+    from model_quaternion_fe import load_recording as load_quat
+    quaternion_frames = []
+    for label in LABEL_MAP.values():
+        path = Path(args.quat_dir) / f"{label}_Q.csv"
+        measured = load_quat(path, label)
+        original = pd.read_csv(path, comment="#")
+        values = original[QUAT_COLS].apply(pd.to_numeric, errors="coerce")
+        valid = np.isfinite(values).all(axis=1) & ((values ** 2).sum(axis=1) > 0)
+        # Use the same valid rows for timestamps and quaternion values to keep them aligned.
+        t = original.loc[valid, "time[us]"].to_numpy(dtype=float)
+        measured["t"] = (t - t[0]) / 1e6
+        quaternion_frames.append(measured)
+    quaternion_data = pd.concat(quaternion_frames, ignore_index=True)
+    fig, axes = plt.subplots(3, 1, figsize=(11, 8), layout="constrained")
+    for ax, (label, frame) in zip(axes, quaternion_data.groupby("label")):
+        segment = frame[frame["t"] <= 5]
+        ax.plot(segment["t"], segment[QUAT_COLS])
+        ax.set(title=label, xlabel="Time (s)", ylabel="Logged quaternion")
+        ax.legend(QUAT_COLS, ncol=4)
+    fig.savefig(out_dir / "logged_quaternion_examples.png", dpi=150)
+    plt.close(fig)
+    q_train, q_val, q_test, q_counts = stratified_split(quaternion_data)
+    q_counts.to_csv(out_dir / "quaternion_split_counts.csv")
+    sampling_report(quaternion_data).to_csv(out_dir / "quaternion_sampling.csv", index=False)
+    quaternion_data.groupby("label")[QUAT_COLS].agg(["mean", "std", "min", "max"]).to_csv(
+        out_dir / "logged_quaternion_statistics.csv")
+    for split, frame in zip(("full", "train", "val", "test"), (quaternion_data, q_train, q_val, q_test)):
+        frame.to_csv(proc_dir / f"quaternion_{split}.csv", index=False)
     print("\nComputing statistics ...")
     sampling = sampling_report(data)
     sampling["quaternion_source"] = sampling["file"].map(quat_source)
@@ -560,10 +604,10 @@ def main():
                           ("Feature ranges (all data)", ranges),
                           ("Temporal dynamics", dyn.set_index("label")),
                           ("Stratified split", split_counts)]:
-            f.write(f"## {title}\n\n{df.to_markdown()}\n\n")
+            f.write(f"## {title}\n\n{df.to_string()}\n\n")
         f.write("## Per-class statistics\n\n")
         for feat in FEATURES:
-            f.write(f"### {feat}\n\n{stats[feat].to_markdown()}\n\n")
+            f.write(f"### {feat}\n\n{stats[feat].to_string()}\n\n")
 
     pd.set_option("display.width", 160)
     print("\n=== Dataset summary ===\n", summary)

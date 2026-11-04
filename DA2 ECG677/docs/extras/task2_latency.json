@@ -1,7 +1,0 @@
-{
-  "json_walk_us_host": 1.671,
-  "mcu_worst_case_us_est": 1.429,
-  "mcu_cycles_est": 120,
-  "embedded_tree_bytes_est": 855,
-  "note": "Host timing shows relative cost only. MCU figure = depth x 12 cycles at 84 MHz (estimate)."
-}

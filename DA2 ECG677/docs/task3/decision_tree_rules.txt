@@ -1,7 +1,13 @@
-|--- ACC_X__p2p <= 1128.000000
-|   |--- ACC_X__energy <= 1706.880989
-|   |   |--- class: Static
-|   |--- ACC_X__energy >  1706.880989
-|   |   |--- class: Vertical
-|--- ACC_X__p2p >  1128.000000
-|   |--- class: Horizontal
+|--- GYR_X__energy <= 2880177792.000000
+|   |--- ACC_X__var <= 4748.967529
+|   |   |--- ACC_Y__energy <= 177808.164062
+|   |   |   |--- class: LeftPunch
+|   |   |--- ACC_Y__energy >  177808.164062
+|   |   |   |--- class: LateralRaise
+|   |--- ACC_X__var >  4748.967529
+|   |   |--- class: LeftPunch
+|--- GYR_X__energy >  2880177792.000000
+|   |--- ACC_Y__min <= -688.000000
+|   |   |--- class: LateralRaise
+|   |--- ACC_Y__min >  -688.000000
+|   |   |--- class: Curl

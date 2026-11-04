@@ -1,0 +1,4 @@
+active_rate_Hz,gaps_over_100ms,file,label,samples,duration_s,effective_rate_Hz,dt_min_ms,dt_median_ms,dt_max_ms,pct_steps_over_1p5x_median
+100.0,0,Curl_Q.csv,Curl,4044,40.43,100.0,10.0,10.0,10.0,0.0
+100.0,0,LateralRaise_Q.csv,LateralRaise,4050,40.49,100.0,10.0,10.0,10.0,0.0
+100.0,0,LeftPunch_Q.csv,LeftPunch,4051,40.5,100.0,10.0,10.0,10.0,0.0

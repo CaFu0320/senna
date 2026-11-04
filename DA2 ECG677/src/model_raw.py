@@ -10,9 +10,9 @@ Install:
 
 Example:
     python model_raw.py \
-      --horizontal logs/horizontal.csv \
-      --static logs/static.csv \
-      --vertical logs/vertical.csv \
+      --curl logs/horizontal.csv \
+      --lateralraise logs/static.csv \
+      --leftpunch logs/vertical.csv \
       --output-dir raw_tree_results
 
 To convert a previously generated compatible JSON file into C:
@@ -47,7 +47,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier, export_text, plot_tree, _tree
 
 FEATURES = ["ACC_X", "ACC_Y", "ACC_Z", "GYR_X", "GYR_Y", "GYR_Z"]
-CLASSES = ["Horizontal", "Static", "Vertical"]
+CLASSES = ["Curl", "LateralRaise", "LeftPunch"]
 
 # Automatic column name recognition. If your CSV headers differ, supply
 # --feature-columns followed by the six exact column names in FEATURES order.
@@ -69,6 +69,7 @@ def normalized_column_name(name: str) -> str:
     return re.sub(r"[^a-z0-9]", "", text.lower())
 
 
+# Map the logged column names to the six-axis feature order used by the exported model.
 def find_feature_columns(columns: Sequence[str], requested: Optional[Sequence[str]]) -> dict[str, str]:
     """Map canonical feature names to actual CSV column names."""
     columns = [str(c) for c in columns]
@@ -151,6 +152,7 @@ def load_one_recording(path: Path, label: str, requested_columns: Optional[Seque
     return frame
 
 
+# Keep acquisition order within a recording so evaluation uses later time blocks.
 def split_contiguous_recording(frame: pd.DataFrame, train_fraction: float, validation_fraction: float):
     """Split each recording chronologically, so neighboring rows are not randomly mixed."""
     n = len(frame)
@@ -184,6 +186,7 @@ def c_float(value: float) -> str:
     return text + "f"
 
 
+# Store every split and leaf, including the input order and class mapping needed for inference.
 def export_full_tree_json(model: DecisionTreeClassifier, path: Path) -> dict:
     tree = model.tree_
     class_names = [str(v) for v in model.classes_]
@@ -223,6 +226,7 @@ def export_full_tree_json(model: DecisionTreeClassifier, path: Path) -> dict:
     return payload
 
 
+# Generate a static C node table and prediction function from the serialized tree.
 def export_json_tree_to_c(json_path: Path, output_prefix: Optional[Path] = None) -> tuple[Path, Path]:
     """Convert the pipeline's full tree JSON to a portable C source/header pair."""
     payload = json.loads(json_path.read_text(encoding="utf-8"))
@@ -377,6 +381,7 @@ def evaluate_split(model, frame: pd.DataFrame, split_name: str, out_dir: Path, c
     return {"accuracy": accuracy, "classification_report": report}, pd.DataFrame(rows), results
 
 
+# Time host prediction calls on prepared input rows. This excludes sensor acquisition.
 def measure_python_latency_us(model, sample: pd.DataFrame, repeats: int = 25, calls_per_repeat: int = 100) -> dict:
     """Estimate scikit-learn single-row prediction latency; not MCU latency."""
     sample = sample.iloc[[0]][FEATURES]
@@ -448,7 +453,7 @@ def run_training(args) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     labelled_paths = []
-    for label, paths in [("Horizontal", args.horizontal), ("Static", args.static), ("Vertical", args.vertical)]:
+    for label, paths in [("Curl", args.curl), ("LateralRaise", args.lateralraise), ("LeftPunch", args.leftpunch)]:
         if not paths:
             raise ValueError(f"Provide at least one --{label.lower()} CSV file.")
         for raw_path in paths:
@@ -459,6 +464,7 @@ def run_training(args) -> None:
     counts_by_class = {label: sum(1 for item_label, _ in recordings if item_label == label)
                        for label in CLASSES}
     selected_split_mode = args.split_mode
+    # Use whole-session holdouts when each activity has enough independent recordings.
     if selected_split_mode == "auto":
         selected_split_mode = "sessions" if all(counts_by_class[label] >= 3 for label in CLASSES) else "chronological"
     if selected_split_mode == "sessions" and not all(counts_by_class[label] >= 3 for label in CLASSES):
@@ -514,6 +520,7 @@ def run_training(args) -> None:
         if missing:
             raise ValueError(f"The {split_name} split is missing class(es) {sorted(missing)}. Use longer logs or adjust split fractions.")
 
+    # Fit on training rows only. Each input row is a single IMU sample in the logged units.
     X_train, y_train = train_df[FEATURES], train_df["label"]
     model = DecisionTreeClassifier(
         criterion=args.criterion,
@@ -629,9 +636,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Train/evaluate a RAW IMU decision tree, export JSON, and generate C for embedded inference."
     )
-    parser.add_argument("--horizontal", nargs="+", help="One or more Horizontal CSV log files")
-    parser.add_argument("--static", nargs="+", help="One or more Static CSV log files")
-    parser.add_argument("--vertical", nargs="+", help="One or more Vertical CSV log files")
+    parser.add_argument("--curl", nargs="+", help="One or more Curl CSV log files")
+    parser.add_argument("--lateralraise", nargs="+", help="One or more LateralRaise CSV log files")
+    parser.add_argument("--leftpunch", nargs="+", help="One or more LeftPunch CSV log files")
     parser.add_argument("--feature-columns", nargs=6, metavar=("ACC_X", "ACC_Y", "ACC_Z", "GYR_X", "GYR_Y", "GYR_Z"),
                         help="Exact CSV column names in this order; use if auto-detection fails")
     parser.add_argument("--output-dir", default="raw_tree_results", help="Folder for metrics, plots, JSON, and C files")
@@ -662,8 +669,8 @@ def main() -> int:
             print(f"Generated C header: {header_path}")
             print("Check feature order and units in the generated header before calling from STM32 firmware.")
             return 0
-        if not (args.horizontal and args.static and args.vertical):
-            parser.error("Training needs all three groups: --horizontal, --static, and --vertical. For JSON-only conversion, use --convert-json FILE.")
+        if not (args.curl and args.lateralraise and args.leftpunch):
+            parser.error("Training needs all three groups: --curl, --lateralraise, and --leftpunch. For JSON-only conversion, use --convert-json FILE.")
         if args.plot_depth < 0:
             raise ValueError("--plot-depth must be zero or greater.")
         run_training(args)

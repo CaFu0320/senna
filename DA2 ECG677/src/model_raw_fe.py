@@ -19,8 +19,8 @@ split boundary, the same hyperparameters (defaults identical to model_raw.py),
 and the C export for the board.
 
 Example
-  python model_raw_fe.py --horizontal Horizontal.csv --static Static.csv \
-      --vertical Vertical.csv --output-dir task3_results \
+  python model_raw_fe.py --curl Curl.csv --lateralraise LateralRaise.csv \
+      --leftpunch LeftPunch.csv --output-dir task3_results \
       --raw-summary task2_results/model_summary.json
 Window: --window-size samples (default 42), --stride (default 21 = 50 % overlap).
 Raw inputs keep the units of the CSV (mg, mdps); the firmware must use the same units.
@@ -45,7 +45,7 @@ from sklearn.metrics import (accuracy_score, classification_report, confusion_ma
 from sklearn.tree import DecisionTreeClassifier, export_text, plot_tree, _tree
 
 RAW_CHANNELS = ["ACC_X", "ACC_Y", "ACC_Z", "GYR_X", "GYR_Y", "GYR_Z"]
-CLASSES = ["Horizontal", "Static", "Vertical"]
+CLASSES = ["Curl", "LateralRaise", "LeftPunch"]
 # Order matters: the generated C code uses exactly this order.
 STATISTICS = ["mean", "var", "max", "min", "p2p", "energy"]
 ALL_FEATURE_NAMES = [f"{axis}__{stat}" for axis in RAW_CHANNELS for stat in STATISTICS]  # 36
@@ -151,6 +151,7 @@ def split_raw_recording(frame: pd.DataFrame, train_fraction: float, validation_f
     return {"train": frame.iloc[:a].copy(), "validation": frame.iloc[a:b].copy(), "test": frame.iloc[b:].copy()}
 
 
+# Assign raw recordings or recording segments to partitions before constructing overlapping windows.
 def assign_splits(recordings, split_mode: str, train_fraction: float, validation_fraction: float,
                   random_state: int):
     files_per_class = {label: sum(1 for lab, _ in recordings if lab == label) for label in CLASSES}
@@ -214,8 +215,16 @@ def windows_from_segment(frame: pd.DataFrame, window_size: int, stride: int) -> 
     label = str(frame["label"].iloc[0])
     source_file = str(frame["source_file"].iloc[0])
     source_row = frame["source_row"].to_numpy(dtype=int)
+    gaps = np.array([], dtype=int)
+    if "time_s" in frame:
+        steps = np.diff(frame["time_s"].to_numpy())
+        # Mark pauses and non-increasing timestamps so windows span consecutive samples.
+        gaps = np.flatnonzero((steps > 0.1) | (steps <= 0))
     for start in range(0, len(frame) - window_size + 1, stride):
+        if np.any((gaps >= start) & (gaps < start + window_size - 1)):
+            continue
         feats = extract_window_features(raw[start:start + window_size])
+        # Keep source row bounds so each prediction can be traced to its input window.
         feats.update({"label": label, "source_file": source_file,
                       "window_start_row": int(source_row[start]),
                       "window_end_row": int(source_row[start + window_size - 1])})
@@ -288,6 +297,7 @@ def export_tree_json(model, path: Path, window_size: int, stride: int, args, ext
     return payload
 
 
+# Emit the same feature order and tree traversal that the Python model uses.
 def generate_c_from_json(json_path: Path, out_prefix: Path) -> tuple[Path, Path]:
     p = json.loads(json_path.read_text(encoding="utf-8"))
     if p.get("format") != "imu_feature_decision_tree_v2":
@@ -412,6 +422,7 @@ def tree_depth_profile(model) -> pd.DataFrame:
                           "leaves": int(((depth == d) & leaf).sum())} for d in range(depth.max() + 1)])
 
 
+# Benchmark host-side processing. Treat any MCU timing derived from assumed cycles as an estimate.
 def measure_latency(model, X: np.ndarray, tree_json: dict, windows: np.ndarray) -> dict:
     """Host-PC timings (relative cost only) and a cycle estimate for the MCU."""
     x1 = X[:1]
@@ -450,7 +461,7 @@ def run_training(args) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     paths = []
-    for label, files in [("Horizontal", args.horizontal), ("Static", args.static), ("Vertical", args.vertical)]:
+    for label, files in [("Curl", args.curl), ("LateralRaise", args.lateralraise), ("LeftPunch", args.leftpunch)]:
         if not files:
             raise ValueError(f"Provide at least one --{label.lower()} CSV file.")
         paths += [(label, Path(f)) for f in files]
@@ -486,6 +497,7 @@ def run_training(args) -> None:
                                    min_samples_leaf=args.min_samples_leaf,
                                    min_samples_split=args.min_samples_split,
                                    random_state=args.random_state)
+    # Train on all 36 window statistics. Feature selection is evaluated separately in Task 5.
     model.fit(train_df[ALL_FEATURE_NAMES].to_numpy(dtype=np.float64), train_df["label"].astype(str))
     class_names = [str(c) for c in model.classes_]
     print("\n=== Windows and features ===")
@@ -652,9 +664,9 @@ def run_training(args) -> None:
 
 def build_parser():
     p = argparse.ArgumentParser(description="Task 3 RAW+FE: windowed IMU statistics -> decision tree -> JSON and C.")
-    p.add_argument("--horizontal", nargs="+")
-    p.add_argument("--static", nargs="+")
-    p.add_argument("--vertical", nargs="+")
+    p.add_argument("--curl", nargs="+")
+    p.add_argument("--lateralraise", nargs="+")
+    p.add_argument("--leftpunch", nargs="+")
     p.add_argument("--feature-columns", nargs=6, metavar=("ACC_X", "ACC_Y", "ACC_Z", "GYR_X", "GYR_Y", "GYR_Z"))
     p.add_argument("--output-dir", default="task3_results")
     p.add_argument("--raw-summary", default=None, help="Task 2 model_summary.json, for the complexity comparison")
@@ -684,8 +696,8 @@ def main() -> int:
             c_path, h_path = generate_c_from_json(args.convert_json, prefix)
             print(f"Generated C source: {c_path}\nGenerated C header: {h_path}")
             return 0
-        if not (args.horizontal and args.static and args.vertical):
-            parser.error("Supply --horizontal, --static and --vertical (or use --convert-json).")
+        if not (args.curl and args.lateralraise and args.leftpunch):
+            parser.error("Supply --curl, --lateralraise and --leftpunch (or use --convert-json).")
         run_training(args)
         return 0
     except Exception as exc:

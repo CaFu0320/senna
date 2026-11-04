@@ -1,134 +1,133 @@
 # Task 1 - Dataset summary
 
-Total samples: **5412**, classes: **3**, recordings: **3**
+Total samples: **8883**, classes: **3**, recordings: **3**
 
 ## Per-class distribution
 
-| label   |   samples |   recordings |   duration_s |   percent |
-|:--------|----------:|-------------:|-------------:|----------:|
-| hmotion |      1814 |            1 |         25.4 |      33.5 |
-| static  |      1756 |            1 |         25.4 |      32.4 |
-| vmotion |      1842 |            1 |         25.1 |      34   |
+              samples  recordings  duration_s  percent
+label                                                 
+Curl             2836           1        38.9     31.9
+LateralRaise     2849           1        39.1     32.1
+LeftPunch        3198           1       291.1     36.0
 
 ## Sampling / timing check
 
-| file           | label   |   samples |   duration_s |   effective_rate_Hz |   dt_min_ms |   dt_median_ms |   dt_max_ms |   pct_steps_over_1p5x_median | quaternion_source                |
-|:---------------|:--------|----------:|-------------:|--------------------:|------------:|---------------:|------------:|-----------------------------:|:---------------------------------|
-| Horizontal.csv | hmotion |      1814 |        25.4  |               71.38 |          10 |             10 |          20 |                         40.1 | logged in file (on-board fusion) |
-| Static.csv     | static  |      1756 |        25.43 |               69.01 |          10 |             10 |          20 |                         44.9 | logged in file (on-board fusion) |
-| Vertical.csv   | vmotion |      1842 |        25.12 |               73.29 |          10 |             10 |          20 |                         36.4 | logged in file (on-board fusion) |
+                  active_rate_Hz  gaps_over_100ms         label  samples  duration_s  effective_rate_Hz  dt_min_ms  dt_median_ms  dt_max_ms  pct_steps_over_1p5x_median   quaternion_source
+file                                                                                                                                                                                       
+Curl.csv                   72.94                0          Curl     2836       38.87              72.94       10.0          10.0       20.0                        37.1  Madgwick (offline)
+LateralRaise.csv           72.89                0  LateralRaise     2849       39.07              72.89       10.0          10.0       20.0                        37.2  Madgwick (offline)
+LeftPunch.csv              71.50                1     LeftPunch     3198      291.12              10.98       10.0          10.0   246420.0                        39.9  Madgwick (offline)
 
 ## Feature ranges (all data)
 
-|        | unit   |     min |     max |    mean |     std |
-|:-------|:-------|--------:|--------:|--------:|--------:|
-| acc_x  | g      |  -1.211 |   1.186 |  0.0102 |  0.3707 |
-| acc_y  | g      |  -0.304 |   0.373 |  0.0366 |  0.1176 |
-| acc_z  | g      |  -0.575 |   2.994 |  0.9989 |  0.5209 |
-| gyro_x | dps    | -97.86  | 169.26  | -0.2656 | 36.9501 |
-| gyro_y | dps    | -80.01  |  99.47  |  0.0648 | 21.2264 |
-| gyro_z | dps    | -98.63  |  80.36  | -0.0137 | 32.2153 |
-| q0     | -      |  -0.097 |   0.17  |  0.0314 |  0.048  |
-| q1     | -      |  -0.025 |   0.174 |  0.0669 |  0.0576 |
-| q2     | -      |   0.96  |   0.998 |  0.9899 |  0.0075 |
-| q3     | -      |  -0.245 |   0.079 | -0.0592 |  0.0736 |
+       unit       min       max    mean       std
+acc_x     g   -2.1900    0.5180 -0.3090    0.3374
+acc_y     g   -1.8930    1.8330 -0.2244    0.6258
+acc_z     g   -1.7540    2.2590 -0.0602    0.7799
+gyro_x  dps -279.1600  264.5300  0.0567  101.5256
+gyro_y  dps -256.3400  229.3900 -0.0119   70.8462
+gyro_z  dps -182.8400  191.4500  1.3686   46.7827
+q0        -   -0.1014    0.9631  0.5549    0.2693
+q1        -   -0.9443    0.9851  0.0082    0.5859
+q2        -   -0.0901    0.9748  0.3364    0.3429
+q3        -   -0.4025    0.2736 -0.1529    0.1488
 
 ## Temporal dynamics
 
-| label   |   acc_mag_peak_Hz |   acc_mag_rms |   gyro_mag_peak_Hz |   gyro_mag_rms |
-|:--------|------------------:|--------------:|-------------------:|---------------:|
-| hmotion |              2.34 |        0.2331 |               4.3  |        21.3877 |
-| static  |             11.72 |        0.0033 |               0.78 |         0.0739 |
-| vmotion |              1.95 |        0.79   |               4.3  |        34.1974 |
+              acc_mag_peak_Hz  acc_mag_rms  gyro_mag_peak_Hz  gyro_mag_rms
+label                                                                     
+Curl                     0.78       0.4015              1.56       58.8311
+LateralRaise             0.78       0.3923              1.17       29.7207
+LeftPunch                1.17       0.2264              1.17       41.5016
 
 ## Stratified split
 
-| label   |   train |   val |   test |   total |   train_% |   val_% |   test_% |
-|:--------|--------:|------:|-------:|--------:|----------:|--------:|---------:|
-| hmotion |    1270 |   272 |    272 |    1814 |        70 |      15 |       15 |
-| static  |    1229 |   263 |    264 |    1756 |        70 |      15 |       15 |
-| vmotion |    1289 |   277 |    276 |    1842 |        70 |      15 |       15 |
-| ALL     |    3788 |   812 |    812 |    5412 |        70 |      15 |       15 |
+               train     val    test   total  train_%  val_%  test_%
+label                                                               
+Curl          1985.0   426.0   425.0  2836.0     70.0   15.0    15.0
+LateralRaise  1994.0   427.0   428.0  2849.0     70.0   15.0    15.0
+LeftPunch     2239.0   479.0   480.0  3198.0     70.0   15.0    15.0
+ALL           6218.0  1332.0  1333.0  8883.0     70.0   15.0    15.0
 
 ## Per-class statistics
 
 ### acc_x
 
-| label   |   mean |    std |    min |   max |
-|:--------|-------:|-------:|-------:|------:|
-| hmotion | 0.0138 | 0.633  | -1.211 | 1.186 |
-| static  | 0.0004 | 0.0011 | -0.009 | 0.012 |
-| vmotion | 0.016  | 0.0953 | -0.328 | 0.304 |
+                mean     std    min    max
+label                                     
+Curl         -0.1292  0.1331 -0.675  0.354
+LateralRaise -0.2265  0.1169 -0.543  0.460
+LeftPunch    -0.5420  0.4466 -2.190  0.518
 
 ### acc_y
 
-| label   |   mean |    std |    min |   max |
-|:--------|-------:|-------:|-------:|------:|
-| hmotion | 0.0912 | 0.1675 | -0.304 | 0.364 |
-| static  | 0.0125 | 0.0011 | -0.004 | 0.025 |
-| vmotion | 0.0059 | 0.0928 | -0.214 | 0.373 |
+                mean     std    min    max
+label                                     
+Curl          0.2776  0.2332 -0.597  0.878
+LateralRaise -0.8766  0.4093 -1.627  0.767
+LeftPunch    -0.0886  0.5193 -1.893  1.833
 
 ### acc_z
 
-| label   |   mean |    std |    min |   max |
-|:--------|-------:|-------:|-------:|------:|
-| hmotion | 0.9976 | 0.2052 |  0.503 | 1.643 |
-| static  | 0.9994 | 0.0035 |  0.96  | 1.041 |
-| vmotion | 0.9998 | 0.8696 | -0.575 | 2.994 |
+                mean     std    min    max
+label                                     
+Curl          0.7917  0.7459 -1.754  2.259
+LateralRaise -0.4451  0.2541 -1.702  0.474
+LeftPunch    -0.4727  0.4394 -1.741  1.333
 
 ### gyro_x
 
-| label   |    mean |     std |    min |    max |
-|:--------|--------:|--------:|-------:|-------:|
-| hmotion | -0.1127 | 13.0619 | -34.86 |  44.45 |
-| static  | -0.1379 |  0.0841 |  -1.19 |   0.21 |
-| vmotion | -0.5379 | 62.0058 | -97.86 | 169.26 |
+                mean       std     min     max
+label                                         
+Curl         -0.3427  157.3266 -279.16  264.53
+LateralRaise -0.1365   79.4115 -157.43  132.02
+LeftPunch     0.5832   32.6994 -146.58  123.76
 
 ### gyro_y
 
-| label   |    mean |     std |    min |   max |
-|:--------|--------:|--------:|-------:|------:|
-| hmotion |  0.1906 | 13.5424 | -43.68 | 51.03 |
-| static  |  0.1231 |  0.0683 |  -0.49 |  0.84 |
-| vmotion | -0.1147 | 33.8173 | -80.01 | 99.47 |
+                mean       std     min     max
+label                                         
+Curl         -1.8183   47.4052 -169.19  160.09
+LateralRaise -1.6225   28.9793 -113.68  112.28
+LeftPunch     3.0248  105.7786 -256.34  229.39
 
 ### gyro_z
 
-| label   |    mean |     std |    min |   max |
-|:--------|--------:|--------:|-------:|------:|
-| hmotion | -0.2217 | 53.3381 | -98.63 | 80.36 |
-| static  |  0.1397 |  0.0213 |   0    |  0.42 |
-| vmotion |  0.0447 | 15.7665 | -41.44 | 39.55 |
+                mean      std     min     max
+label                                        
+Curl         -1.7019  28.1438 -134.75  104.30
+LateralRaise  1.2288  32.2856  -70.56  143.22
+LeftPunch     4.2160  66.5811 -182.84  191.45
 
 ### q0
 
-| label   |   mean |    std |    min |   max |
-|:--------|-------:|-------:|-------:|------:|
-| hmotion | 0.0023 | 0.0391 | -0.097 | 0.077 |
-| static  | 0.006  | 0.0002 |  0.006 | 0.007 |
-| vmotion | 0.0843 | 0.0318 |  0.028 | 0.17  |
+                mean     std     min     max
+label                                       
+Curl          0.7914  0.1719  0.1575  0.9631
+LateralRaise  0.5249  0.1496  0.2335  0.8421
+LeftPunch     0.3718  0.2671 -0.1014  0.9236
 
 ### q1
 
-| label   |    mean |    std |    min |   max |
-|:--------|--------:|-------:|-------:|------:|
-| hmotion |  0.0637 | 0.0267 | -0.025 | 0.118 |
-| static  | -0      | 0.0001 | -0.001 | 0.001 |
-| vmotion |  0.1338 | 0.0172 |  0.083 | 0.174 |
+                mean     std     min     max
+label                                       
+Curl          0.4364  0.2922 -0.1303  0.9851
+LateralRaise -0.8030  0.0864 -0.9443 -0.5219
+LeftPunch     0.3512  0.0685  0.1175  0.4934
 
 ### q2
 
-| label   |   mean |    std |   min |   max |
-|:--------|-------:|-------:|------:|------:|
-| hmotion | 0.987  | 0.0085 | 0.96  | 0.998 |
-| static  | 0.997  | 0      | 0.997 | 0.997 |
-| vmotion | 0.9861 | 0.005  | 0.973 | 0.995 |
+                mean     std     min     max
+label                                       
+Curl          0.0068  0.0374 -0.0901  0.1109
+LateralRaise  0.1897  0.0555  0.0110  0.3063
+LeftPunch     0.7595  0.1677  0.2167  0.9748
 
 ### q3
 
-| label   |    mean |    std |    min |    max |
-|:--------|--------:|-------:|-------:|-------:|
-| hmotion | -0.1309 | 0.048  | -0.245 | -0.032 |
-| static  | -0.078  | 0      | -0.078 | -0.078 |
-| vmotion |  0.0293 | 0.0197 | -0.032 |  0.079 |
+                mean     std     min     max
+label                                       
+Curl         -0.2529  0.0547 -0.3401 -0.0392
+LateralRaise  0.0333  0.0980 -0.1955  0.2736
+LeftPunch    -0.2301  0.0679 -0.4025 -0.0931
 

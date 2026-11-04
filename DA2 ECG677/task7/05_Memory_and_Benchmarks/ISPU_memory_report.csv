@@ -1,6 +1,0 @@
-section,bytes,KiB,capacity_KiB,percent_of_capacity,evidence
-text,21932,21.418,32,66.93,"STRED stred-size user screenshot, final firmware"
-data,108,0.1055,,,"STRED stred-size user screenshot, final firmware"
-bss,784,0.7656,,,"STRED stred-size user screenshot, final firmware"
-data_plus_bss,892,0.8711,8,10.89,"STRED stred-size user screenshot, final firmware"
-dec_sum,22824,22.2891,,,"STRED stred-size user screenshot, final firmware"

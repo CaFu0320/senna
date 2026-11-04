@@ -1,0 +1,376 @@
+{
+  "format": "task7_relative_quaternion_tree_v1",
+  "model_type": "DecisionTreeClassifier",
+  "classes": [
+    "Curl",
+    "Lateral raise",
+    "Left punch"
+  ],
+  "labels": {
+    "Curl": 0,
+    "Lateral raise": 1,
+    "Left punch": 2
+  },
+  "q_csv_order": [
+    "q1=x",
+    "q2=y",
+    "q3=z",
+    "q4=w"
+  ],
+  "q_model_order": [
+    "w",
+    "x",
+    "y",
+    "z"
+  ],
+  "window": 42,
+  "stride": 21,
+  "feature_names": [
+    "relq0__mean",
+    "relq0__var",
+    "relq0__max",
+    "relq0__min",
+    "relq0__p2p",
+    "relq0__energy",
+    "relq1__mean",
+    "relq1__var",
+    "relq1__max",
+    "relq1__min",
+    "relq1__p2p",
+    "relq1__energy",
+    "relq2__mean",
+    "relq2__var",
+    "relq2__max",
+    "relq2__min",
+    "relq2__p2p",
+    "relq2__energy",
+    "relq3__mean",
+    "relq3__var",
+    "relq3__max",
+    "relq3__min",
+    "relq3__p2p",
+    "relq3__energy",
+    "step_sq__mean",
+    "step_sq__var",
+    "step_sq__max",
+    "step_sq__min",
+    "step_sq__p2p",
+    "step_sq__energy",
+    "anchor_sq__mean",
+    "anchor_sq__var",
+    "anchor_sq__max",
+    "anchor_sq__min",
+    "anchor_sq__p2p",
+    "anchor_sq__energy"
+  ],
+  "notes": "Relative quaternion features; holdout is from the SAME session per class; training leaf purity is not probability confidence. Quaternion sign must be continuous.",
+  "tree_depth": 4,
+  "leaves": 10,
+  "node_count": 19,
+  "nodes": [
+    {
+      "node_id": 0,
+      "feature_index": 10,
+      "feature_name": "relq1__p2p",
+      "threshold": 0.06502550095319748,
+      "left_child": 1,
+      "right_child": 14,
+      "predicted_class_index": 1,
+      "leaf_training_purity": 0.33658536585365856,
+      "training_class_distribution": {
+        "Curl": 0.33170731707317075,
+        "Lateral raise": 0.33658536585365856,
+        "Left punch": 0.33170731707317075
+      },
+      "is_leaf": false
+    },
+    {
+      "node_id": 1,
+      "feature_index": 28,
+      "feature_name": "step_sq__p2p",
+      "threshold": 0.00014250022650230676,
+      "left_child": 2,
+      "right_child": 7,
+      "predicted_class_index": 0,
+      "leaf_training_purity": 0.4981549815498155,
+      "training_class_distribution": {
+        "Curl": 0.4981549815498155,
+        "Lateral raise": 0.4981549815498155,
+        "Left punch": 0.0036900369003690036
+      },
+      "is_leaf": false
+    },
+    {
+      "node_id": 2,
+      "feature_index": 26,
+      "feature_name": "step_sq__max",
+      "threshold": 0.00012400047853589058,
+      "left_child": 3,
+      "right_child": 4,
+      "predicted_class_index": 1,
+      "leaf_training_purity": 0.9924242424242424,
+      "training_class_distribution": {
+        "Curl": 0.007575757575757576,
+        "Lateral raise": 0.9924242424242424,
+        "Left punch": 0.0
+      },
+      "is_leaf": false
+    },
+    {
+      "node_id": 3,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "predicted_class_index": 1,
+      "leaf_training_purity": 1.0,
+      "training_class_distribution": {
+        "Curl": 0.0,
+        "Lateral raise": 1.0,
+        "Left punch": 0.0
+      },
+      "is_leaf": true
+    },
+    {
+      "node_id": 4,
+      "feature_index": 26,
+      "feature_name": "step_sq__max",
+      "threshold": 0.0001265000391867943,
+      "left_child": 5,
+      "right_child": 6,
+      "predicted_class_index": 1,
+      "leaf_training_purity": 0.9,
+      "training_class_distribution": {
+        "Curl": 0.1,
+        "Lateral raise": 0.9,
+        "Left punch": 0.0
+      },
+      "is_leaf": false
+    },
+    {
+      "node_id": 5,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "predicted_class_index": 0,
+      "leaf_training_purity": 0.5,
+      "training_class_distribution": {
+        "Curl": 0.5,
+        "Lateral raise": 0.5,
+        "Left punch": 0.0
+      },
+      "is_leaf": true
+    },
+    {
+      "node_id": 6,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "predicted_class_index": 1,
+      "leaf_training_purity": 1.0,
+      "training_class_distribution": {
+        "Curl": 0.0,
+        "Lateral raise": 1.0,
+        "Left punch": 0.0
+      },
+      "is_leaf": true
+    },
+    {
+      "node_id": 7,
+      "feature_index": 24,
+      "feature_name": "step_sq__mean",
+      "threshold": 4.464634184841998e-05,
+      "left_child": 8,
+      "right_child": 11,
+      "predicted_class_index": 0,
+      "leaf_training_purity": 0.9640287769784173,
+      "training_class_distribution": {
+        "Curl": 0.9640287769784173,
+        "Lateral raise": 0.02877697841726619,
+        "Left punch": 0.007194244604316547
+      },
+      "is_leaf": false
+    },
+    {
+      "node_id": 8,
+      "feature_index": 17,
+      "feature_name": "relq2__energy",
+      "threshold": 0.0064306489657610655,
+      "left_child": 9,
+      "right_child": 10,
+      "predicted_class_index": 1,
+      "leaf_training_purity": 0.5,
+      "training_class_distribution": {
+        "Curl": 0.25,
+        "Lateral raise": 0.5,
+        "Left punch": 0.25
+      },
+      "is_leaf": false
+    },
+    {
+      "node_id": 9,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "predicted_class_index": 0,
+      "leaf_training_purity": 0.5,
+      "training_class_distribution": {
+        "Curl": 0.5,
+        "Lateral raise": 0.0,
+        "Left punch": 0.5
+      },
+      "is_leaf": true
+    },
+    {
+      "node_id": 10,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "predicted_class_index": 1,
+      "leaf_training_purity": 1.0,
+      "training_class_distribution": {
+        "Curl": 0.0,
+        "Lateral raise": 1.0,
+        "Left punch": 0.0
+      },
+      "is_leaf": true
+    },
+    {
+      "node_id": 11,
+      "feature_index": 20,
+      "feature_name": "relq3__max",
+      "threshold": 0.050772011280059814,
+      "left_child": 12,
+      "right_child": 13,
+      "predicted_class_index": 0,
+      "leaf_training_purity": 0.9851851851851852,
+      "training_class_distribution": {
+        "Curl": 0.9851851851851852,
+        "Lateral raise": 0.014814814814814815,
+        "Left punch": 0.0
+      },
+      "is_leaf": false
+    },
+    {
+      "node_id": 12,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "predicted_class_index": 0,
+      "leaf_training_purity": 1.0,
+      "training_class_distribution": {
+        "Curl": 1.0,
+        "Lateral raise": 0.0,
+        "Left punch": 0.0
+      },
+      "is_leaf": true
+    },
+    {
+      "node_id": 13,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "predicted_class_index": 0,
+      "leaf_training_purity": 0.5,
+      "training_class_distribution": {
+        "Curl": 0.5,
+        "Lateral raise": 0.5,
+        "Left punch": 0.0
+      },
+      "is_leaf": true
+    },
+    {
+      "node_id": 14,
+      "feature_index": 16,
+      "feature_name": "relq2__p2p",
+      "threshold": 0.09569449350237846,
+      "left_child": 15,
+      "right_child": 16,
+      "predicted_class_index": 2,
+      "leaf_training_purity": 0.9712230215827338,
+      "training_class_distribution": {
+        "Curl": 0.007194244604316547,
+        "Lateral raise": 0.02158273381294964,
+        "Left punch": 0.9712230215827338
+      },
+      "is_leaf": false
+    },
+    {
+      "node_id": 15,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "predicted_class_index": 2,
+      "leaf_training_purity": 1.0,
+      "training_class_distribution": {
+        "Curl": 0.0,
+        "Lateral raise": 0.0,
+        "Left punch": 1.0
+      },
+      "is_leaf": true
+    },
+    {
+      "node_id": 16,
+      "feature_index": 4,
+      "feature_name": "relq0__p2p",
+      "threshold": 0.01698148250579834,
+      "left_child": 17,
+      "right_child": 18,
+      "predicted_class_index": 1,
+      "leaf_training_purity": 0.75,
+      "training_class_distribution": {
+        "Curl": 0.25,
+        "Lateral raise": 0.75,
+        "Left punch": 0.0
+      },
+      "is_leaf": false
+    },
+    {
+      "node_id": 17,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "predicted_class_index": 1,
+      "leaf_training_purity": 1.0,
+      "training_class_distribution": {
+        "Curl": 0.0,
+        "Lateral raise": 1.0,
+        "Left punch": 0.0
+      },
+      "is_leaf": true
+    },
+    {
+      "node_id": 18,
+      "feature_index": null,
+      "feature_name": null,
+      "threshold": null,
+      "left_child": null,
+      "right_child": null,
+      "predicted_class_index": 0,
+      "leaf_training_purity": 0.5,
+      "training_class_distribution": {
+        "Curl": 0.5,
+        "Lateral raise": 0.5,
+        "Left punch": 0.0
+      },
+      "is_leaf": true
+    }
+  ]
+}

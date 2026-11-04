@@ -1,0 +1,5 @@
+Raw windows: 615; wrapped-window checks: 658
+C vs saved Python features: max_abs_diff=4.17e-07, max_scaled_diff=3.48e-05; out-of-tolerance windows=0
+Full C pipeline vs JSON model predictions: mismatches=0 / 615
+Global orientation stress test: changed predictions=0 / 123
+PASS: desktop feature extraction, ring wrapping, C/JSON prediction agreement

@@ -1,0 +1,21 @@
+criterion,model,rank
+Highest accuracy,RAW,3
+Highest accuracy,RAW+FE,1
+Highest accuracy,QUAT,4
+Highest accuracy,QUAT+FE,1
+Fewest leaves,RAW,4
+Fewest leaves,RAW+FE,2
+Fewest leaves,QUAT,2
+Fewest leaves,QUAT+FE,1
+Smallest JSON,RAW,4
+Smallest JSON,RAW+FE,3
+Smallest JSON,QUAT,1
+Smallest JSON,QUAT+FE,2
+Smallest estimated storage,RAW,4
+Smallest estimated storage,RAW+FE,3
+Smallest estimated storage,QUAT,1
+Smallest estimated storage,QUAT+FE,2
+Smallest absolute train/test gap,RAW,3
+Smallest absolute train/test gap,RAW+FE,1
+Smallest absolute train/test gap,QUAT,4
+Smallest absolute train/test gap,QUAT+FE,1

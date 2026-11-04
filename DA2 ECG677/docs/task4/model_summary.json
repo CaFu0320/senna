@@ -1,18 +1,18 @@
 {
   "samples": {
-    "train": 4390,
-    "validation": 941,
-    "test": 942
+    "train": 8500,
+    "validation": 1822,
+    "test": 1823
   },
   "recording_files_per_class": {
-    "Horizontal": 1,
-    "Static": 1,
-    "Vertical": 1
+    "Curl": 1,
+    "LateralRaise": 1,
+    "LeftPunch": 1
   },
   "tree_depth": 3,
-  "leaf_count": 4,
-  "node_count": 7,
-  "json_size_bytes": 3284,
+  "leaf_count": 5,
+  "node_count": 9,
+  "json_size_bytes": 4099,
   "evaluation_note": "Chronological blocks within each recording. Adjacent time samples are correlated; use multiple sessions per class for stronger evaluation.",
   "task": "Task 4 - QUAT (q0,q1,q2,q3)",
   "features": [
@@ -22,32 +22,32 @@
     "q3"
   ],
   "classes": [
-    "Horizontal",
-    "Static",
-    "Vertical"
+    "Curl",
+    "LateralRaise",
+    "LeftPunch"
   ],
-  "train_samples": 4390,
-  "validation_samples": 941,
-  "test_samples": 942,
+  "train_samples": 8500,
+  "validation_samples": 1822,
+  "test_samples": 1823,
   "split_mode": "chronological",
   "criterion": "gini",
   "max_depth_setting": null,
   "min_samples_leaf": 1,
   "train_accuracy": 1.0,
-  "validation_accuracy": 1.0,
-  "test_accuracy": 0.7547770700636943,
-  "generalization_gap_train_minus_test": 0.24522292993630568,
-  "json_size_kb": 3.207,
-  "c_source_and_header_combined_bytes": 1286,
-  "embedded_tree_size_bytes_est": 63,
+  "validation_accuracy": 0.9796926454445664,
+  "test_accuracy": 0.8721886999451454,
+  "generalization_gap_train_minus_test": 0.12781130005485464,
+  "json_size_kb": 4.003,
+  "c_source_and_header_combined_bytes": 1339,
+  "embedded_tree_size_bytes_est": 81,
   "importance": {
-    "q0": 0.0,
-    "q1": 0.0,
-    "q2": 0.42611751713576035,
-    "q3": 0.5738824828642397
+    "q0": 0.9680785431926199,
+    "q1": 0.0024643026039347033,
+    "q2": 0.02945715420344544,
+    "q3": 0.0
   },
-  "json_walk_us": 0.9726532908705432,
-  "sklearn_single_call_us": 112.51424333333185,
+  "json_walk_us": 0.3911546900830994,
+  "sklearn_single_call_us": 44.9722133347071,
   "mcu_tree_worst_case_us_est": 0.42857142857142855,
   "latency_note": "Host timings show relative cost only; the MCU figure is an estimate (12 cycles per tree level at 84 MHz)."
 }

@@ -7,9 +7,9 @@
     "q3"
   ],
   "classes": [
-    "Horizontal",
-    "Static",
-    "Vertical"
+    "Curl",
+    "LateralRaise",
+    "LeftPunch"
   ],
   "statistics": [
     "mean",
@@ -22,22 +22,22 @@
   "candidate_features": 24,
   "selected_feature_count": 8,
   "selected_features": [
-    "q3__var",
-    "q3__min",
-    "q3__p2p",
+    "q0__mean",
+    "q0__min",
     "q1__max",
-    "q1__energy",
-    "q3__mean",
-    "q3__max",
-    "q1__var"
+    "q1__min",
+    "q0__max",
+    "q1__mean",
+    "q0__energy",
+    "q2__max"
   ],
   "window_size_samples": 42,
   "stride_samples": 21,
   "overlap_percent": 50.0,
   "split_mode": "chronological",
-  "train_windows": 205,
-  "validation_windows": 41,
-  "test_windows": 41,
+  "train_windows": 401,
+  "validation_windows": 81,
+  "test_windows": 81,
   "criterion": "gini",
   "max_depth_setting": null,
   "min_samples_leaf": 1,
@@ -45,55 +45,55 @@
   "random_state": 42,
   "train_accuracy": 1.0,
   "validation_accuracy": 1.0,
-  "test_accuracy": 0.8048780487804879,
-  "generalization_gap_train_minus_test": 0.19512195121951215,
+  "test_accuracy": 1.0,
+  "generalization_gap_train_minus_test": 0.0,
   "tree_depth": 2,
   "leaf_count": 3,
   "node_count": 5,
-  "json_size_kb": 4.675,
-  "c_source_and_header_combined_bytes": 3287,
+  "json_size_kb": 4.665,
+  "c_source_and_header_combined_bytes": 3281,
   "embedded_tree_size_bytes_est": 45,
   "window_buffer_bytes": 672,
   "features_used_by_tree": [
-    "q1__energy",
-    "q3__max"
+    "q0__mean",
+    "q0__min"
   ],
   "importance": {
-    "q3__max": 0.5061887079881938,
-    "q1__energy": 0.4938112920118061,
-    "q3__var": 0.0,
-    "q3__min": 0.0,
+    "q0__mean": 0.5006273408239701,
+    "q0__min": 0.49937265917602996,
     "q1__max": 0.0,
-    "q3__p2p": 0.0,
-    "q3__mean": 0.0,
-    "q1__var": 0.0
+    "q1__min": 0.0,
+    "q0__max": 0.0,
+    "q1__mean": 0.0,
+    "q0__energy": 0.0,
+    "q2__max": 0.0
   },
   "importance_by_component": {
-    "q0": 0.0,
-    "q1": 0.4938112920118061,
+    "q0": 1.0,
+    "q1": 0.0,
     "q2": 0.0,
-    "q3": 0.5061887079881938
+    "q3": 0.0
   },
   "importance_by_statistic": {
-    "mean": 0.0,
+    "mean": 0.5006273408239701,
     "var": 0.0,
-    "max": 0.5061887079881938,
-    "min": 0.0,
+    "max": 0.0,
+    "min": 0.49937265917602996,
     "p2p": 0.0,
-    "energy": 0.4938112920118061
+    "energy": 0.0
   },
   "selected_per_component": {
-    "q0": 0,
+    "q0": 4,
     "q1": 3,
-    "q2": 0,
-    "q3": 5
+    "q2": 1,
+    "q3": 0
   },
   "selected_per_statistic": {
-    "mean": 1,
-    "var": 2,
-    "max": 2,
-    "min": 1,
-    "p2p": 1,
+    "mean": 2,
+    "var": 0,
+    "max": 3,
+    "min": 2,
+    "p2p": 0,
     "energy": 1
   },
   "tree_diagnostic": {
@@ -101,16 +101,16 @@
     "first_eliminated": [
       "q0__mean",
       "q0__var",
-      "q0__max",
       "q0__min",
+      "q0__max",
       "q0__p2p",
-      "q0__energy"
+      "q1__mean"
     ],
-    "elimination_follows_column_order": true
+    "elimination_follows_column_order": false
   },
-  "json_walk_us": 0.43675428341053585,
-  "sklearn_single_call_us": 63.43205999996826,
-  "feature_extraction_host_us_per_window": 35.94577000001209,
+  "json_walk_us": 0.28294373610025436,
+  "sklearn_single_call_us": 42.13852666604604,
+  "feature_extraction_host_us_per_window": 28.58990666633569,
   "mcu_tree_worst_case_us_est": 0.2857142857142857,
   "latency_note": "Host timings show relative cost only; MCU figure is an estimate (12 cycles per level, 84 MHz)."
 }

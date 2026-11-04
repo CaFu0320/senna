@@ -1,4 +1,4 @@
-,Predicted Horizontal,Predicted Static,Predicted Vertical
-Actual Horizontal,14,0,0
-Actual Static,0,13,0
-Actual Vertical,8,0,6
+,Predicted Curl,Predicted LateralRaise,Predicted LeftPunch
+Actual Curl,27,0,0
+Actual LateralRaise,0,27,0
+Actual LeftPunch,0,0,27

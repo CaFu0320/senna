@@ -1,7 +1,7 @@
-|--- q3__max <= 0.002500
-|   |--- q1__energy <= 0.000047
-|   |   |--- class: Static
-|   |--- q1__energy >  0.000047
-|   |   |--- class: Horizontal
-|--- q3__max >  0.002500
-|   |--- class: Vertical
+|--- q0__mean <= 0.319012
+|   |--- q0__min <= 0.028000
+|   |   |--- class: Curl
+|   |--- q0__min >  0.028000
+|   |   |--- class: LateralRaise
+|--- q0__mean >  0.319012
+|   |--- class: LeftPunch

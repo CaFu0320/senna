@@ -1,0 +1,1153 @@
+{
+    "children": [
+        {
+            "children": [
+            ],
+            "cssClasses": [
+            ],
+            "id": "2a767c66-d60d-46b6-9fb5-6a29b61fe85f",
+            "routingPoints": [
+            ],
+            "sourceId": "2538f801-cce6-4b94-9f51-0cd3c42d2f74_outPort_out",
+            "targetId": "0033baab-c89f-4066-8c1d-d322e7126e30_inPort_SensorHubHandle",
+            "type": "edge"
+        },
+        {
+            "children": [
+            ],
+            "cssClasses": [
+            ],
+            "id": "e15d6b92-df89-4293-b7a6-acad92fccd73",
+            "routingPoints": [
+            ],
+            "sourceId": "0033baab-c89f-4066-8c1d-d322e7126e30_outPort_data",
+            "targetId": "c8da962b-f2fc-4018-bc7d-ca8e9268987a_inPort_in",
+            "type": "edge"
+        },
+        {
+            "children": [
+            ],
+            "cssClasses": [
+            ],
+            "id": "321e9b57-ca63-4325-8382-77d4fa5af5ee",
+            "routingPoints": [
+            ],
+            "sourceId": "0033baab-c89f-4066-8c1d-d322e7126e30_outPort_data",
+            "targetId": "378e9e7e-8355-4964-8724-b437574028bf_inPort_in",
+            "type": "edge"
+        },
+        {
+            "args": null,
+            "children": null,
+            "command": [
+                {
+                    "args": [
+                        {
+                            "item": "&amp",
+                            "type": "text"
+                        },
+                        {
+                            "item": "out",
+                            "type": "output"
+                        }
+                    ],
+                    "function": "Sensor_Hub_Handler"
+                }
+            ],
+            "cssClasses": null,
+            "dependency": "",
+            "description": "Sensor Hub provides links to sensor and algorithms in order to retrieve data from them.",
+            "display_name": "Sensor Hub",
+            "function": [
+            ],
+            "id": "2538f801-cce6-4b94-9f51-0cd3c42d2f74",
+            "init_code": [
+                {
+                    "args": [
+                        {
+                            "item": "data_rate_control",
+                            "type": "property"
+                        },
+                        {
+                            "item": "data_rate",
+                            "type": "property"
+                        },
+                        {
+                            "item": "accelerometer_fs",
+                            "type": "property"
+                        },
+                        {
+                            "item": "gyroscope_fs",
+                            "type": "property"
+                        }
+                    ],
+                    "function": "Sensor_Hub_Init"
+                }
+            ],
+            "inputs": [
+            ],
+            "instances": 1,
+            "layout": null,
+            "layoutOptions": null,
+            "library_name": "Sensor Hub",
+            "memory": [
+            ],
+            "name": "Sensor Hub",
+            "node_number": 1,
+            "node_type": "functional",
+            "outputs": [
+                {
+                    "description": "Sensor Hub handler",
+                    "name": "out",
+                    "size": 1,
+                    "type": "void"
+                }
+            ],
+            "position": {
+                "x": 10,
+                "y": 0
+            },
+            "properties_schema": {
+                "properties": {
+                    "accelerometer_fs": {
+                        "description": "Defines the accelerometer full scale.",
+                        "name": "Accelerometer Full Scale",
+                        "oneOf": [
+                            {
+                                "const": 0,
+                                "title": "2 g"
+                            },
+                            {
+                                "const": 1,
+                                "title": "4 g"
+                            },
+                            {
+                                "const": 2,
+                                "title": "8 g"
+                            },
+                            {
+                                "const": 3,
+                                "title": "16 g"
+                            }
+                        ],
+                        "type": "integer"
+                    },
+                    "data_rate": {
+                        "description": "Defines the sensor's and algorithm's data rate in Hz. If accelerometer or gyroscope is selected as data rate source, the closest higher available output data rate (ODR) is selected.",
+                        "maximum": 400,
+                        "minimum": 1,
+                        "name": "Data Rate",
+                        "type": "integer"
+                    },
+                    "data_rate_control": {
+                        "description": "Defines the data rate source.",
+                        "name": "Data Rate Control",
+                        "oneOf": [
+                            {
+                                "const": 0,
+                                "title": "Timer"
+                            },
+                            {
+                                "const": 1,
+                                "title": "Accelerometer"
+                            },
+                            {
+                                "const": 2,
+                                "title": "Gyroscope"
+                            },
+                            {
+                                "const": 255,
+                                "title": "Offline Data"
+                            }
+                        ],
+                        "type": "integer"
+                    },
+                    "gyroscope_fs": {
+                        "description": "Defines the gyroscope full scale.",
+                        "name": "Gyroscope Full Scale",
+                        "oneOf": [
+                            {
+                                "const": 0,
+                                "title": "245 dps"
+                            },
+                            {
+                                "const": 1,
+                                "title": "500 dps"
+                            },
+                            {
+                                "const": 2,
+                                "title": "1000 dps"
+                            },
+                            {
+                                "const": 3,
+                                "title": "2000 dps"
+                            }
+                        ],
+                        "type": "integer"
+                    }
+                }
+            },
+            "properties_values": {
+                "accelerometer_fs": 2,
+                "data_rate": 100,
+                "data_rate_control": 0,
+                "gyroscope_fs": 3
+            },
+            "size": {
+                "height": 36,
+                "width": 100
+            },
+            "type": "node:component",
+            "version": "1.0"
+        },
+        {
+            "args": null,
+            "children": null,
+            "command": [
+                {
+                    "args": [
+                        {
+                            "item": "SensorHubHandle",
+                            "type": "input"
+                        },
+                        {
+                            "item": "data",
+                            "type": "output"
+                        }
+                    ],
+                    "function": "Quaternions6X_GetData"
+                }
+            ],
+            "cssClasses": null,
+            "dependency": "Accelerometer,Gyroscope",
+            "description": "Retrieves the orientation data. The output data is an orientation in quaternion format. The orientation is computed using accelerometer and gyroscope. Sample rate for this algorithm is 100Hz, Data Rate of the Sensor Hub must be set equal or higher.",
+            "display_name": "Quaternions 6X",
+            "function": [
+            ],
+            "id": "0033baab-c89f-4066-8c1d-d322e7126e30",
+            "init_code": [
+                {
+                    "args": [
+                    ],
+                    "function": "MotionFX_6X_Init"
+                }
+            ],
+            "inputs": [
+                {
+                    "description": "Connect to Sensor Hub output.",
+                    "name": "SensorHubHandle",
+                    "size": 1,
+                    "type": "void"
+                }
+            ],
+            "instances": 1,
+            "layout": null,
+            "layoutOptions": null,
+            "library_name": "MotionFX 6x",
+            "memory": [
+            ],
+            "name": "Quaternions 6X",
+            "node_number": 1,
+            "node_type": "functional",
+            "outputs": [
+                {
+                    "description": "Orientation data in quaternion format.",
+                    "name": "data",
+                    "size": 4,
+                    "type": "float"
+                }
+            ],
+            "position": {
+                "x": 190,
+                "y": 7
+            },
+            "properties_schema": {
+                "properties": {
+                }
+            },
+            "properties_values": {
+            },
+            "size": {
+                "height": 36,
+                "width": 108.0625
+            },
+            "type": "node:component",
+            "version": "1.0"
+        },
+        {
+            "args": null,
+            "children": null,
+            "command": [
+                {
+                    "args": [
+                        {
+                            "item": "in",
+                            "type": "input"
+                        }
+                    ],
+                    "function": "Display_Update"
+                }
+            ],
+            "cssClasses": null,
+            "dependency": "",
+            "description": "Displays up to six real-time curves. The X-axis represents time, Y-axis is value.",
+            "display_name": "Graph",
+            "function": [
+            ],
+            "id": "c8da962b-f2fc-4018-bc7d-ca8e9268987a",
+            "init_code": [
+            ],
+            "inputs": [
+                {
+                    "description": "Input data to plot (y-axis value). The input data size has to match with number of curves.",
+                    "name": "in",
+                    "size": "size_of_input",
+                    "type": "variant"
+                }
+            ],
+            "instances": 0,
+            "layout": null,
+            "layoutOptions": null,
+            "library_name": "Display",
+            "memory": [
+            ],
+            "name": "Graph",
+            "node_number": 1,
+            "node_type": "display",
+            "outputs": [
+            ],
+            "position": {
+                "x": 498,
+                "y": 8
+            },
+            "properties_schema": {
+                "properties": {
+                    "autoscale": {
+                        "description": "Auto-scale of Y axis enabled.",
+                        "name": "Auto-scale",
+                        "oneOf": [
+                            {
+                                "const": 0,
+                                "title": "OFF"
+                            },
+                            {
+                                "const": 1,
+                                "title": "ON"
+                            }
+                        ],
+                        "type": "integer"
+                    },
+                    "full_scale": {
+                        "description": "Axis Y full scale. (Format: 2.5 or -1.5:3)",
+                        "name": "Full Scale",
+                        "type": "string"
+                    },
+                    "preset_values_index": {
+                        "description": "Enables easy setting of value names and units to apropriate values.",
+                        "name": "Preset Values",
+                        "oneOf": [
+                            {
+                                "const": 0,
+                                "title": "Custom"
+                            },
+                            {
+                                "const": 1,
+                                "title": "Accelerometer"
+                            },
+                            {
+                                "const": 2,
+                                "title": "Gyroscope"
+                            },
+                            {
+                                "const": 3,
+                                "title": "Magnetometer"
+                            },
+                            {
+                                "const": 4,
+                                "title": "Acc and Gyro"
+                            },
+                            {
+                                "const": 5,
+                                "title": "Acc and Mag"
+                            }
+                        ],
+                        "type": "integer"
+                    },
+                    "size_of_input": {
+                        "description": "Defines number of curves to plot. Value must be from 1 to 6.",
+                        "maximum": 6,
+                        "minimum": 1,
+                        "name": "Number of Curves",
+                        "preset_values": [
+                            3,
+                            3,
+                            3,
+                            3,
+                            6,
+                            6
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "integer"
+                    },
+                    "unit_name": {
+                        "description": "Name of graph units.",
+                        "name": "Unit Name",
+                        "preset_values": [
+                            "",
+                            "g",
+                            "dps",
+                            "uT",
+                            "g/dps",
+                            "g/uT"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "value_1_name": {
+                        "description": "Name of the waveform 1.",
+                        "display_condition": 1,
+                        "display_dependency": "size_of_input",
+                        "name": "Waveform 1 Name",
+                        "preset_values": [
+                            "Waveform 1",
+                            "acc_x",
+                            "gyro_x",
+                            "mag_x",
+                            "acc_x",
+                            "acc_x"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "value_2_name": {
+                        "description": "Name of the waveform 2.",
+                        "display_condition": 2,
+                        "display_dependency": "size_of_input",
+                        "name": "Waveform 2 Name",
+                        "preset_values": [
+                            "Waveform 2",
+                            "acc_y",
+                            "gyro_y",
+                            "mag_y",
+                            "acc_y",
+                            "acc_y"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "value_3_name": {
+                        "description": "Name of the waveform 3.",
+                        "display_condition": 3,
+                        "display_dependency": "size_of_input",
+                        "name": "Waveform 3 Name",
+                        "preset_values": [
+                            "Waveform 3",
+                            "acc_z",
+                            "gyro_z",
+                            "mag_z",
+                            "acc_z",
+                            "acc_z"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "value_4_name": {
+                        "description": "Name of the waveform 4.",
+                        "display_condition": 4,
+                        "display_dependency": "size_of_input",
+                        "name": "Waveform 4 Name",
+                        "preset_values": [
+                            "Waveform 4",
+                            "",
+                            "",
+                            "",
+                            "gyro_x",
+                            "mag_x"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "value_5_name": {
+                        "description": "Name of the waveform 5.",
+                        "display_condition": 5,
+                        "display_dependency": "size_of_input",
+                        "name": "Waveform 5 Name",
+                        "preset_values": [
+                            "Waveform 5",
+                            "",
+                            "",
+                            "",
+                            "gyro_y",
+                            "mag_y"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "value_6_name": {
+                        "description": "Name of the waveform 6.",
+                        "display_condition": 6,
+                        "display_dependency": "size_of_input",
+                        "name": "Waveform 6 Name",
+                        "preset_values": [
+                            "Waveform 6",
+                            "",
+                            "",
+                            "",
+                            "gyro_z",
+                            "mag_z"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "window_name": {
+                        "description": "Label of the graph window.",
+                        "name": "Name",
+                        "preset_values": [
+                            "Graph",
+                            "Acceleration",
+                            "Angular Rate",
+                            "Magnetic Field",
+                            "Acc and Gyro",
+                            "Acc and Mag"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "zero_axis_position": {
+                        "description": "Horizontal position of zero axis.",
+                        "name": "Zero axis position",
+                        "oneOf": [
+                            {
+                                "const": 1,
+                                "title": "Bottom"
+                            },
+                            {
+                                "const": 3,
+                                "title": "Middle"
+                            },
+                            {
+                                "const": 5,
+                                "title": "Top"
+                            }
+                        ],
+                        "type": "integer"
+                    }
+                }
+            },
+            "properties_values": {
+                "autoscale": 1,
+                "full_scale": "1",
+                "preset_values_index": 0,
+                "size_of_input": 4,
+                "unit_name": "",
+                "value_1_name": "q1",
+                "value_2_name": "q2",
+                "value_3_name": "q3",
+                "value_4_name": "q4",
+                "value_5_name": "Waveform 5",
+                "value_6_name": "Waveform 6",
+                "window_name": "Graph",
+                "zero_axis_position": 3
+            },
+            "size": {
+                "height": 36,
+                "width": 80
+            },
+            "type": "node:component",
+            "version": "1.0"
+        },
+        {
+            "args": null,
+            "children": null,
+            "command": [
+                {
+                    "args": [
+                        {
+                            "item": "in",
+                            "type": "input"
+                        }
+                    ],
+                    "function": "Display_Update"
+                }
+            ],
+            "cssClasses": null,
+            "dependency": "",
+            "description": "Displays up to eight integer values.",
+            "display_name": "Value",
+            "function": [
+            ],
+            "id": "378e9e7e-8355-4964-8724-b437574028bf",
+            "init_code": [
+            ],
+            "inputs": [
+                {
+                    "description": "Input data to display. The input data size has to match with number of values.",
+                    "name": "in",
+                    "size": "size_of_input",
+                    "type": "variant"
+                }
+            ],
+            "instances": 0,
+            "layout": null,
+            "layoutOptions": null,
+            "library_name": "Display",
+            "memory": [
+            ],
+            "name": "Value",
+            "node_number": 1,
+            "node_type": "display",
+            "outputs": [
+            ],
+            "position": {
+                "x": 496,
+                "y": 82
+            },
+            "properties_schema": {
+                "properties": {
+                    "preset_values_index": {
+                        "description": "Enables easy setting of value names and units to apropriate values.",
+                        "name": "Preset Values",
+                        "oneOf": [
+                            {
+                                "const": 0,
+                                "title": "Custom"
+                            },
+                            {
+                                "const": 1,
+                                "title": "Accelerometer"
+                            },
+                            {
+                                "const": 2,
+                                "title": "Gyroscope"
+                            },
+                            {
+                                "const": 3,
+                                "title": "Magnetometer"
+                            },
+                            {
+                                "const": 4,
+                                "title": "Acc and Gyro"
+                            },
+                            {
+                                "const": 5,
+                                "title": "Acc and Mag"
+                            }
+                        ],
+                        "type": "integer"
+                    },
+                    "size_of_input": {
+                        "description": "Defines number of values to display. Value must be from 1 to 8.",
+                        "maximum": 8,
+                        "minimum": 1,
+                        "name": "Number of Values",
+                        "preset_values": [
+                            3,
+                            3,
+                            3,
+                            3,
+                            6,
+                            6
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "integer"
+                    },
+                    "unit_1_name": {
+                        "description": "Unit of the value 1.",
+                        "display_condition": 1,
+                        "display_dependency": "size_of_input",
+                        "name": "Unit 1 Name",
+                        "preset_values": [
+                            "",
+                            "g",
+                            "dps",
+                            "uT",
+                            "g",
+                            "g"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "unit_2_name": {
+                        "description": "Unit of the value 2.",
+                        "display_condition": 2,
+                        "display_dependency": "size_of_input",
+                        "name": "Unit 2 Name",
+                        "preset_values": [
+                            "",
+                            "g",
+                            "dps",
+                            "uT",
+                            "g",
+                            "g"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "unit_3_name": {
+                        "description": "Unit of the value 3.",
+                        "display_condition": 3,
+                        "display_dependency": "size_of_input",
+                        "name": "Unit 3 Name",
+                        "preset_values": [
+                            "",
+                            "g",
+                            "dps",
+                            "uT",
+                            "g",
+                            "g"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "unit_4_name": {
+                        "description": "Unit of the value 4.",
+                        "display_condition": 4,
+                        "display_dependency": "size_of_input",
+                        "name": "Unit 4 Name",
+                        "preset_values": [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "dps",
+                            "uT"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "unit_5_name": {
+                        "description": "Unit of the value 5.",
+                        "display_condition": 5,
+                        "display_dependency": "size_of_input",
+                        "name": "Unit 5 Name",
+                        "preset_values": [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "dps",
+                            "uT"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "unit_6_name": {
+                        "description": "Unit of the value 6.",
+                        "display_condition": 6,
+                        "display_dependency": "size_of_input",
+                        "name": "Unit 6 Name",
+                        "preset_values": [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "dps",
+                            "uT"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "unit_7_name": {
+                        "description": "Unit of the value 7.",
+                        "display_condition": 7,
+                        "display_dependency": "size_of_input",
+                        "name": "Unit 7 Name",
+                        "preset_values": [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "unit_8_name": {
+                        "description": "Unit of the value 8.",
+                        "display_condition": 8,
+                        "display_dependency": "size_of_input",
+                        "name": "Unit 8 Name",
+                        "preset_values": [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "value_1_name": {
+                        "description": "Label of the value 1.",
+                        "display_condition": 1,
+                        "display_dependency": "size_of_input",
+                        "name": "Value 1 Name",
+                        "preset_values": [
+                            "Value 1",
+                            "acc_x",
+                            "gyro_x",
+                            "mag_x",
+                            "acc_x",
+                            "acc_x"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "value_2_name": {
+                        "description": "Label of the value 2.",
+                        "display_condition": 2,
+                        "display_dependency": "size_of_input",
+                        "name": "Value 2 Name",
+                        "preset_values": [
+                            "Value 2",
+                            "acc_y",
+                            "gyro_y",
+                            "mag_y",
+                            "acc_y",
+                            "acc_y"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "value_3_name": {
+                        "description": "Label of the value 3.",
+                        "display_condition": 3,
+                        "display_dependency": "size_of_input",
+                        "name": "Value 3 Name",
+                        "preset_values": [
+                            "Value 3",
+                            "acc_z",
+                            "gyro_z",
+                            "mag_z",
+                            "acc_z",
+                            "acc_z"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "value_4_name": {
+                        "description": "Label of the value 4.",
+                        "display_condition": 4,
+                        "display_dependency": "size_of_input",
+                        "name": "Value 4 Name",
+                        "preset_values": [
+                            "Value 4",
+                            "",
+                            "",
+                            "",
+                            "gyro_x",
+                            "mag_x"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "value_5_name": {
+                        "description": "Label of the value 5.",
+                        "display_condition": 5,
+                        "display_dependency": "size_of_input",
+                        "name": "Value 5 Name",
+                        "preset_values": [
+                            "Value 5",
+                            "",
+                            "",
+                            "",
+                            "gyro_y",
+                            "mag_y"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "value_6_name": {
+                        "description": "Label of the value 6.",
+                        "display_condition": 6,
+                        "display_dependency": "size_of_input",
+                        "name": "Value 6 Name",
+                        "preset_values": [
+                            "Value 6",
+                            "",
+                            "",
+                            "",
+                            "gyro_z",
+                            "mag_z"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "value_7_name": {
+                        "description": "Label of the value 7.",
+                        "display_condition": 7,
+                        "display_dependency": "size_of_input",
+                        "name": "Value 7 Name",
+                        "preset_values": [
+                            "Value 7",
+                            "",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "value_8_name": {
+                        "description": "Label of the value 8.",
+                        "display_condition": 8,
+                        "display_dependency": "size_of_input",
+                        "name": "Value 8 Name",
+                        "preset_values": [
+                            "Value 8",
+                            "",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    },
+                    "window_name": {
+                        "description": "Label of the values window.",
+                        "name": "Name",
+                        "preset_values": [
+                            "Values",
+                            "Acceleration",
+                            "Angular Rate",
+                            "Magnetic Field",
+                            "Acc and Gyro",
+                            "Acc and Mag"
+                        ],
+                        "preset_values_editable": [
+                            1,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "string"
+                    }
+                }
+            },
+            "properties_values": {
+                "preset_values_index": 0,
+                "size_of_input": 4,
+                "unit_1_name": "",
+                "unit_2_name": "",
+                "unit_3_name": "",
+                "unit_4_name": "",
+                "unit_5_name": "",
+                "unit_6_name": "",
+                "unit_7_name": "",
+                "unit_8_name": "",
+                "value_1_name": "q1",
+                "value_2_name": "q2",
+                "value_3_name": "q3",
+                "value_4_name": "q4",
+                "value_5_name": "Value 5",
+                "value_6_name": "Value 6",
+                "value_7_name": "Value 7",
+                "value_8_name": "Value 8",
+                "window_name": "quaternionValue"
+            },
+            "size": {
+                "height": 36,
+                "width": 80
+            },
+            "type": "node:component",
+            "version": "1.0"
+        }
+    ],
+    "location": "C:/Users/dante/AppData/Local/STMicroelectronics/MEMS Studio/release",
+    "revision": 0,
+    "target": "NUCLEO-F401RE + X-NUCLEO-IKS4A1 (LSM6DSO16IS)",
+    "tool": {
+        "name": "MEMS Studio",
+        "version": "2.4.1"
+    },
+    "toolchain": "cube",
+    "type": "graph"
+}

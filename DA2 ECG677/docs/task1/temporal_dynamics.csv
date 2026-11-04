@@ -1,4 +1,4 @@
 label,acc_mag_peak_Hz,acc_mag_rms,gyro_mag_peak_Hz,gyro_mag_rms
-hmotion,2.34,0.2331,4.3,21.3877
-static,11.72,0.0033,0.78,0.0739
-vmotion,1.95,0.79,4.3,34.1974
+Curl,0.78,0.4015,1.56,58.8311
+LateralRaise,0.78,0.3923,1.17,29.7207
+LeftPunch,1.17,0.2264,1.17,41.5016

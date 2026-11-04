@@ -19,8 +19,8 @@ Changed, and why
   6. Extra outputs: accuracy/gap table, importance plot, selection by component/statistic,
      complexity comparison with Task 3, latency and window buffer size.
 Example
-  python model_quaternion_fe.py --horizontal Horizontal.csv --static Static.csv \
-      --vertical Vertical.csv --output-dir task5_results --rawfe-summary task3_results/model_summary.json
+  python model_quaternion_fe.py --curl Curl.csv --lateralraise LateralRaise.csv \
+      --leftpunch LeftPunch.csv --output-dir task5_results --rawfe-summary task3_results/model_summary.json
 """
 from __future__ import annotations
 
@@ -42,7 +42,7 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 from sklearn.tree import DecisionTreeClassifier, export_text, plot_tree, _tree
 
 CHANNELS = ["q0", "q1", "q2", "q3"]
-CLASSES = ["Horizontal", "Static", "Vertical"]
+CLASSES = ["Curl", "LateralRaise", "LeftPunch"]
 STATS = ["mean", "var", "max", "min", "p2p", "energy"]               # order used by the C code
 ALL_FEATURES = [f"{ch}__{s}" for ch in CHANNELS for s in STATS]       # 24 candidates
 DYNAMIC_ONLY = [f"{ch}__{s}" for ch in CHANNELS for s in ("var", "p2p")]
@@ -79,6 +79,8 @@ def load_recording(path: Path, label: str) -> pd.DataFrame:
         raise ValueError(f"{path}: missing quaternion columns {missing}. Found headers: {list(df.columns)}")
     out = pd.DataFrame({base: pd.to_numeric(df[src], errors="coerce") for src, base in keep})
     out = out.replace([np.inf, -np.inf], np.nan).dropna(subset=CHANNELS).reset_index(drop=True)
+    # Discard all-zero vectors, which cannot represent a valid orientation.
+    out = out.loc[(out[CHANNELS] ** 2).sum(axis=1) > 0].reset_index(drop=True)
     if len(out) < 50:
         raise ValueError(f"{path} has only {len(out)} valid quaternion rows.")
     out["label"], out["source_file"], out["source_row"] = label, path.name, np.arange(len(out))
@@ -122,6 +124,7 @@ def window_segment(df, win, stride):
 def build_windows(paths_by_class, args):
     recordings = [(lab, load_recording(Path(p), lab)) for lab, ps in paths_by_class for p in ps]
     split = {"train": [], "validation": [], "test": []}
+    # Build windows inside each chronological partition so overlapping windows never cross a split boundary.
     for _, df in recordings:
         for k, part in split_recording(df, args.train_fraction, args.validation_fraction).items():
             wf = window_segment(part, args.window_size, args.stride)
@@ -137,11 +140,13 @@ def build_windows(paths_by_class, args):
 
 # ---------------------------------------------------------------- feature selection
 def anova_table(X, y):
+    # Score each candidate independently with ANOVA. RFE determines which features are retained.
     F, p = f_classif(X, y)
     return pd.DataFrame({"feature": ALL_FEATURES, "anova_F": F, "p_value": p})
 
 
 def rfe_rank_all(X, y, seed):
+    # Remove one feature at a time to get a complete ranking from the random forest.
     sel = RFE(RandomForestClassifier(n_estimators=200, random_state=seed), n_features_to_select=1, step=1)
     sel.fit(X, y)
     return pd.Series(sel.ranking_, index=ALL_FEATURES)
@@ -290,9 +295,9 @@ def fit_tree(args, X, y):
 
 def main():
     ap = argparse.ArgumentParser(description="Task 5: quaternion window features + ANOVA/RFE selection -> tree -> JSON, C")
-    ap.add_argument("--horizontal", nargs="+", required=True)
-    ap.add_argument("--static", nargs="+", required=True)
-    ap.add_argument("--vertical", nargs="+", required=True)
+    ap.add_argument("--curl", nargs="+", required=True)
+    ap.add_argument("--lateralraise", nargs="+", required=True)
+    ap.add_argument("--leftpunch", nargs="+", required=True)
     ap.add_argument("--output-dir", default="task5_results")
     ap.add_argument("--rawfe-summary", default=None, help="Task 3 model_summary.json for the comparison table")
     ap.add_argument("--window-size", type=int, default=42)
@@ -310,7 +315,7 @@ def main():
     args = ap.parse_args()
     try:
         out = Path(args.output_dir); out.mkdir(parents=True, exist_ok=True)
-        W = build_windows([("Horizontal", args.horizontal), ("Static", args.static), ("Vertical", args.vertical)], args)
+        W = build_windows([("Curl", args.curl), ("LateralRaise", args.lateralraise), ("LeftPunch", args.leftpunch)], args)
         tr, va, te = W["train"], W["validation"], W["test"]
         for k, d in W.items():
             print(f"{k.title():10}: {len(d):,} windows; classes={d.label.value_counts().to_dict()}")
@@ -320,6 +325,7 @@ def main():
         anova = anova_table(Xtr, ytr)
         rank = rfe_rank_all(Xtr, ytr, args.random_state)
         selected = list(rank.sort_values().index[:args.n_features])
+        # Save the original feature indices so the C extractor can reproduce the selected input order.
         sel_idx = [ALL_FEATURES.index(f) for f in selected]
         diag = tree_diagnostic(Xtr, ytr, args.random_state)
         table = pd.DataFrame({"feature": ALL_FEATURES}).merge(anova, on="feature")
@@ -390,6 +396,7 @@ def main():
 
         # ---- latency / sizes
         nodes = {n["node_id"]: n for n in payload["nodes"]}
+        # Time traversal of the exported tree separately from window feature extraction and scikit-learn calls.
         X = te[selected].to_numpy(float); reps = max(1, 5000 // len(X)); t0 = time.perf_counter()
         for _ in range(reps):
             for x in X:

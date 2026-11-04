@@ -1,4 +1,4 @@
-file,label,samples,duration_s,effective_rate_Hz,dt_min_ms,dt_median_ms,dt_max_ms,pct_steps_over_1p5x_median,quaternion_source
-Horizontal.csv,hmotion,1814,25.4,71.38,10.0,10.0,20.0,40.1,logged in file (on-board fusion)
-Static.csv,static,1756,25.43,69.01,10.0,10.0,20.0,44.9,logged in file (on-board fusion)
-Vertical.csv,vmotion,1842,25.12,73.29,10.0,10.0,20.0,36.4,logged in file (on-board fusion)
+active_rate_Hz,gaps_over_100ms,file,label,samples,duration_s,effective_rate_Hz,dt_min_ms,dt_median_ms,dt_max_ms,pct_steps_over_1p5x_median,quaternion_source
+72.94,0,Curl.csv,Curl,2836,38.87,72.94,10.0,10.0,20.0,37.1,Madgwick (offline)
+72.89,0,LateralRaise.csv,LateralRaise,2849,39.07,72.89,10.0,10.0,20.0,37.2,Madgwick (offline)
+71.5,1,LeftPunch.csv,LeftPunch,3198,291.12,10.98,10.0,10.0,246420.0,39.9,Madgwick (offline)
