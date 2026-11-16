@@ -1,0 +1,13 @@
+{
+  "models/task2/quaternion_tfr_int8.tflite": "6fdb39057eb0dcdb14cb013fe4d832c37386f897b8751c8d495bd7dee339e7ef",
+  "models/task2/quaternion_tfr_float32.h5": "5f3e7c6deaef8e8d214c8fc9f2fecdea2561751d706fa874c5709beff8f8763c",
+  "models/task2/quaternion_tfr_float32_cubeai.tflite": "5f5c697ee19d2c9a90242546f37b3a1e206aa4b32695796d5d317baab6e34031",
+  "models/task1/quaternion_float32.h5": "9c4a06b4fe65b46d9638980f2f6951662290e28d414c2f9a805be710cacef90f",
+  "models/task1/quaternion_int8.tflite": "124148701f186976f025b28bbca58e0083df32e8dcb8e573d94d1c2806e55c45",
+  "data/derived/task1_evaluation.npz": "7c6f6dd7b01acece5dc96fe4f0bd5531f1fe046c924cb2d76d84243e2650a696",
+  "data/derived/task2_evaluation.npz": "da75fe486f3e433cd3c2ac4114b86db41a870e378d537d99f08e4d67bedb7b3f",
+  "data/derived/task1_training_calibration.npz": "9069afc1edd09de22328c85c34b899e03f92bb710361da902255a5764636116d",
+  "data/derived/task1_selected_features.json": "daa3b06fe2578881a259eb64de7871db561f257bcf836e71626d3c2022ec8046",
+  "data/derived/task2_selected_frequency_bins.json": "7c05fc594fb3a3cbc9597809d611eb11be0a15cc0413d59b86449aa986cfa88d",
+  "data/derived/task2_training_calibration.npz": "2c62f7f1f2f4c534e6c1e9947cda68f40fcb7b872cea4c612130950c0e26a360"
+}

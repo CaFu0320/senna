@@ -1,0 +1,17 @@
+feature,importance_mean_accuracy_drop,importance_std
+q0_fft_power,0.11574074074074077,0.02220292371904036
+q0_std,0.05555555555555558,0.03207501495497921
+q0_iqr,0.0,0.0
+q0_range,0.0,0.0
+q0_rms,0.0,0.0
+q0_mean_abs_diff,0.0,0.0
+q0_fft_peak_amplitude,0.0,0.0
+q0_fft_rolloff85_hz,0.0,0.0
+q1_range,0.0,0.0
+q1_fft_rolloff85_hz,0.0,0.0
+rotation_angle_mean_rad,0.0,0.0
+rotation_angle_std_rad,0.0,0.0
+rotation_angle_max_rad,0.0,0.0
+rotation_rate_mean_rad_s,0.0,0.0
+rotation_rate_std_rad_s,0.0,0.0
+rotation_rate_max_rad_s,0.0,0.0

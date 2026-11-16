@@ -1,0 +1,175 @@
+{
+  "source_csvs": [
+    "C:\\Users\\dante\\Documents\\DA3_Submission_Organized\\data\\raw\\leftrighttilt1.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Submission_Organized\\data\\raw\\leftrighttilt2.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Submission_Organized\\data\\raw\\leftrighttilt3.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Submission_Organized\\data\\raw\\leftrighttilt4.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Submission_Organized\\data\\raw\\leftrighttilt5.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Submission_Organized\\data\\raw\\static1.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Submission_Organized\\data\\raw\\static2.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Submission_Organized\\data\\raw\\static3.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Submission_Organized\\data\\raw\\static4.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Submission_Organized\\data\\raw\\static5.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Submission_Organized\\data\\raw\\updowntilt1.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Submission_Organized\\data\\raw\\updowntilt2.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Submission_Organized\\data\\raw\\updowntilt3.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Submission_Organized\\data\\raw\\updowntilt4.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Submission_Organized\\data\\raw\\updowntilt5.csv"
+  ],
+  "label_source": "filename",
+  "label_column": "label",
+  "timestamp_column": "elapsed_s",
+  "quaternion_columns_in_input_order": [
+    "q0",
+    "q1",
+    "q2",
+    "q3"
+  ],
+  "class_names_in_output_index_order": [
+    "leftrighttilt",
+    "static",
+    "updowntilt"
+  ],
+  "total_quaternion_windows": 120,
+  "total_recordings": 15,
+  "recordings_per_class": {
+    "leftrighttilt": 5,
+    "static": 5,
+    "updowntilt": 5
+  },
+  "sample_rate_hz_median": 10.070493698120117,
+  "sample_rate_hz_by_recording": {
+    "leftrighttilt1": 10.080645161289988,
+    "leftrighttilt2": 10.070493454179305,
+    "leftrighttilt3": 10.070493454179305,
+    "leftrighttilt4": 10.070493454179305,
+    "leftrighttilt5": 10.070493454179305,
+    "static1": 10.080645161289988,
+    "static2": 10.070493454179305,
+    "static3": 10.070493454179305,
+    "static4": 10.070493454179305,
+    "static5": 10.080645161289988,
+    "updowntilt1": 10.070493454179305,
+    "updowntilt2": 10.070493454179305,
+    "updowntilt3": 10.070493454179305,
+    "updowntilt4": 10.070493454179305,
+    "updowntilt5": 10.070493454179305
+  },
+  "window_size_samples": 128,
+  "window_step_samples": 64,
+  "stft_frame_length_samples": 32,
+  "stft_hop_length_samples": 8,
+  "n_fft": 32,
+  "window_function": "symmetric Hann (numpy.hanning)",
+  "spectrogram_definition": "one-sided PSD = abs(rFFT(frame * Hann))^2 / (sample_rate * sum(Hann^2)); interior bins doubled; tensor values = 10*log10(PSD + 1e-12)",
+  "tensor_layout": "frequency x time x quaternion_channel",
+  "raw_tensor_shape": [
+    17,
+    13,
+    4
+  ],
+  "selected_tensor_shape": [
+    12,
+    13,
+    4
+  ],
+  "frequency_selection": {
+    "selected_frequency_bins_original_indices": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "selected_frequency_hz": [
+      0.6294058561325073,
+      0.944108784198761,
+      1.2588117122650146,
+      1.573514699935913,
+      1.888217568397522,
+      2.202920436859131,
+      2.8323264122009277,
+      3.776435136795044,
+      4.091137886047363,
+      4.405840873718262,
+      4.72054386138916,
+      5.035246849060059
+    ],
+    "all_frequency_hz": [
+      0.0,
+      0.31470292806625366,
+      0.6294058561325073,
+      0.944108784198761,
+      1.2588117122650146,
+      1.573514699935913,
+      1.888217568397522,
+      2.202920436859131,
+      2.5176234245300293,
+      2.8323264122009277,
+      3.147029399871826,
+      3.4617321491241455,
+      3.776435136795044,
+      4.091137886047363,
+      4.405840873718262,
+      4.72054386138916,
+      5.035246849060059
+    ],
+    "selection_method": "ANOVA F-statistic on training recordings; per-bin channel scores averaged",
+    "requested_frequency_bin_count": 12,
+    "actual_frequency_bin_count": 12
+  },
+  "recording_split": {
+    "leftrighttilt": {
+      "train": [
+        "leftrighttilt2",
+        "leftrighttilt3",
+        "leftrighttilt5"
+      ],
+      "validation": [
+        "leftrighttilt4"
+      ],
+      "test": [
+        "leftrighttilt1"
+      ]
+    },
+    "static": {
+      "train": [
+        "static1",
+        "static2",
+        "static5"
+      ],
+      "validation": [
+        "static3"
+      ],
+      "test": [
+        "static4"
+      ]
+    },
+    "updowntilt": {
+      "train": [
+        "updowntilt1",
+        "updowntilt3",
+        "updowntilt5"
+      ],
+      "validation": [
+        "updowntilt2"
+      ],
+      "test": [
+        "updowntilt4"
+      ]
+    }
+  },
+  "split_window_counts": {
+    "train": 72,
+    "validation": 24,
+    "test": 24
+  },
+  "input_preprocessing_in_model": "global scalar standardization from training spectrogram values is embedded in first Rescaling layer; application supplies raw log-power spectrogram values"
+}

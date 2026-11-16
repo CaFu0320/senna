@@ -1,0 +1,38 @@
+{
+  "source_csv": [
+    "C:\\Users\\dante\\Documents\\DA3_Task1_Ready_To_Train\\corrected_csv\\static1.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Task1_Ready_To_Train\\corrected_csv\\static2.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Task1_Ready_To_Train\\corrected_csv\\static3.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Task1_Ready_To_Train\\corrected_csv\\static4.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Task1_Ready_To_Train\\corrected_csv\\static5.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Task1_Ready_To_Train\\corrected_csv\\leftrighttilt1.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Task1_Ready_To_Train\\corrected_csv\\leftrighttilt2.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Task1_Ready_To_Train\\corrected_csv\\leftrighttilt3.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Task1_Ready_To_Train\\corrected_csv\\leftrighttilt4.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Task1_Ready_To_Train\\corrected_csv\\leftrighttilt5.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Task1_Ready_To_Train\\corrected_csv\\updowntilt1.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Task1_Ready_To_Train\\corrected_csv\\updowntilt2.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Task1_Ready_To_Train\\corrected_csv\\updowntilt3.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Task1_Ready_To_Train\\corrected_csv\\updowntilt4.csv",
+    "C:\\Users\\dante\\Documents\\DA3_Task1_Ready_To_Train\\corrected_csv\\updowntilt5.csv"
+  ],
+  "label_column": "label",
+  "recording_id_column": "trial_id",
+  "timestamp_column": "elapsed_s",
+  "total_samples": 9067,
+  "total_windows": 135,
+  "recordings_per_class": {
+    "leftrighttilt": 5,
+    "static": 5,
+    "updowntilt": 5
+  },
+  "train_windows": 81,
+  "validation_windows": 27,
+  "test_windows": 27,
+  "selected_feature_count": 16,
+  "feature_selection_method": "anova",
+  "float32_raw_input_equivalence_max_abs_difference": 4.6566128730773926e-09,
+  "tensorflow_version": "2.22.0-rc0",
+  "int8_input_dtype": "int8",
+  "int8_output_dtype": "int8"
+}

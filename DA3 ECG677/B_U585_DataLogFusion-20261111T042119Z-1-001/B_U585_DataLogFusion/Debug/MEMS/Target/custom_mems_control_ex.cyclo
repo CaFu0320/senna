@@ -1,0 +1,15 @@
+../MEMS/Target/custom_mems_control_ex.c:29:6:BSP_SENSOR_ACC_Read_Register	1
+../MEMS/Target/custom_mems_control_ex.c:50:6:BSP_SENSOR_GYR_Read_Register	1
+../MEMS/Target/custom_mems_control_ex.c:65:6:BSP_SENSOR_MAG_Read_Register	1
+../MEMS/Target/custom_mems_control_ex.c:80:6:BSP_SENSOR_PRESS_Read_Register	1
+../MEMS/Target/custom_mems_control_ex.c:95:6:BSP_SENSOR_TEMP_Read_Register	1
+../MEMS/Target/custom_mems_control_ex.c:116:6:BSP_SENSOR_HUM_Read_Register	1
+../MEMS/Target/custom_mems_control_ex.c:131:6:BSP_SENSOR_ACC_Write_Register	1
+../MEMS/Target/custom_mems_control_ex.c:152:6:BSP_SENSOR_GYR_Write_Register	1
+../MEMS/Target/custom_mems_control_ex.c:167:6:BSP_SENSOR_MAG_Write_Register	1
+../MEMS/Target/custom_mems_control_ex.c:182:6:BSP_SENSOR_PRESS_Write_Register	1
+../MEMS/Target/custom_mems_control_ex.c:197:6:BSP_SENSOR_TEMP_Write_Register	1
+../MEMS/Target/custom_mems_control_ex.c:218:6:BSP_SENSOR_HUM_Write_Register	1
+../MEMS/Target/custom_mems_control_ex.c:239:6:BSP_SENSOR_ACC_GetOrientation	1
+../MEMS/Target/custom_mems_control_ex.c:258:6:BSP_SENSOR_GYR_GetOrientation	1
+../MEMS/Target/custom_mems_control_ex.c:276:6:BSP_SENSOR_MAG_GetOrientation	1

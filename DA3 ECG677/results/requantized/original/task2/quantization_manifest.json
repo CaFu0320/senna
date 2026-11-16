@@ -1,0 +1,27 @@
+{
+  "task": "task2",
+  "source": "original",
+  "original_model": "models\\task2\\quaternion_tfr_float32.h5",
+  "representative_data": "data\\derived\\task2_training_calibration.npz",
+  "representative_count": 72,
+  "model_file": "task2_requantized_int8.tflite",
+  "model_size_bytes": 8352,
+  "input_shape": [
+    1,
+    12,
+    13,
+    4
+  ],
+  "output_shape": [
+    1,
+    3
+  ],
+  "input_scale_zero": [
+    0.47058817744255066,
+    127
+  ],
+  "output_scale_zero": [
+    0.00390625,
+    -128
+  ]
+}

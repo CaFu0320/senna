@@ -1,0 +1,15 @@
+../MEMS/Target/custom_motion_sensors.c:90:9:CUSTOM_MOTION_SENSOR_Init	64	static
+../MEMS/Target/custom_motion_sensors.c:178:9:CUSTOM_MOTION_SENSOR_DeInit	24	static
+../MEMS/Target/custom_motion_sensors.c:204:9:CUSTOM_MOTION_SENSOR_GetCapabilities	24	static
+../MEMS/Target/custom_motion_sensors.c:230:9:CUSTOM_MOTION_SENSOR_ReadID	24	static
+../MEMS/Target/custom_motion_sensors.c:259:9:CUSTOM_MOTION_SENSOR_Enable	24	static
+../MEMS/Target/custom_motion_sensors.c:298:9:CUSTOM_MOTION_SENSOR_Disable	24	static
+../MEMS/Target/custom_motion_sensors.c:338:9:CUSTOM_MOTION_SENSOR_GetAxes	32	static
+../MEMS/Target/custom_motion_sensors.c:378:9:CUSTOM_MOTION_SENSOR_GetAxesRaw	32	static
+../MEMS/Target/custom_motion_sensors.c:418:9:CUSTOM_MOTION_SENSOR_GetSensitivity	32	static
+../MEMS/Target/custom_motion_sensors.c:459:9:CUSTOM_MOTION_SENSOR_GetOutputDataRate	32	static
+../MEMS/Target/custom_motion_sensors.c:499:9:CUSTOM_MOTION_SENSOR_GetFullScale	32	static
+../MEMS/Target/custom_motion_sensors.c:540:9:CUSTOM_MOTION_SENSOR_SetOutputDataRate	32	static
+../MEMS/Target/custom_motion_sensors.c:580:9:CUSTOM_MOTION_SENSOR_SetFullScale	32	static
+../MEMS/Target/custom_motion_sensors.c:626:16:IIS2MDC_0_Probe	88	static
+../MEMS/Target/custom_motion_sensors.c:703:16:ISM330DHCX_0_Probe	88	static

@@ -1,0 +1,5 @@
+model,split,accuracy,precision_weighted,recall_weighted,f1_weighted,precision_macro,recall_macro,f1_macro,model_size_bytes
+Float32,Validation,1.0,1.0,1.0,1.0,1.0,1.0,1.0,59384
+Float32,Test,1.0,1.0,1.0,1.0,1.0,1.0,1.0,59384
+Int8 quantized,Validation,1.0,1.0,1.0,1.0,1.0,1.0,1.0,8352
+Int8 quantized,Test,1.0,1.0,1.0,1.0,1.0,1.0,1.0,8352

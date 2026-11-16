@@ -1,0 +1,11 @@
+{
+  "primary_tflite_model": "quaternion_tfr_float32_cubeai.tflite",
+  "primary_tflite_input": "raw log-power spectrogram, as with original .h5",
+  "fallback_h5_model": "quaternion_tfr_float32_no_rescaling.h5",
+  "fallback_h5_input": "pre-standardized log-power spectrogram",
+  "fallback_h5_input_formula": "X_standardized = X_raw * scale + offset",
+  "scale": 0.038474857833137116,
+  "offset": 1.9026836075374873,
+  "input_layout": "frequency x time x quaternion channel",
+  "note": "Use the same preprocessing for deployment and validation. The fallback .h5 requires external scaling; TFLite does not."
+}

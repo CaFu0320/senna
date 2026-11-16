@@ -1,0 +1,5 @@
+Task,Model,Python_Test_Accuracy,AIStudio_Latency_ms,AIStudio_RAM_KB_rounded,AIStudio_InternalFlash_KB_rounded,AIStudio_Weights_KB_rounded,AIStudio_LibraryFlash_KB_rounded,Note
+1,Float32,1.0,0.05,0.15625,6,,,Previously reported in conversation; verify screenshot
+1,Int8,0.6666666667,0.06,2,9,0.84375,,Previously reported in conversation; verify screenshot
+2,Float32,1.0,5.30,7,15,7,8,On-target CubeAI screenshot; Float32 TFLite
+2,Int8,1.0,2.27,6,30,2,28,On-target CubeAI screenshot; Int8 TFLite

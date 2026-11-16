@@ -1,0 +1,13 @@
+../Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a_bus.c:91:9:BSP_I2C2_Init	6
+../Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a_bus.c:139:9:BSP_I2C2_DeInit	4
+../Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a_bus.c:167:9:BSP_I2C2_IsReady	2
+../Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a_bus.c:188:9:BSP_I2C2_WriteReg	3
+../Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a_bus.c:214:10:BSP_I2C2_ReadReg	3
+../Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a_bus.c:242:9:BSP_I2C2_WriteReg16	3
+../Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a_bus.c:267:10:BSP_I2C2_ReadReg16	3
+../Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a_bus.c:292:9:BSP_I2C2_Send	3
+../Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a_bus.c:317:9:BSP_I2C2_Recv	3
+../Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a_bus.c:392:9:BSP_GetTick	1
+../Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a_bus.c:398:26:MX_I2C2_Init	4
+../Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a_bus.c:429:13:I2C2_MspInit	1
+../Drivers/BSP/B-U585I-IOT02A/b_u585i_iot02a_bus.c:469:13:I2C2_MspDeInit	1

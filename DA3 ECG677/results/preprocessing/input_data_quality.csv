@@ -1,0 +1,16 @@
+file,class,n,elapsed_duration_s,mean_hz,median_hz,jitter_pct,zero_or_negative_dt,bad_quat_rows,mean_norm,max_norm_deviation,sign_flip_edges
+leftrighttilt1.csv,leftrighttilt,605,59.945,10.076,10.0806,0.31,0,0,1.0,1e-06,0
+leftrighttilt2.csv,leftrighttilt,605,59.948,10.0753,10.0705,0.31,0,0,1.0,1e-06,0
+leftrighttilt3.csv,leftrighttilt,604,59.853,10.0747,10.0705,0.31,0,0,1.0,1e-06,0
+leftrighttilt4.csv,leftrighttilt,605,59.95,10.075,10.0705,0.32,0,0,1.0,1e-06,0
+leftrighttilt5.csv,leftrighttilt,605,59.95,10.0751,10.0705,0.31,0,0,1.0,1e-06,0
+static1.csv,static,604,59.845,10.0761,10.0806,0.09,0,0,1.0,1e-06,0
+static2.csv,static,605,59.944,10.076,10.0705,0.11,0,0,1.0,1e-06,0
+static3.csv,static,605,59.948,10.0754,10.0705,0.1,0,0,1.0,1e-06,0
+static4.csv,static,604,59.847,10.0756,10.0705,0.08,0,0,1.0,1e-06,0
+static5.csv,static,604,59.841,10.0767,10.0806,0.13,0,0,1.0,1e-06,0
+updowntilt1.csv,updowntilt,605,59.951,10.0749,10.0705,0.26,0,0,1.0,1e-06,0
+updowntilt2.csv,updowntilt,604,59.852,10.0748,10.0705,0.26,0,0,1.0,1e-06,0
+updowntilt3.csv,updowntilt,604,59.852,10.0749,10.0705,0.27,0,0,1.0,1e-06,0
+updowntilt4.csv,updowntilt,604,59.854,10.0746,10.0705,0.27,0,0,1.0,1e-06,0
+updowntilt5.csv,updowntilt,604,59.853,10.0747,10.0705,0.26,0,0,1.0,1e-06,0
